@@ -1,0 +1,70 @@
+﻿<fieldset>
+    <legend>تایید نهایی اعلام آمادگی</legend>
+    <div class="alert alert-info">
+        <h3 style="line-height: 1.5em;">تایید نهایی فهرست رشته‌های ورزشی {{competition.name}} که شما برای شرکت در آن‌ها اعلام آمادگی کرده‌اید</h3>
+    </div>
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">فهرست رشته‌های ورزشی</h3>
+        </div>
+        <div class="table-responsive">
+            <table st-safe-src="competitionSportsList" st-table="displayedCompetitionSportsList" class="table table-striped table-bordered table-condensed table-hover th-center td-center">
+                <thead>
+                <tr>
+                    <th>ردیف</th>
+                    <th st-sort="name" st-sort-default="true">رشته ورزشی</th>
+                    <th st-sort="gender">جنسیت</th>
+                    <th st-sort="maxTechnicalStaff">تعداد اعضای کادر فنی</th>
+                    <th st-sort="maxCompetitors">تعداد اعضای تیم</th>
+                    <th>قوانین و دستورالعملها</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="row in displayedCompetitionSportsList | filter:search" ng-class="{success: selectedCompetitionSports.indexOf(row.id) > -1}" class="fx-fade-down">
+                    <td>{{$index+1}}</td>
+                    <td>{{row.name }}</td>
+                    <td>{{row.gender | gender}}</td>
+                    <td>{{row.maxTechnicalStaff}}</td>
+                    <td>{{row.maxCompetitors}}</td>
+                    <td>
+                        <span><button class="btn btn-default btn-sm" ng-disabled="!row.hasRule" ng-click="showRuleModal(row)"> نمایش قوانین </button></span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <div class="alert alert-danger">
+        <h4>لطفا به موارد زیر توجه فرمایید</h4>
+        <ul class="" style="line-height: 30px;">
+            <li>بازه‌ زمانی تعیین شده برای اعلام آمادگی برای شرکت کردن در مسابقات از تاریخ {{ competition.readyStartDate | jalaliDate:'jYYYY/jMM/jDD' }} تا {{ competition.readyEndDate | jalaliDate:'jYYYY/jMM/jDD'}} است.</li>
+            <li>
+                بازه زمانی تعیین شده برای ثبت نام در مسابقات از تاریخ {{ competition.registerStartDate | jalaliDate:'jYYYY/jMM/jDD' }} تا {{ competition.registerEndDate | jalaliDate:'jYYYY/jMM/jDD' }} است.
+            </li>
+            <li>تا پایان مهلت اعلام شده برای اعلام آمادگی شما قادر خواهید بود تا فهرست زیر را ویرایش کنید.</li>
+        </ul>
+    </div>
+
+    <div class="text-center">
+        <button ng-click="sumbitParticipationData()" style="width: 40%;" class="btn btn-success"><i class="fa fa-check fa-lg"></i> تایید نهایی</button>
+        <a href="#/readiness/competitionsportslist/{{competition.id}}" style="width: 40%;" class="btn btn-warning"><i class="fa fa-reply fa-lg"></i> بازگشت به فهرست ویرایش اعلام آمادگی </a>
+    </div>
+</fieldset>
+
+<script type="text/ng-template" id="competitionSportRuleModal.html">
+    <div class="modal-header">
+        <h3 class="modal-title"> قوانین و دستورالعمل‌های {{competitionSport.name}} {{ competitionSport.gender | gender :'plural' }}</h3>
+    </div>
+    <div class="modal-body">
+        <div class="alert alert-danger">
+            <span ng-bind-html='toTrustedHTML( competitionSport.rule )'></span>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-danger" ng-click="cancel()">بستن</button>
+    </div>
+</script>

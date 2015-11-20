@@ -1,0 +1,114 @@
+﻿<fieldset>
+    <legend>بازیکنان {{::competitionSport.sportName}} {{::competitionSport.sportCategory}} {{::competitionSport.sportDetail}} {{::competitionSport.gender | gender: 'plural'}}</legend>
+    <span class="btn-back"><a href="#/register/{{competitionSport.competitionId}}" class="btn btn-primary"><i class="fa fa-reply fa-lg"></i> بازگشت به فهرست رشته‌های ورزشی</a></span>
+    <div class="row">
+        <div class="col-md-12" style="margin: 20px 0 5px 0;">
+            <div class="pull-right">
+                <a class="btn btn-success" ng-disabled="competitorsList.length >= competitionSport.maxCompetitors" href="#/participation/competitor/{{::participationId}}"> <i class="fa fa-lg fa-plus"></i> افزودن بازیکن جدید </a>
+                <a class="btn btn-warning" ng-if="!competitionSport.isIndividual" href="#/teamcolor/{{::participationId}}"> <i class="fa fa-lg fa-group"></i> انتخاب رنگ لباس </a>
+                <div style="margin-top: 15px;" class="alert alert-danger" ng-show="competitorsList.length >= competitionSport.maxCompetitors">سقف مجاز بازیکنان پر شده است</div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="pull-right" style="margin: 5px 0 10px 0;">
+                <div class="alert alert-info">
+                    <ul class="list-inline">
+                        <li class="text-success">تعداد بازیکنان ثبت شده: {{competitorsList.length}} نفر</li>
+                        <li class="text-danger">سقف مجاز بازیکنان: {{competitionSport.maxCompetitors}} نفر</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 fx-fade-up" ng-show="competitorsList.length > 0">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    فهرست بازیکنان
+                </div>
+                <div class="table-responsive">
+                    <table st-resize st-safe-src="competitorsList" st-table="displayedCompetitorsList" class="table table-bordered table-hover table-condensed th-center">
+                        <thead>
+                            <tr>
+                                <td>#</td>
+                                <th>عکس</th>
+                                <th><span st-sort="firstName">نام</span></th>
+                                <th><span st-sort="lastName" st-sort-default="true">نام خانوادگی</span></th>
+                                <th><span st-sort="isApproved">وضعیت بررسی</span></th>
+                                <th><span st-sort="nationalCode">کد ملی</span></th>
+                                <th><span st-sort="studentNumber">شماره دانشجویی</span></th>
+                                <th><span st-sort="birthDate">تاریخ تولد</span></th>
+                                <th><span st-sort="studyField">رشته و مقطع تحصیلی</span></th>
+                                <th>عملیات</th>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <th></th>
+                                <th>
+                                    <input st-search="firstName" placeholder="جستجو در نام" class="input-sm form-control" type="search" />
+                                </th>
+                                <th>
+                                    <input st-search="lastName" placeholder="جستجو در نام خانوادگی" class="input-sm form-control" type="search" />
+                                </th>
+                                <th>
+                                    
+                                </th>
+                                <th><input st-search="nationalCode" placeholder="جستجو در کد ملی" class="input-sm form-control" type="search" /></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="row in displayedCompetitorsList" class="fx-fade-down" ng-class="{success: row.isApproved == true , danger : row.isApproved == false}">
+                                <td>{{$index+1}}</td>
+                                <td class="vert-align">
+                                    <img style="max-height: 120px;" ng-src="/file/home/getuserimage?fileName={{row.userImage}}" class="img-responsive img-circle center-block" />
+                                </td>
+                                <td class="vert-align">{{row.firstName}}</td>
+                                <td class="vert-align">{{row.lastName}}</td>
+                                <td class="vert-align"> <span class="label" ng-class="{'label-success': row.isApproved == true , 'label-danger' : row.isApproved == false, 'label-default' : row.isApproved == null }">{{row.isApproved | status }}</span></td>
+                                <td class="vert-align">{{row.nationalCode}}</td>
+                                <td class="vert-align">{{row.studentNumber}}</td>
+                                <td class="vert-align">{{row.birthDate | jalaliDate:'jYYYY/jMM/jDD'}}</td>
+                                <td class="vert-align">{{row.studyFieldDegree}}&nbsp;{{ row.studyField }}</td>
+                                <td class="vert-align">
+
+                                    <div style="margin: 10px;">
+                                        <a class="btn btn-primary btn-sm" href="#/competitor/edit/{{row.id}}/{{participationId}}">
+                                            <i class="fa fa-edit fa-lg"></i> ویرایش
+                                        </a>
+                                    </div>
+                                    <button class="btn btn-danger btn-sm" href="#" ng-click="deleteCompetitor(row)">
+                                        <i class="fa fa-trash-o fa-lg"></i> حذف
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</fieldset>
+
+<script type="text/ng-template" id="deleteCompetitor.html">
+    <div class="modal-header">
+        <h3 class="modal-title"></h3>
+    </div>
+    <div class="modal-body">
+        <div class="alert alert-danger">
+            آیا از حذف  {{competitor.firstName}} {{competitor.lastName}} مطمئن هستید؟
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="cancel()">انصراف</button>
+        <button class="btn btn-danger" ng-click="ok()">بله</button>
+    </div>
+</script>

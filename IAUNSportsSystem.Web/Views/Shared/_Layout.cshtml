@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - سامانه برگزاری مسابقات ورزشی دانشگاه آزاد اسلامی واحد نجف آباد</title>
+    @Styles.Render("~/Content/common")
+    @Styles.Render("~/Content/site")
+    @RenderSection("styles", false)
+    <style>
+        body {
+            margin-top: 80px;
+        }
+    </style>
+</head>
+<body>
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top" role="navigation" data-spy="affix" data-offset-top="85">
+        <div class="container">
+            <div class="navbar-header" style="position: relative;">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="@Url.Action("Index", "Home", new {area = ""})">
+                    <img class="pull-right" src="~/Content/IAU_Najafabad_Branch_logo.png" alt="" />
+                    <div class="text-center pull-right">
+                        <div style="padding-bottom: 7px;">سامانه برگزاری مسابقات ورزشی</div>
+                        <div style="font-size: 14px; color: #808080;">دانشگاه آزاد اسلامی واحد نجف آباد</div>
+
+                    </div>
+                </a>
+            </div>
+            <div class="collapse navbar-collapse navbar-links" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="@Url.Action("Index", "Home", new {area = ""})">خانه</a></li>
+                    <li><a href="@Url.Action("List", "Home", new {area = "News"})">اخبار</a></li>
+                    <li><a href="/account/#/login" rel="nofollow">ورود به سامانه</a></li>
+                </ul>
+            </div>
+        </div>
+
+    </nav>
+
+    <div id="mainWrapper" class="container-fluid" style="min-height: 60vh; ">
+        @if (HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString().ToLower() == "home" && HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString().ToLower() == "index")
+        {
+            @Html.Action("SlideShow", "Home")
+        }
+
+        <div>
+            @RenderBody()
+        </div>
+
+    </div>
+    <div id="push"></div>
+    <footer id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4" style="">
+                    <div style="">
+                        <h2 style="border-bottom: 2px solid #3498DB; line-height: 1.6em; font-size: 22px">اطلاعات تماس</h2>
+                    </div>
+                    <div>
+                        <address style="font-size: 13px;">
+                            ایران، اصفهان، نجف آباد، بلوار دانشگاه، دانشگاه آزاد اسلامی واحد نجف آباد18
+                            <br />
+                            کدپستی: ۸۵۱۴۱۴۳۱۳۱
+                            <br />
+                            تلفکس :۰۳۱۴۲۲۹۱۰۱۶
+                            <br />
+                            پست الکترونیکی: info@@ iaun. ac.ir
+                        </address>
+                    </div>
+                </div>
+                <div>
+
+                </div>
+                <div class="col-md-4">
+                    <div>
+                        <h2 style="border-bottom: 2px solid #3498DB; line-height: 1.6em; font-size: 22px">بخش‌های سایت</h2>
+                    </div>
+                    <div class="row" style="font-size: 13px;">
+                        <div class="col-md-6">
+                            <ul>
+                                <li><a href="/account/#/login" rel="nofollow">ورود به سامانه</a></li>
+                                <li><a href="@Url.Action("List", "Home", new {area = "News"})">اخبار</a></li>
+                                <li><a href="http://iaun.ac.ir/" target="_blank" rel="nofollow">سایت دانشگاه</a></li>
+                                <li><a href="http://iaun.ac.ir/contact" target="_blank" rel="nofollow">ارتباط با ما</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul>
+                                <li><a href="/account/#/loginadmin" rel="nofollow">ورود همکاران</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="text-left" style="color: #ffffff; margin-top: 30px">
+                        <div>
+                            <span style="font-size: 30px;">IAUN</span>
+                        </div>
+                        <div class="" style="font-size: 14px;">
+                            Islamic Azad University, Najafabad Branch
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container" style="border-top: 1px solid #CCE5F6; position: relative">
+            <div style="position: absolute; right: 0; top: -15px; transform: rotate(0deg)"><span class="label label-info" style="font-size: 8px;">نسخه آزمایشی</span></div>
+            <div class="row">
+                <div class="col-md-12 col-sm-12 text-center">
+                    <div>تمامی حقوق متعلق به سازنده می باشد</div>
+
+                    <div>Copyright &copy; 1394</div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    @Scripts.Render("~/bundles/site")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,156 @@
+﻿<div class="well" style="margin-top: 30px; min-height: 200px;">
+    <div class="row">
+        <a href="#/readiness">
+            <div id="competitionReadiness" class="col-md-3 col-md-offset-1 competition-operation bg-primary" style="">
+                <p>اعلام آمادگی در مسابقات</p>
+            </div>
+        </a>
+        <a href="#/register">
+            <div class="col-md-3 col-md-offset-1 competition-operation" style="background-color: #60a917; color: #fff;">
+                <p>ثبت نام در مسابقات</p>
+            </div>
+        </a>
+        <a href="#/card">
+            <div class="col-md-3 col-md-offset-1 competition-operation" style="background-color: #640024 ; color: #ffffff;">
+                <p>دریافت کارت مسابقات</p>
+            </div>
+        </a>
+    </div>
+</div>
+<fieldset ng-show="competitorsList.length > 0">
+    <legend>فهرست بازیکنان دارای نقص اطلاعات</legend>
+    <div class="row">
+        <div class="col-lg-12 fx-fade-up" ng-show="competitorsList.length > 0">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    فهرست بازیکنان
+                </div>
+                <div class="table-responsive">
+                    <table st-resize st-safe-src="competitorsList" st-table="displayedCompetitorsList" class="table table-bordered table-hover table-condensed th-center">
+                        <thead>
+                            <tr>
+                                <td>#</td>
+                                @*<th>عکس</th>*@
+                                <th><span st-sort="firstName">نام</span></th>
+                                <th><span st-sort="lastName">نام خانوادگی</span></th>
+                                <th><span st-sort="nationalCode">کد ملی</span></th>
+                                <th><span st-sort="competitionName">مسابقه</span></th>
+                                <th><span st-sort="sport" st-sort-default="true">رشته ورزشی</span></th>
+                                <th>عملیات</th>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                @*                            <th></th>*@
+                                <th>
+                                    <input st-search="firstName" placeholder="جستجو در نام" class="input-sm form-control" type="search" />
+                                </th>
+                                <th>
+                                    <input st-search="lastName" placeholder="جستجو در نام خانوادگی" class="input-sm form-control" type="search" />
+                                </th>
+                                <th><input st-search="nationalCode" placeholder="جستجو در کد ملی" class="input-sm form-control" type="search" /></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="row in displayedCompetitorsList" class="fx-fade-down danger">
+                                <td>{{$index+1}}</td>
+                                @*<td class="vert-align">
+                                        <img style="max-height: 120px;" ng-src="/file/home/getuserimage?fileName={{row.userImage}}" class="img-responsive img-circle center-block" />
+                                    </td>*@
+                                <td class="vert-align">{{row.firstName}}</td>
+                                <td class="vert-align">{{row.lastName}}</td>
+                                <td class="vert-align">{{row.nationalCode}}</td>
+                                <td class="vert-align" st-ratio="20">{{row.competitionName}}</td>
+                                <td class="vert-align">{{row.sport}}</td>
+                                <td class="vert-align">
+
+                                    <div style="margin: 10px;">
+                                        <a class="btn btn-primary btn-sm" href="#/competitor/edit/{{row.id}}/{{row.participationId}}">
+                                            <i class="fa fa-edit fa-lg"></i> ویرایش
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</fieldset>
+
+<fieldset ng-show="technicalStaffsList.length > 0">
+    <legend>فهرست اعضای کادر فنی و اجرایی دارای نقص اطلاعات</legend>
+    <div class="row">
+        <div class="col-lg-12 fx-fade-up">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    فهرست افراد
+                </div>
+                <div class="table-responsive">
+                    <table st-resize st-safe-src="technicalStaffsList" st-table="displayedTechnicalStaffsList" class="table table-bordered table-hover table-condensed th-center">
+                        <thead>
+                            <tr>
+                                <td>#</td>
+                                @*<th>عکس</th>*@
+                                <th><span st-sort="firstName">نام</span></th>
+                                <th><span st-sort="lastName">نام خانوادگی</span></th>
+                                <th><span st-sort="nationalCode">کد ملی</span></th>
+                                <th><span st-sort="competitionName">مسابقه</span></th>
+                                <th><span st-sort="sport" st-sort-default="true">سمت</span></th>
+                                <th>عملیات</th>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                @*                            <th></th>*@
+                                <th>
+                                    <input st-search="firstName" placeholder="جستجو در نام" class="input-sm form-control" type="search" />
+                                </th>
+                                <th>
+                                    <input st-search="lastName" placeholder="جستجو در نام خانوادگی" class="input-sm form-control" type="search" />
+                                </th>
+                                <th><input st-search="nationalCode" placeholder="جستجو در کد ملی" class="input-sm form-control" type="search" /></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="row in displayedTechnicalStaffsList" class="fx-fade-down danger">
+                                <td>{{$index+1}}</td>
+                                @*<td class="vert-align">
+                                        <img style="max-height: 120px;" ng-src="/file/home/getuserimage?fileName={{row.userImage}}" class="img-responsive img-circle center-block" />
+                                    </td>*@
+                                <td class="vert-align">{{row.firstName}}</td>
+                                <td class="vert-align">{{row.lastName}}</td>
+                                <td class="vert-align">{{row.nationalCode}}</td>
+                                <td class="vert-align" st-ratio="20">{{row.competitionName}}</td>
+                                <td class="vert-align">{{row.role}}</td>
+                                <td class="vert-align">
+
+                                    <div style="margin: 10px;">
+                                        <a ng-if="row.participationId" class="btn btn-primary btn-sm" href="#/technicalstaff/edit/{{row.id}}/{{row.participationId}}">
+                                            <i class="fa fa-edit fa-lg"></i> ویرایش
+                                        </a>
+                                        <a ng-if="row.competitionId" class="btn btn-primary btn-sm" href="#/commontechnicalstaff/edit/{{row.competitionId}}/{{row.id}}">
+                                            <i class="fa fa-edit fa-lg"></i> ویرایش
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</fieldset>
+
+
+

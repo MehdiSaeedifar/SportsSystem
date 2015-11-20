@@ -1,0 +1,56 @@
+﻿@model IEnumerable<IAUNSportsSystem.ServiceLayer.SlideShowItemModel>
+@{
+    bool isFirst = true;
+}
+<div class="row">
+    <div class="">
+        <div id="carousel-example-generic" class="carousel slide carousel-fade" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                @for (int i = 0; i < Model.Count(); i++)
+                {
+                    <li data-target="#carousel-example-generic" data-slide-to="@i" class="@if (isFirst){<text>active</text>}"></li>
+
+                                                                                          isFirst = false;
+                }
+            </ol>
+            @{ isFirst = true;}
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+                @foreach (var item in Model)
+                {
+                    <div class="item @if (isFirst)
+                                     {<text>active</text>}">
+                        <img src="/content/slideshowimages/@item.Image" alt="@item.Title">
+                        @if (!string.IsNullOrEmpty(item.Title) || !string.IsNullOrEmpty(item.Text))
+                        {
+                            <div class="carousel-caption">
+                                <div class="container">
+                                    <h1 class="animated lightSpeedIn">@item.Title</h1>
+                                    <p class="lead animated fadeInDown">@item.Text</p>
+                                    @if (!string.IsNullOrEmpty(item.Link))
+                                    {
+                                        <a class="btn btn-warning animated rotateIn" href="@item.Link">نمایش</a>
+                                    }
+                                </div>
+                            </div>
+                        }
+                    </div>
+
+                        isFirst = false;
+                }
+
+
+            </div>
+
+            <!-- Controls -->
+            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+            </a>
+        </div>
+    </div>
+
+</div>

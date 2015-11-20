@@ -1,0 +1,315 @@
+﻿<style>
+   
+    .modal-lg {
+        width: 85%;
+        height: 80%;
+        padding: 0;
+    }
+
+    /*.modal-content {
+        height: 100%;
+        border-radius: 0;
+    }*/
+
+    .modal .modal-body {
+        /*max-height: 100%;*/
+        overflow-y: auto;
+    }
+
+    .modal-footer {
+        /*position: absolute;
+        right: 0;
+        bottom: 0;*/
+        width: 100%;
+        text-align: right;
+    }
+</style>
+<fieldset>
+    <legend>بازیکنان {{ sport.name}} {{sport.gender | gender:'plural'}} {{university}} {{competition.name}}</legend>
+    <span class="btn-back"><a href="#/register/sportslist/{{::competition.id}}/{{::representativeUserId}}" class="btn btn-primary"><i class="fa fa-reply fa-lg"></i> بازگشت به فهرست رشته‌های ورزشی </a></span>
+    <div class="row" style="margin-bottom: 20px;" ng-if="!isIndividual">
+        <div class="col-md-12">
+            <button class="btn btn-warning" ng-click="openTeamColorModal()"> <i class="fa fa-lg fa-group"></i> رنگ لباس </button>
+        </div>
+    </div>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            فهرست بازیکنان
+        </div>
+        <div class="table-responsive">
+            <table st-safe-src="competitorsList" st-table="displayedCompetitorsList" class="table table-striped table-bordered table-hover table-condensed th-center">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>تصویر</th>
+                        <th st-sort="firstName">نام</th>
+                        <th st-sort="lastName" st-sort-default="true">نام خانوادگی</th>
+                        <th st-sort="nationalCode">کد ملی</th>
+                        <th st-sort="isApproved">وضعیت</th>
+                        <th>عملیات</th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th>
+                            <input st-search="firstName" placeholder="جستجو در نام" class="input-sm form-control" type="search" />
+                        </th>
+                        <th>
+                            <input st-search="lastName" placeholder="جستجو در نام خانوادگی" class="input-sm form-control" type="search" />
+                        </th>
+                        <th><input st-search="nationalCode" placeholder="جستجو در کد ملی" class="input-sm form-control" type="search" /></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="user in displayedCompetitorsList" class="fx-fade-down" ng-class="{success: user.isApproved == true , danger : user.isApproved == false, 'aa': user.isApproved == null}">
+                        <td class="vert-align">{{$index+1}}</td>
+                        <td class="vert-align"><img class="img-circle" style="width: 100px; height: 100px;" ng-src="/file/home/getuserimage?fileName={{user.userImage}}" alt="Alternate Text" /></td>
+                        <td class="vert-align">{{user.firstName}}</td>
+                        <td class="vert-align">{{user.lastName}}</td>
+                        <td class="vert-align">{{user.nationalCode}}</td>
+                        <td class="vert-align"><span class="label" ng-class="{'label-success': user.isApproved == true , 'label-danger' : user.isApproved == false, 'label-default' : user.isApproved == null }">{{user.isApproved | status }}</span></td>
+                        <td class="vert-align">
+                            <a ng-click="openCompetitorModal(user)" href="#/register/competitors/{{participationId}}?modal={{user.id}}" class="btn btn-info btn-sm">
+                                <i class="fa fa-eye fa-lg"></i> نمایش اطلاعات
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</fieldset>
+
+<script type="text/ng-template" id="showCompetitiorModal.html">
+    <form name="frmApproveCompetitior" id="frmApproveCompetitior" class="form-horizontal form-group-sm" novalidate ng-sumbit="saveChanges()">
+        <div ng-cloak>
+            <div class="modal-header">
+                <h3 class="modal-title"></h3>
+            </div>
+            <div class="modal-body">
+                <fieldset style="min-height:100%;">
+                    <legend>اطلاعات فردی</legend>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <dl class="dl-horizontal">
+                                <dt>نام:</dt>
+                                <dd>{{competitor.firstName}}</dd>
+                            </dl>
+                        </div>
+                        <div class="col-md-4">
+                            <dl class="dl-horizontal">
+                                <dt>نام خانوادگی:</dt>
+                                <dd>{{competitor.lastName}}</dd>
+                            </dl>
+                        </div>
+                        <div class="col-md-4">
+                            <dl class="dl-horizontal">
+                                <dt>نام پدر:</dt>
+                                <dd>{{competitor.fatherName}}</dd>
+                            </dl>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <dl class="dl-horizontal">
+                                <dt>تاریخ تولد:</dt>
+                                <dd>{{competitor.birthDate | jalaliDate:'jYYYY/jMM/jDD'}}</dd>
+                            </dl>
+                        </div>
+                        <div class="col-md-4">
+                            <dl class="dl-horizontal">
+                                <dt>کد ملی:</dt>
+                                <dd>{{competitor.nationalCode}}</dd>
+                            </dl>
+                        </div>
+                        <div class="col-md-4">
+                            <dl class="dl-horizontal">
+                                <dt>شماره دانشجویی:</dt>
+                                <dd>{{competitor.studentNumber}}</dd>
+                            </dl>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <dl class="dl-horizontal">
+                                <dt>رشته تحصیلی:</dt>
+                                <dd>{{competitor.studyField}}</dd>
+                            </dl>
+                        </div>
+                        <div class="col-md-4">
+                            <dl class="dl-horizontal">
+                                <dt>مقطع تحصیلی:</dt>
+                                <dd>{{competitor.studyFieldDegree}}</dd>
+                            </dl>
+                        </div>
+                        <div class="col-md-4">
+                            <dl class="dl-horizontal">
+                                <dt>شماره کارت بیمه:</dt>
+                                <dd>{{competitor.insuranceNumber}}</dd>
+                            </dl>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <dl class="dl-horizontal">
+                                <dt>پست الکترونیکی:</dt>
+                                <dd>{{competitor.email}}</dd>
+                            </dl>
+                        </div>
+                        <div class="col-md-4">
+                            <dl class="dl-horizontal">
+                                <dt>تلفن همراه:</dt>
+                                <dd>{{competitor.mobileNumber}}</dd>
+                            </dl>
+                        </div>
+                        <div class="col-md-4">
+                            <dl class="dl-horizontal">
+                                <dt>تلفن ثابت:</dt>
+                                <dd>{{competitor.phoneNumber}}</dd>
+                            </dl>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <dl class="dl-horizontal">
+                                <dt>تاریخ اتمام بیمه:</dt>
+                                <dd>{{competitor.insuranceEndDate | jalaliDate:'jYYYY/jMM/jDD'}}</dd>
+                            </dl>
+                        </div>
+                        <div class="col-md-4">
+                            <dl class="dl-horizontal">
+                                <dt>وزن:</dt>
+                                <dd>{{competitor.weight}}</dd>
+                            </dl>
+                        </div>
+                        <div class="col-md-4">
+                            <dl class="dl-horizontal">
+                                <dt>قد:</dt>
+                                <dd>{{competitor.height}}</dd>
+                            </dl>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset style="min-height:100% !important;">
+                    <legend>تصاویر مدارک</legend>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <dl class="dl-horizontal">
+                                <dt>عکس:</dt>
+                                <dd>
+                                    <a ng-href="/file/home/getuserimage?fileName={{competitor.userImage | escape }}" target="_blank"><img style="height:120px;max-width:200px;" ng-src="/file/home/getuserimage?fileName={{competitor.userImage}}" alt="Alternate Text" /></a>
+                                </dd>
+                            </dl>
+                        </div>
+                        <div class="col-md-4">
+                            <dl class="dl-horizontal">
+                                <dt>گواهی اشتغال به تحصیل:</dt>
+                                <dd>
+                                    <a ng-href="/file/home/getstudentcertificateimage?fileName={{competitor.studentCertificateImage | escape}}" target="_blank">
+                                        <img style="height:120px; max-width:200px;" ng-src="/file/home/getstudentcertificateimage?fileName={{competitor.studentCertificateImage}}" alt="Alternate Text" />
+                                    </a>
+                                </dd>
+                            </dl>
+                        </div>
+                        <div class="col-md-4">
+                            <dl class="dl-horizontal">
+                                <dt>کارت بیمه:</dt>
+                                <dd>
+                                    <a ng-href="/file/home/getinsuranceimage?fileName={{competitor.insuranceImage | escape}}" target="_blank">
+                                        <img style="height:120px;max-width:200px;" ng-src="/file/home/getinsuranceimage?fileName={{competitor.insuranceImage}}" alt="Alternate Text" />
+                                    </a>
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <dl class="dl-horizontal">
+                                <dt>تائیدیه مرکز آزمون:</dt>
+                                <dd>
+                                    <a ng-href="/file/home/getazmoonconfirmationimage?fileName={{competitor.azmoonConfirmationImage | escape}}" target="_blank">
+                                        <img style="height:120px;max-width:200px;" ng-src="/file/home/getazmoonconfirmationimage?fileName={{competitor.azmoonConfirmationImage}}" alt="Alternate Text" />
+                                    </a>
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset style="min-height:100%;">
+                    <legend>وضعیت و محل اسکان</legend>
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="inputPassword3" class="col-md-2 control-label">وضعیت</label>
+                            <div class="col-md-6">
+                                <div class="btn-group">
+                                    <label class="btn btn-info" ng-model="viewModel.competitor.isApproved" btn-radio="null">بررسی نشده</label>
+                                    <label class="btn btn-info" ng-model="viewModel.competitor.isApproved" btn-radio="true">تایید شده</label>
+                                    <label class="btn btn-info" ng-model="viewModel.competitor.isApproved" btn-radio="false">تایید نشده</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group fx-fade-right" ng-show="viewModel.competitor.isApproved == false">
+                            <label class="col-md-2 control-label"></label>
+                            <div class="col-md-4">
+                                <div ckeditor="editorOptions" ng-model="viewModel.competitor.error" ready=""></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1" class="control-label col-md-2">محل اسکان</label>
+                            <div class="col-md-4">
+                                <select class="form-control" placeholder="asdasd" ng-options="item.id as item.name for item in dormsList" ng-model="viewModel.competitor.dormId" ng-required="true"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1" class="control-label col-md-2">شماره محل اسکان</label>
+                            <div class="col-md-4">
+                                <input type="txt" ng-model="viewModel.competitor.dormNumber" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-warning" ng-click="cancel()">بستن</button>
+                <button ng-click="saveChanges()" class="btn btn-success">ذخیره تغییرات</button>
+            </div>
+        </div>
+    </form>
+</script>
+
+
+<script type="text/ng-template" id="teamColorModal.html">
+    <div>
+        <div class="modal-header">
+            <h3 class="modal-title">رنگ لباس تیم</h3>
+        </div>
+        <div class="modal-body">
+            <dl class="dl-horizontal">
+                <dt>رنگ اول:</dt>
+                <dd>
+                    {{colors[0]}}
+                </dd>
+            </dl>
+            <dl class="dl-horizontal">
+                <dt>رنگ دوم:</dt>
+                <dd>
+                    {{colors[1]}}
+                </dd>
+            </dl>
+            <dl class="dl-horizontal">
+                <dt>رنگ سوم:</dt>
+                <dd>
+                    {{colors[2]}}
+                </dd>
+            </dl>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="cancel()">بستن</button>
+        </div>
+    </div>
+</script>

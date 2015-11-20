@@ -1,0 +1,24 @@
+﻿@using IAUNSportsSystem.Web.ExtensionMethods
+@using PagedList.Mvc
+
+@{
+    ViewBag.Title = "فهرست اخبار";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <fieldset style="margin-top: 20px;">
+        <legend>آرشیو اخبار سایت</legend>
+        <ul>
+            @foreach (var news in ViewBag.OnePageOfNewses)
+            {
+                <div class="media">
+                    <div class="media-body">
+                        <h4 class="media-heading"><a href="@Url.Action("Show", "Home", new { area = "News", id = news.Id, title = UrlExtensions.ResolveTitleForUrl(Html, news.Title) })">@news.Title</a></h4>
+                        @Html.Raw(news.Body)
+                    </div>
+                </div>
+            }
+        </ul>
+        <div class="text-center">@Html.PagedListPager((PagedList.IPagedList)ViewBag.OnePageOfNewses, page => Url.Action("List", "Home", new { area = "News", page }))</div>
+    </fieldset>
+</div>

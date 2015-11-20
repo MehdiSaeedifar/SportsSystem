@@ -1,0 +1,133 @@
+﻿<fieldset>
+    <legend>بخش مدیریت مسابقات</legend>
+    <div class="row">
+        <div class="col-md-5" style="padding-top: 15px; padding-bottom: 20px;">
+            <a href="#/competition/add" class="btn btn-success">
+                <i class="fa fa-lg fa-plus"></i> مسابقه جدید
+            </a>
+        </div>
+    </div>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">فهرست مسابقات</h3>
+        </div>
+        <div class="table-responsive">
+            <table st-safe-src="competitions" st-table="displayedCompetitions" class="table table-striped table-bordered table-condensed table-hover th-center td-center">
+                <thead>
+                <tr>
+                    <th st-ratio="3">#</th>
+                    <th st-ratio="25" st-sort="name" >عنوان مسابقه</th>
+                    <th st-ratio="10" st-sort="isReadyActive" st-sort-default="reverse">وضعیت اعلام آمادگی</th>
+                    <th st-ratio="10" st-sort="isRegisterActive">وضعیت ثبت نام</th>
+                    <th st-ratio="10" st-sort="isPrintCardActive">وضعیت چاپ کارت</th>
+                    <th>عملیات</th>
+                </tr>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <input st-search="firstName" placeholder="جستجو در نام" class="input-sm form-control" type="search" />
+                        </th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="row in displayedCompetitions" ng-class="{success: selectedRepresentativeUsers.indexOf(row.id) > -1}">
+                        <td>
+                            {{$index+1}}
+                        </td>
+                        <td>{{row.name }}</td>
+                        <td class="text-center">
+                            <div style="margin: 5px;">
+                                <span style="margin: 5px;" ng-if="row.isReadyActive" class="label label-success">
+                                    فعال
+                                </span>
+                            </div>
+                            <div>
+                                <span ng-if="row.isReadyActive" class="label label-success" style="font-size: 14px;">
+                                    {{row.readyStartDate |jalaliDate:'jYYYY/jMM/jDD' }} لغایت {{row.readyEndDate |jalaliDate:'jYYYY/jMM/jDD' }}
+                                </span>
+                            </div>
+                            <div>
+                                <span ng-if="!row.isReadyActive" class="label label-danger">
+                                    غیر فعال
+                                </span>
+                            </div>
+                        </td>
+                        <td>
+                            <div style="margin: 5px;">
+                                <span style="margin: 5px;" ng-if="row.isRegisterActive" class="label label-success">
+                                    فعال
+                                </span>
+                            </div>
+                            <div>
+                                <span ng-if="row.isRegisterActive" class="label label-success" style="font-size: 14px;">
+                                    {{row.registerStartDate |jalaliDate:'jYYYY/jMM/jDD' }} لغایت {{row.registerEndDate |jalaliDate:'jYYYY/jMM/jDD' }}
+                                </span>
+                            </div>
+                            <div>
+                                <span ng-if="!row.isRegisterActive" class="label label-danger">
+                                    غیر فعال
+                                </span>
+                            </div>
+                        </td>
+                        <td>
+                            <div style="margin: 5px;">
+                                <span style="margin: 5px;" ng-if="row.isPrintCardActive" class="label label-success">
+                                    فعال
+                                </span>
+                            </div>
+                            <div>
+                                <span ng-if="row.isPrintCardActive" class="label label-success" style="font-size: 14px;">
+                                    {{row.printCardStartDate |jalaliDate:'jYYYY/jMM/jDD' }} لغایت {{row.printCardEndDate |jalaliDate:'jYYYY/jMM/jDD' }}
+                                </span>
+                            </div>
+                            <div>
+                                <span ng-if="!row.isPrintCardActive" class="label label-danger">
+                                    غیر فعال
+                                </span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="btn-group" dropdown is-open="false">
+                                <button type="button" class="btn btn-primary dropdown-toggle" dropdown-toggle ng-disabled="false">
+                                    ویرایش <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#/competition/edit/{{row.id}}">ویرایش مسابقه</a></li>
+                                    <li><a href="#/competitionsport/add/{{row.id}}">ویرایش رشته‌های ورزشی</a></li>
+                                    <li><a href="#/competitionrepresentativeuser/{{row.id}}">ویرایش نمایندگان واحد‌های دانشگاهی</a></li>
+                                </ul>
+                            </div>
+                            <button class="btn btn-danger" ng-click="deleteCompetition(row)">
+                                <i class="fa fa-trash-o fa-lg"></i> حذف
+                            </button>
+                            <a href="#/announcement/{{row.id}}" class="btn btn-info">اطلاعیه‌ها</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</fieldset>
+
+<script type="text/ng-template" id="deleteCompetition.html">
+    <div class="modal-header">
+        <h3 class="modal-title">هشدار!</h3>
+    </div>
+    <div class="modal-body">
+        <div class="alert alert-danger">
+            آیا از حذف {{ competition.name}} مطمئن هستید؟
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="cancel()">انصراف</button>
+        <button class="btn btn-danger" ng-click="ok()">بله</button>
+    </div>
+</script>
+
+
+

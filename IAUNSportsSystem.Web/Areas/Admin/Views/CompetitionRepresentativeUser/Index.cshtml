@@ -1,0 +1,64 @@
+﻿<fieldset>
+    <legend>انتخاب نماینده‌های {{competitionName}}</legend>
+    <span class="btn-back"><a href="#/competition/edit/{{::competitionId}}" class="btn btn-primary"><i class="fa fa-reply fa-lg"></i> بازگشت به ویرایش مسابقه </a></span>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">فهرست نماینده‌های واحد‌ها/ منطقه‌ها/ استان‌ها</h3>
+        </div>
+        <table st-safe-src="representativeUsers" st-table="displayedRepresentativeUsers" class="table table-striped table-bordered th-center td-center">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th></th>
+                <th st-sort="universityName" st-sort-default="true">واحد/منطقه/استان</th>
+                <th st-sort="firstName">نام</th>
+                <th st-sort="lastName">نام خانوادگی</th>
+                <th st-sort="email">پست الکترونیکی</th>
+                <th st-sort="mobileNumber">تلفن همراه</th>
+            </tr>
+            <tr>
+                <th></th>
+                <th></th>
+                <th>
+                    <input st-search="universityName" placeholder="جستجو در واحد/منطقه/استان" class="input-sm form-control" type="search" />
+                </th>
+                <th>
+                    <input st-search="firstName" placeholder="جستجو در نام" class="input-sm form-control" type="search"/>
+                </th>
+                <th>
+                    <input st-search="lastName" placeholder="جستجو در نام خانوادگی" class="input-sm form-control" type="search" />
+                </th>
+                <th>
+                    <input st-search="email" placeholder="جستجو در پست الکترونیکی" class="input-sm form-control" type="search" />
+                </th>
+                <th>
+                    <input st-search="mobileNumber" placeholder="جستجو در تلفن همراه" class="input-sm form-control" type="search" />
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="row in displayedRepresentativeUsers" ng-class="{success: selectedRepresentativeUsers.indexOf(row.id) > -1 , aa : selectedRepresentativeUsers.indexOf(row.id) <= -1 }" class="fx-fade-up">
+                    <td>{{$index+1}}</td>
+                    <td>
+                        <input type="checkbox"
+                               name="selectedCompetitionSports[]"
+                               value="{{row.id}}"
+                               ng-checked="row.isSelected"
+                               ng-click="toggleSelection(row.id)" />
+                    </td>
+                    <td>{{row.universityName }}</td>
+                    <td>{{row.firstName}}</td>
+                    <td>{{row.lastName}}</td>
+                    <td>{{row.email}}</td>
+                    <td>{{row.mobileNumber}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+    <button ng-click="sumbitData()" class="btn btn-primary">ثبت اطلاعات</button>
+    <a href="#/competitionsport/add/{{::competitionId}}" class="btn btn-warning fx-fade-down">مشاهده فهرست رشته‌های ورزشی</a>
+</fieldset>
+
+
+

@@ -1,0 +1,14 @@
+﻿@model IAUNSportsSystem.Models.NewsModel
+@{
+    ViewBag.Title = Model.Title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container" style="margin-top: 25px;">
+    <fieldset>
+        <legend><h2>@Model.Title</h2> </legend>
+        <div>
+            @Html.Raw(Model.Body)
+        </div>
+    </fieldset>
+</div>

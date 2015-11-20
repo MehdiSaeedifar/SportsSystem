@@ -1,0 +1,93 @@
+﻿<fieldset>
+    <legend>فهرست رشته‌های ورزشی ثبت نامی {{::university}} در {{::competitionName}}</legend>
+    <span class="btn-back"><a href="#/register?competitionId={{::competitionId}}" class="btn btn-primary"><i class="fa fa-reply fa-lg"></i> بازگشت به فهرست </a></span>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    فهرست رشته های ورزشی
+                </div>
+                <table st-safe-src="sportsList" st-table="displayedSportsList" class="table table-striped table-bordered table-hover table-condensed th-center">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th st-sort="sport" st-sort-default="true">رشته</th>
+                            <th st-sort="unverifiedCompetitorsCount">بازیکنان بررسی نشده</th>
+                            <th st-sort="unverifiedTechnicalStaffsCount">کادر فنی بررسی نشده</th>
+                            <th>عملیات</th>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <th>
+                                <input st-search="sport" placeholder="جستجو در رشته ورزشی" class="input-sm form-control" type="search" />
+                            </th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="row in displayedSportsList" class="fx-fade-down">
+                            <td class="vert-align">{{$index+1}}</td>
+                            <td class="vert-align">{{row.sport}} {{row.gender| gender:'plural' }}</td>
+                            <td class="vert-align">
+                                <span class="label label-default" ng-class="{'label-danger': row.unverifiedCompetitorsCount > 0}">
+                                    {{row.unverifiedCompetitorsCount}}
+                                </span>
+                            </td>
+                            <td class="vert-align">
+                                <span class="label label-default" ng-class="{'label-danger': row.unverifiedTechnicalStaffsCount > 0}">
+                                    {{row.unverifiedTechnicalStaffsCount}}
+                                </span>
+                            </td>
+                            <td class="vert-align">
+                                <a class="btn btn-info btn-sm" href="#/register/competitors/{{row.participationId}}">
+                                    <i class="fa fa-eye fa-lg"></i> نمایش بازیکنان
+                                </a>
+                                <a class="btn btn-info btn-sm" href="#/register/technicalstaffs/{{row.participationId}}">
+                                    <i class="fa fa-eye fa-lg"></i> نمایش کادر فنی
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div>
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        اعضای کادر اجرایی
+                    </div>
+                    <table class="table table-hover table-striped table-condensed table-bordered">
+                        <thead>
+                            <tr>
+                                <th>بررسی نشده</th>
+                                @*<th>کل کادر فنی</th>*@
+                                <th>عملیات</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <span class="label label-default" ng-class="{'label-danger': unverifiedCommonTechnicalStaffsCount > 0}">
+                                        {{unverifiedCommonTechnicalStaffsCount}}
+                                    </span>
+                                </td>
+                                @*<td></td>*@
+                                <td>
+                                    <a class="btn btn-info btn-sm" href="#/register/commontechnicalstaffs/{{competitionId}}/{{representativeUserId}}">
+                                        <i class="fa fa-eye fa-lg"></i> نمایش فهرست اعضای کادر اجرایی
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</fieldset>

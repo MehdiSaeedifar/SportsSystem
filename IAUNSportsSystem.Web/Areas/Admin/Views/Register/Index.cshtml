@@ -1,0 +1,71 @@
+﻿<fieldset>
+    <legend>ثبت نام مسابقات</legend>
+    <div class="row">
+        <div class="col-md-4" style="margin: 10px 0 20px 0;">
+                <ui-select ng-required="true" name="userUniversity" ng-model="viewModel.selectedCompetition" theme="bootstrap" on-select="onCompetitionSelect($item, $model)">
+                    <ui-select-match allow-clear="false" placeholder="مسابقه مورد نظر را انتخاب کنید">{{$select.selected.name}}</ui-select-match>
+                    <ui-select-choices repeat="item as item in competitionsList | filter: $select.search">
+                        <span ng-bind-html="item.name | highlight: $select.search"></span>
+                    </ui-select-choices>
+                </ui-select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 fx-fade-down" ng-show="representativeUsersList.length > 0">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    شرکت کنندگان {{viewModel.selectedCompetition.name}}
+                </div>
+                <div class="table-responsive">
+                    <table st-safe-src="representativeUsersList" st-table="displayedRepresentativeUsersList" class="table table-striped table-bordered table-hover table-condensed th-center">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th st-sort="university" st-sort-default="true">واحد/منطقه/استان</th>
+                            <th st-sort="lastName">نام و نام خانوادگی</th>
+                            <th st-sort="sportDetail.name">تعداد بازیکنان بررسی نشده</th>
+                            <th st-sort="sportDetail.name">تعداد کادر فنی بررسی نشده</th>
+                            <th>عملیات</th>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <th>
+                                <input st-search="university" placeholder="جستجو در واحد/منطقه/استان" class="input-sm form-control" type="search" />
+                            </th>
+                            <th>
+                                <input st-search="lastName" placeholder="جستجو در نام خانوادگی" class="input-sm form-control" type="search"/>
+                            </th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="row in displayedRepresentativeUsersList" class="fx-fade-down">
+                            <td class="vert-align">{{$index+1}}</td>
+                            <td class="vert-align">{{row.university}}</td>
+                            <td class="vert-align">{{row.firstName}} {{ row.lastName}}</td>
+                            <td class="vert-align">
+                                <span class="label label-default" ng-class="{'label-danger': row.unverifiedCompetitorsCount > 0}">
+                                    {{row.unverifiedCompetitorsCount}}
+                                </span>
+                            </td>
+                            <td class="vert-align">
+                                <span class="label label-default" ng-class="{'label-danger': row.unverifiedTechnicalStaffsCount > 0}">
+                                    {{row.unverifiedTechnicalStaffsCount}}
+                                </span>
+                            </td>
+                            <td class="vert-align">
+                                <a class="btn btn-info btn-sm" href="#/register/sportslist/{{competitionId}}/{{row.representativeUserId}}">
+                                    <i class="fa fa-eye fa-lg"></i> نمایش رشته‌های ورزشی
+                                </a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <a class="btn btn-success" ng-href="/report/admin/getcompetitionreport?competitionId={{viewModel.selectedCompetition.id}}" >دریافت گزارش</a>
+        </div>
+    </div>
+</fieldset>

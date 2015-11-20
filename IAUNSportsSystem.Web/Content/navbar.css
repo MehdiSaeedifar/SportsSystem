@@ -1,0 +1,173 @@
+﻿.navbar {
+    -webkit-box-shadow: 0 0 4px rgba(50,50,50,.75); /* box-shadow:0 0 4px rgba(50,50,50,.75); */
+    margin: 0;
+    border: 0;
+    background-color: inherit;
+    transition: background-color .5s;
+}
+
+    .navbar .nav.navbar-nav > li > a {
+        color: inherit;
+        position: relative;
+        padding-top: 30px;
+        padding-bottom: 30px;
+        -webkit-transition: padding .5s;
+        transition: padding .5s;
+        font-weight: 300;
+        font-size: 15px;
+    }
+
+        .navbar .nav.navbar-nav > li > a:focus {
+            background: 0 0;
+        }
+
+        .navbar .nav.navbar-nav > li > a .fa {
+            color: #3498db;
+        }
+
+        .navbar .nav.navbar-nav > li > a .caret {
+            border-bottom-color: #3498db;
+            border-top-color: #3498db;
+        }
+
+        .navbar .nav.navbar-nav > li > a:hover {
+            padding-top: 40px;
+            padding-bottom: 20px;
+            background: rgba(0,0,0,.05);
+        }
+
+    .navbar .nav.navbar-nav > li.active > a {
+        background: #3498db;
+        color: #fff;
+    }
+
+        .navbar .nav.navbar-nav > li.active > a .fa {
+            color: #8bc4ea;
+        }
+
+        .navbar .nav.navbar-nav > li.active > a .caret {
+            border-bottom-color: #fff;
+            border-top-color: #fff;
+        }
+
+    .navbar .nav.navbar-nav > li.open > a {
+        padding-top: 40px;
+        padding-bottom: 20px;
+        background-color: #196090;
+        color: #fff;
+    }
+
+        .navbar .nav.navbar-nav > li.open > a .fa {
+            color: #8bc4ea;
+        }
+
+        .navbar .nav.navbar-nav > li.open > a .caret {
+            border-bottom-color: #fff;
+            border-top-color: #fff;
+        }
+
+    .navbar .nav.navbar-nav > li.open .dropdown-menu {
+        -webkit-transform: scale(1,1);
+        -ms-transform: scale(1,1);
+        transform: scale(1,1);
+        visibility: visible;
+    }
+
+    .navbar .nav.navbar-nav > li .dropdown-menu {
+        display: block;
+        visibility: hidden;
+        border: 0;
+        background-color: #196090;
+        color: #fff;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        -webkit-transition: -webkit-transform .5s;
+        -moz-transition: -moz-transform .5s;
+        -o-transition: -o-transform .5s;
+        transition: transform .5s;
+        -webkit-transform-origin: left top;
+        -ms-transform-origin: left top;
+        transform-origin: left top;
+        -webkit-transform: scale(1,0);
+        -ms-transform: scale(1,0);
+        transform: scale(1,0);
+        border-radius: 0;
+    }
+
+        .navbar .nav.navbar-nav > li .dropdown-menu li a {
+            color: #fff;
+            -webkit-transition: background .3s;
+            transition: background .3s;
+        }
+
+            .navbar .nav.navbar-nav > li .dropdown-menu li a:hover {
+                background-color: #3498db !important;
+            }
+
+        .navbar .nav.navbar-nav > li .dropdown-menu li form {
+            padding: 10px 20px;
+            width: 300px;
+        }
+
+        .navbar .nav.navbar-nav > li .dropdown-menu li.active a {
+            background-color: #217dbb;
+        }
+
+        .navbar .nav.navbar-nav > li .dropdown-menu .divider {
+            background-color: #16527a;
+        }
+
+    .navbar .navbar-brand {
+        padding-top: 20px;
+        padding-bottom: 30px;
+        text-transform: uppercase;
+        -webkit-transition: padding .5s,font-size .1s;
+        transition: padding .5s,font-size .1s;
+        font-weight: 400;
+        color: black;
+        font-size: 18px;
+    }
+
+        .navbar .navbar-brand img {
+            height: 40px;
+            margin: -10px 10px -10px 10px;
+            border: 0;
+            padding: 0;
+            vertical-align: top;
+            transition: margin .5s;
+        }
+
+    .navbar form {
+        padding-top: 15px;
+        transition: padding .5s;
+    }
+
+
+    .navbar.affix {
+        background-color: rgba(255, 255, 255, 0.9);
+    }
+
+
+        .navbar.affix .navbar-brand {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            /*font-size: 16px;*/
+        }
+
+        .navbar.affix .nav.navbar-nav > li > a, .navbar.affix .nav.navbar-nav > li > a:hover {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .navbar.affix .navbar-brand img {
+            height: 40px;
+            margin: -10px 10px -10px 10px;
+            border: 0;
+            padding: 0;
+            vertical-align: top;
+        }
+
+        .navbar.affix form {
+            padding-top: 5px;
+        }

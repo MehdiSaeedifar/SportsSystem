@@ -1,0 +1,69 @@
+﻿
+
+<fieldset style="background-color: #fff;">
+    <legend>ثبت نام در {{::competition.name}}</legend>
+    <fieldset>
+        <legend style="margin: 0 auto;" class="">اعضای کادر اجرایی</legend>
+        <div class="alert alert-info">
+            <h3>لطفا در وارد کردن اطلاعات اعضای کادر اجرایی به موارد زیر توجه کنید:</h3>
+            <ul style="margin-top: 20px;">
+                <li>اعضای کادر اجرایی به افرادی مانند راننده و ... می گویند که همراه واحد دانشگاهی مورد نظر هستند ولی جزء افراد کادر فنی رشته‌های ورزشی نیستند.</li>
+            </ul>
+        </div>
+        <div style="margin: 30px 0 30px 0;" class="text-center">
+            <a class="btn btn-danger" style="width: 50%; white-space: normal;" href="#/commontechnicalstaff/{{::competitionId}}">وارد کردن اطلاعات اعضای کادر اجرایی</a>
+        </div>
+    </fieldset>
+
+    <fieldset>
+        <legend style="margin: 0 auto;" class="">بازیکنان و اعضای کادر فنی</legend>
+        <div class="alert alert-info">
+            <h3>لطفا در وارد کردن اطلاعات بازیکنان و کادر فنی به موارد زیر توجه کنید:</h3>
+            <ul style="margin-top: 20px; line-height: 2em;">
+                <li class="text-danger">
+                    مهم: با وارد کردن اطلاعات اعضای کادر فنی برای وزن بندی یا دسته بندی هر رشته، به طور خودکار توسط سیستم برای تمامی وزن بندی‌ها و دسته بندی‌های آن رشته نیز اعمال می شود.
+                </li>
+                <li>
+                    برای مثال اگر اطلاعات مربی رشته کشتی آزاد 60 کیلوگرم را وارد کنید، به طور خودکار توسط سیستم آن فرد به عنوان مربی برای تمامی دسته‌ها و وزن‌بندی‌های رشته کشتی ثبت می شود.
+                </li>
+                <li>
+                    اگر در رشته‌ای اعلام آمادگی کرده بودید و اکنون آن را در فهرست ثبت نام مشاهده نمی کنید، می تواند دلایلی به مانند به حد نصاب نرسیدن واحد‌های دانشگاهی در آن رشته، نبود شرایط برگزاری، صلاح دید میزبان مسابقات برای حذف آن رشته و ... داشته باشد.
+                </li>
+            </ul>
+        </div>
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title"> فهرست رشته‌های ورزشی که برای شرکت در {{competition.name}} پذیرفته شده اید</h3>
+            </div>
+            <div class="table-responsive">
+                <table st-resize st-safe-src="competitionSportsList" st-table="displayedCompetitionSportsList" class="table table-striped table-bordered table-condensed table-hover th-center td-center">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th st-sort="sportName" st-sort-default="true">رشته</th>
+                            <th st-ratio="5" st-sort="gender">جنسیت</th>
+                            <th st-ratio="10" st-sort="maxCompetitors">تعداد بازیکنان</th>
+                            <th st-ratio="10" st-sort="maxTechnicalStaff">تعداد اعضای کادر فنی</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="row in displayedCompetitionSportsList" ng-class="{success: selectedCompetitionSports.indexOf(row.id) > -1}">
+                            <td>{{$index+1}}</td>
+                            <td>{{row.sportName }} {{row.sportCategory}} {{row.sportDetail}}</td>
+                            <td>{{row.gender | gender}}</td>
+                            <td>{{row.competitorsCount}} نفر از {{row.maxCompetitors}} نفر</td>
+                            <td>{{row.technicalStaffsCount}} نفر از {{row.maxTechnicalStaff}} نفر</td>
+                            <th>
+                                <a class="btn btn-danger btn-sm" href="#/competitor/{{row.id}}">وارد کردن اطلاعات بازیکنان</a>
+                                <a class="btn btn-danger btn-sm" href="#/technicalstaff/{{row.id}}">وارد کردن اطلاعات اعضای کادر فنی</a>
+                            </th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </fieldset>
+</fieldset>
+

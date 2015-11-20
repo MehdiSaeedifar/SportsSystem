@@ -1,0 +1,41 @@
+﻿@using IAUNSportsSystem.Web.ExtensionMethods
+<div id="newsTab" class="row">
+    <div class="row img-holder bgParallax" style="border-top:1px solid #ebebeb;margin-top:30px;" data-speed="250">
+        <div style="background-color: #fff;">
+            <div class="container">
+                <div class="" style="margin: auto; width: 50%; background-color: #fff;">
+                    <ul id="myTab" class="nav nav-tabs nav-justified">
+                        <li class="active"><a href="#messages" role="tab" data-toggle="tab" style="font-size: 24px">اخبار و رویداد‌ها</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div style="background-color: rgba(0 ,0,0,.4)">
+            <div class="container">
+                <div style="margin:0 auto;margin-top:30px;">
+                    <div class="tab-content">
+                        <div class="tab-pane fade in active" id="messages">
+                            <div class="row" style="background-color: transparent; padding: 15px; margin-bottom: 15px; ">
+                                @foreach (var news in Model)
+                                {
+                                    <div class="col-xs-6 col-md-12 animated fadeInUp site-news">
+                                        <div class="well">
+                                            <h2>
+                                                <a href="@Url.Action("Show", "Home", new { area = "News", id = news.Id, title = UrlExtensions.ResolveTitleForUrl(Html, news.Title) })">@news.Title</a>
+                                            </h2>
+                                        </div>
+                                    </div>
+                                }
+                                <div class=" col-md-12 text-center " style="margin-top: 20px; ">
+                                    <a class="btn btn-link" href="@Url.Action("List", "Home", new { area = "News" })" style="width: 60%; color: #ffffff; ">مشاهده تمامی خبرها</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

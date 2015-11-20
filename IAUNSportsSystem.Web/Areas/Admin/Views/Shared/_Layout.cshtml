@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/common")
+    @Styles.Render("~/Content/angularParts")
+    @Styles.Render("~/Content/admin")
+    @RenderSection("styles", required: false)
+</head>
+<body>
+    <div id="wrapper" ng-controller="LayoutController" ng-cloak>
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="@Url.Action("Index", "Home", new {area = ""})">
+                    <img style="height: 60px;" class="pull-right" src="/Content/IAU_Najafabad_Branch_logo.png" alt="">
+                    <div class="text-center pull-right">
+                        <div style="padding-bottom: 7px;">سامانه برگزاری مسابقات ورزشی</div>
+                        <div style="font-size: 14px; color: #808080;">دانشگاه آزاد اسلامی واحد نجف آباد</div>
+                    </div>
+                </a>
+            </div>
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="" id="" class="dropdown-toggle userNameDropdown" data-toggle="dropdown"><i class="fa fa-database"></i> اطلاعات پایه <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="#/sport">رشته‌های ورزشی</a>
+                            </li>
+                            <li>
+                                <a href="#/university">واحد‌ها/ منطقه‌ها/ استان‌ها</a>
+                            </li>
+                            <li>
+                                <a href="#/studyfield">رشته‌های تحصیلی</a>
+                            </li>
+                            <li>
+                                <a href="#/studyfielddegree">مقاطع تحصیلی</a>
+                            </li>
+                            <li>
+                                <a href="#/technicalstaffrole">سمت‌های کادر فنی و اجرایی</a>
+                            </li>
+                            <li>
+                                <a href="#/dorm">خوابگاه‌ها</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle userNameDropdown" data-toggle="dropdown"><i class="fa fa-user"></i> {{currentUser.fullName}} <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#/user"><i class="fa fa-fw fa-user-secret fa-lg"></i> مدیران سیستم</a></li>
+                            <li class="divider"></li>
+                            <li><a class="btn btn-link" ng-click="signOut()"><i class="fa fa-sign-out fa-lg"></i> خروج </a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav side-nav">
+                    <li>
+                        <a href=""><i class="fa fa-fw fa-home fa-lg fa-lg"></i> صفحه اصلی</a>
+                    </li>
+                    <li>
+                        <a href="#/competition"><i class="fa fa-fw fa-soccer-ball-o fa-lg"></i> مسابقات</a>
+                    </li>
+                    <li>
+                        <a href="#/readiness"><i class="fa fa-fw fa-table fa-lg"></i> اعلام آمادگی</a>
+                    </li>
+                    <li>
+                        <a href="#/register"><i class="fa fa-fw fa-edit fa-lg"></i> ثبت نام</a>
+                    </li>
+                    <li>
+                        <a href="#/representativeuser"><i class="fa fa-fw fa-users fa-lg"></i> نمایندگان </a>
+                    </li>
+                    <li>
+                        <a href="#/news"><i class="fa fa-fw fa-newspaper-o fa-lg"></i> اخبار</a>
+                    </li>
+                    <li>
+                        <a href="#/slideshow"><i class="fa fa-fw fa-image fa-lg"></i> اسلایدشو</a>
+                    </li>
+                    <li>
+                        <a href="#/user"><i class="fa fa-fw fa-user-secret fa-lg"></i> مدیران سیستم</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div id="page-wrapper">
+            <div class="container-fluid" style="min-height: 90vh">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/common")
+    <script src="~/Scripts/ckeditor/ckeditor.js"></script>
+    @Scripts.Render("~/bundles/admin")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

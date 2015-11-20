@@ -1,0 +1,70 @@
+﻿<fieldset>
+    <legend>فهرست اطلاعیه‌های {{::competitionName}}</legend>
+    <span class="btn-back"><a href="#/competition" class="btn btn-primary"><i class="fa fa-reply fa-lg"></i> بازگشت به فهرست مسابقات </a></span>
+    <div class="row">
+        <div class="col-md-5" style="padding-top: 15px; padding-bottom: 20px;">
+            <a href="#/announcement/add/{{::competitionId}}" class="btn btn-success">
+                <i class="fa fa-lg fa-plus"></i> افزودن اطلاعیه
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    فهرست اطلاعیه‌ها
+                </div>
+                <div class="table-responsive">
+                    <table st-resize st-safe-src="announcementsList" st-table="displayedAnnouncementsList" class="table table-bordered table-hover table-condensed th-center">
+                        <thead>
+                        <tr>
+                            <th><span st-sort="title" st-sort-default="true">عنوان اطلاعیه</span></th>
+                            <th>عملیات</th>
+                        </tr>
+                        <tr>
+                            <th>
+                                <input st-search="title" placeholder="جستجو در عنوان" class="input-sm form-control" type="search"/>
+                            </th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="row in displayedAnnouncementsList" class="fx-fade-down">
+                            <td class="vert-align">{{row.title}}</td>
+                            <td class="vert-align">
+                                <a class="btn btn-primary btn-sm" href="#/announcement/edit/{{row.id}}">
+                                    <i class="fa fa-edit fa-lg"></i> ویرایش
+                                </a>
+                                <button class="btn btn-danger btn-sm" ng-click="deleteAnnouncement(row,$index)">
+                                    <i class="fa fa-trash-o fa-lg"></i> حذف
+                                </button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</fieldset>
+
+<script type="text/ng-template" id="deleteAnnouncement.html">
+    <div class="modal-header">
+        <h3 class="modal-title"></h3>
+    </div>
+    <div class="modal-body">
+        <div class="alert alert-danger">
+            آیا از حذف  این اطلاعیه مطمئن هستید؟
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="cancel()">انصراف</button>
+        <button class="btn btn-danger" ng-click="ok()">بله</button>
+    </div>
+</script>
+
+
+
+
+

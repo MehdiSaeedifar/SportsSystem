@@ -1,0 +1,109 @@
+﻿@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section styles
+{
+    <style>
+        .selected {
+            background-color: #00ffff !important;
+        }
+    </style>
+}
+<h2>Add Participate</h2>
+
+<div ng-controller="AddParticipateController">
+
+    <div>
+        <table class="table table-responsive table-hover table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        نام رشته
+                    </th>
+                    <th>
+                        جنسیت
+                    </th>
+                    <th>
+                        سبک
+                    </th>
+                    <th>
+                        وزن
+                    </th>
+                    <th>
+
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="ps in presentedSports" ng-class="{selected: selectedPresentedSports.indexOf(ps.id) > -1}">
+                    <td>{{ ps.name }}</td>
+                    <td>{{ ps.gender }}</td>
+                    <td>{{ ps.sportCategory }}</td>
+                    <td>{{ ps.sportDetail }}</td>
+                    <td>
+                        <input type="checkbox"
+                               name="selectedPresentedSports[]"
+                               value="{{ps.id}}"
+                               ng-checked="selectedPresentedSports.indexOf(ps.id) > -1"
+                               ng-click="toggleSelection(ps.id)" />
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+
+    <button ng-click="submitParticipate()">ثبت اطلاعات</button>
+
+</div>
+
+
+@section scripts
+{
+    <script>
+        var app = angular.module('app', []);
+
+        app.controller('AddParticipateController', function ($scope, $http) {
+
+            $scope.presentedSports = [];
+
+
+            $http.get("/participate/home/getpresentedsportslist",
+            {
+                params: { competitionId: 1 }
+            }).success(function (data) {
+
+                $scope.presentedSports = data;
+            });
+
+            $scope.selectedPresentedSports = [];
+
+            $scope.toggleSelection = function toggleSelection(psId) {
+                var idx = $scope.selectedPresentedSports.indexOf(psId);
+
+                // is currently selected
+                if (idx > -1) {
+                    $scope.selectedPresentedSports.splice(idx, 1);
+                }
+
+                    // is newly selected
+                else {
+                    $scope.selectedPresentedSports.push(psId);
+                }
+            };
+
+
+
+            $scope.submitParticipate = function () {
+
+                console.log($scope.selectedPresentedSports);
+
+                $http.post("/participate/home/add", $scope.selectedPresentedSports).success(function(data) {});
+            }
+
+
+        });
+
+    </script>
+}

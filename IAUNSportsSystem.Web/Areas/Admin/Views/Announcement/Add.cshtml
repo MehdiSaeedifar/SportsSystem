@@ -1,0 +1,57 @@
+﻿<fieldset>
+    <legend>افزودن اطلاعیه برای {{::competitionName}} </legend>
+    <span class="btn-back"><a href="#/announcement/{{::competitionId}}" class="btn btn-primary"><i class="fa fa-reply fa-lg"></i> بازگشت به فهرست اطلاعیه‌ها </a></span>
+    <form name="frmAnnouncement" class="form-horizontal form-group-sm" role="form" novalidate ng-submit="submitAnnouncement()">
+        <div class="form-group">
+            <label for="rptpassword" class="col-md-2 control-label"><span ng-show="showError(frmAnnouncement.title,'required')" class="glyphicon text-danger mandatory fx-fade-normal">*</span> عنوان اطلاعیه</label>
+            <div class="col-md-4 has-feedback">
+                <input type="text" class="form-control" name="title" ng-model="announcement.title" ng-required="true" ng-model-options="{ updateOn: 'default blur', debounce: { default: 1000, blur: 0 } }">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="rptpassword" class="col-md-2 control-label">ارسال SMS</label>
+            <div class="col-md-4">
+                <input type="checkbox" ng-model="announcement.hasSms">
+            </div>
+        </div>
+        <div class="form-group fx-fade-down" ng-show="announcement.hasSms">
+            <label for="rptpassword" class="col-md-2 control-label"><span ng-show="showError(frmAnnouncement.smsText,'required')" class="glyphicon text-danger mandatory fx-fade-normal">*</span> متن SMS</label>
+            <div class="col-md-4">
+                <textarea class="form-control" ng-model="announcement.smsText" name="smsText" ng-required="announcement.hasSms" rows="4" style="height: auto;"></textarea>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="rptpassword" class="col-md-2 control-label">ارسال Email</label>
+            <div class="col-md-4">
+                <input type="checkbox" ng-model="announcement.hasEmail">
+            </div>
+        </div>
+        <div class="form-group fx-fade-down" ng-show="announcement.hasEmail">
+            <label for="rptpassword" class="col-md-2 control-label"><span ng-show="showError(frmAnnouncement.emailText,'required')" class="glyphicon text-danger mandatory fx-fade-normal">*</span> متن Email</label>
+            <div class="col-md-4">
+                <textarea class="form-control" ng-model="announcement.emailText" name="emailText" rows="4" style="height: auto;" ng-required="announcement.hasEmail"></textarea>
+            </div>
+        </div>
+        <div class="form-group fx-fade-down">
+            <label for="rptpassword" class="col-md-2 control-label"><span ng-show="showError(frmAnnouncement.websiteText,'required')" class="glyphicon text-danger mandatory fx-fade-normal">*</span> متن پست سایت</label>
+            <div class="col-md-4">
+                <textarea ckeditor="editorOptions" class="form-control" ng-model="announcement.websiteText" name="websiteText" rows="4" style="height: auto;" ng-required="false"></textarea>
+            </div>
+        </div>
+
+
+        <div class="alert alert-danger fx-fade-down" ng-show="errors.length > 0">
+            <ul>
+                <li ng-repeat="error in errors">{{error}}</li>
+            </ul>
+        </div>
+        <div class="form-group">
+            <div class="col-md-4">
+                <button ng-disabled="frmAnnouncement.$invalid" type="submit" class="btn btn-primary">ثبت اطلاعیه</button>
+            </div>
+        </div>
+
+    </form>
+</fieldset>
+

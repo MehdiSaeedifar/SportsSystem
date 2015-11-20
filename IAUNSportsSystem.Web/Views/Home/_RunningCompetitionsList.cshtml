@@ -1,0 +1,81 @@
+﻿@model IEnumerable<IAUNSportsSystem.Models.RunningCompetitionModel>
+
+@if (Model.Any(c => c.IsReadyActive))
+{
+    <div class="row" style="margin-top: 30px;">
+        <div class="container text-center">
+            <div class="row" style="margin-top: 10px; margin-bottom: 20px;">
+                <div class="container">
+                    <div class="col-md-12">
+                        <h2 class="text-center" style="color: #666666; font-size: 24px; font-weight: normal !important; line-height: 1.6em;">اعلام آمادگی</h2>
+                        <div class="text-center" style="border-bottom: 1px solid #ebebeb; width: 50%; height: 15px; background: transparent; margin: auto;">
+                            <i style="padding: 0 20px; background-color: #fff; color: #d8d8d8;" class="fa fa-file-text-o fa-2x"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @foreach (var runningCompetition in Model.Where(m => m.IsReadyActive))
+            {
+                <div class="col-md-12" style="margin-top: 15px">
+                    <h2>
+                        <a class="text-danger" href="/account/#/readiness/@runningCompetition.Id">اعلام آمادگی برای @runningCompetition.Name</a>
+                    </h2>
+                </div>
+            }
+        </div>
+    </div>
+}
+
+
+@if (Model.Any(c => c.IsRegisterActive))
+{
+    <div class="row" style="margin-top: 30px; padding-bottom: 10px;">
+        <div class="container text-center">
+            <div class="row" style="margin-top: 20px; margin-bottom: 20px;">
+                <div class="container">
+                    <div class="col-md-12">
+                        <h2 class="text-center" style="color: #666666; font-size: 24px; font-weight: normal !important; line-height: 1.6em;">ثبت نام در مسابقات</h2>
+                        <div class="text-center" style="border-bottom: 1px solid #ebebeb; width: 50%; height: 15px; background: transparent; margin: auto;">
+                            <i style="padding: 0 20px; background-color: #fff; color: #d8d8d8;" class="fa fa-users fa-2x"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @foreach (var runningCompetition in Model.Where(m => m.IsRegisterActive))
+            {
+                <div class="col-md-12" style="margin-top: 15px;">
+                    <h2>
+                        <a class="text-success" href="/account/#/readiness/@runningCompetition.Id">ثبت نام در @runningCompetition.Name</a>
+                    </h2>
+                </div>
+            }
+        </div>
+    </div>
+}
+
+@if (Model.Any(c => c.IsPrintCardActive))
+{
+    <div class="row" style="margin-top:20px;">
+        <div class="container text-center">
+            <div class="row" style="margin-top: 20px; margin-bottom: 20px;">
+                <div class="container">
+                    <div class="col-md-12">
+                        <h2 class="text-center" style="color: #666666; font-size: 24px; font-weight: normal !important; line-height: 1.6em;">دریافت کارت مسابقات</h2>
+                        <div class="text-center" style="border-bottom: 1px solid #ebebeb; width: 50%; height: 15px; background: transparent; margin: auto;">
+                            <i style="padding: 0 20px; background-color: #fff; color: #d8d8d8;" class="fa fa-credit-card fa-2x"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @foreach (var runningCompetition in Model.Where(m => m.IsPrintCardActive))
+            {
+                <div class="col-md-12" style="margin-top: 15px;">
+                    <h2>
+                        <a class="text-primary" href="/account/#/readiness/@runningCompetition.Id">دریافت کارت @runningCompetition.Name</a>
+                    </h2>
+                </div>
+            }
+        </div>
+    </div>
+}

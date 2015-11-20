@@ -1,0 +1,366 @@
+﻿@using IAUNSportsSystem.ServiceLayer
+@using IAUNSportsSystem.Web.Helpers
+
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+
+}
+@section styles{
+    <link href="~/Content/jquery.steps.css" rel="stylesheet" />
+    <link href="~/Content/themes/base/all.css" rel="stylesheet" />
+    <link href="~/Content/PersianDatePicker.css" rel="stylesheet" />
+    <link href="~/Content/select.css" rel="stylesheet">
+    <link href="~/Content/ng-tags-input.css" rel="stylesheet" />
+
+    <style>
+    
+    </style>
+
+}
+
+
+
+
+
+
+
+@*<fieldset>
+    <legend>انتخاب رشته‌های ورزشی</legend>
+    <div class="form-horizontal">
+
+        <form name="frmAddPresentedSport" ng-submit="addSportToPresentedSports(frmAddCompetition)">
+            <div class="form-group">
+                <div class="row-fluid">
+                    <label for="inputPassword3" class="col-lg-2 control-label">نام رشته</label>
+                    <div class="col-md-3 col-lg-2">
+                        <ui-select required name="sportName" ng-model="selectedSport.sport" theme="bootstrap" on-select="onSportSelect($item, $model)" reset-search-input="true">
+                            <ui-select-match placeholder="نام رشته را از فهرست انتخاب کنید">{{$select.selected.name}}</ui-select-match>
+                            <ui-select-choices repeat="item in sportsList | filter: $select.search">
+                                <span ng-bind-html="item.name | highlight: $select.search"></span>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+
+                    <label for="inputPassword3" class="col-lg-2 control-label">ماده یا سبک رشته</label>
+                    <div class="col-md-3 col-lg-2">
+                        <ui-select allow-clear ng-model="selectedSport.sportCategory" theme="bootstrap">
+                            <ui-select-match placeholder="سبک رشته را انتخاب کنید">{{$select.selected.name}}</ui-select-match>
+                            <ui-select-choices repeat="item in sportsCategories | filter: $select.search">
+                                <span ng-bind-html="item.name | highlight: $select.search"></span>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row-fluid">
+                    <label for="inputPassword3" class="col-lg-2 control-label">وزن بندی</label>
+                    <div class="col-md-3 col-lg-2">
+                        <ui-select allow-clear ng-model="selectedSport.sportDetail" theme="bootstrap">
+                            <ui-select-match placeholder="وزن بندی را انتخاب کنید">{{$select.selected.name}}</ui-select-match>
+                            <ui-select-choices repeat="item in sportsDetails | filter: $select.search">
+                                <span ng-bind-html="item.name | highlight: $select.search"></span>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+
+                    <label for="inputPassword3" class="col-lg-2 control-label">جنسیت</label>
+                    <div class="col-md-3 col-lg-2">
+                        <label class="radio-inline">
+                            <input type="radio" ng-model="selectedSport.gender" name="sportGender" value="male" ng-required="!selectedSport.gender"> مرد
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" ng-model="selectedSport.gender" name="sportGender" value="female" ng-required="!selectedSport.gender"> زن
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row-fluid">
+                    <label for="inputPassword3" class="col-lg-2 control-label">تعداد اعضای کادر فنی</label>
+                    <div class="col-lg-1">
+                        <input class="form-control ltr text-center" ng-model="selectedSport.maxTechnicalStaff" type="text"/>
+                    </div>
+                    <div class="pull-right" style="line-height: 30px;">
+                        نفر
+                    </div>
+                    <label for="inputPassword3" class="col-lg-3 control-label">تعداد اعضای تیم</label>
+                    <div class="col-lg-1">
+                        <input class="form-control" ng-model="selectedSport.maxCompetitors" type="text"/>
+                    </div>
+                    <div class="pull-right" style="line-height: 30px;">
+                        نفر
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">ثبت رشته</button>
+            </div>
+
+            <div ng-show="frmAddPresentedSport.sportGender.$error.required">
+                جنسیت رشته باید انتخاب شود
+            </div>
+            <div ng-show="frmAddPresentedSport.sportName.$error.required">
+                نام رشته باید انتخاب شود
+            </div>
+
+        </form>
+
+
+
+
+
+    </div>
+    <table class="table table-responsive">
+        <thead>
+        <tr>
+            <th>رشته</th>
+            <th>جنسیت</th>
+            <th>تعداد اعضای کادر فنی</th>
+            <th>تعداد اعضای تیم</th>
+            <th>اوزان</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="ps in competitionModel.presentedSports ">
+            <td>{{ps.sport.name}}</td>
+            <td>{{ps.gender}}</td>
+            <td>{{ps.maxTechnicalStaff}}</td>
+            <td>{{ps.maxCompetitors}}</td>
+        </tr>
+
+        </tbody>
+    </table>
+</fieldset>*@
+<h3>Hints</h3>
+
+<h3>Finish</h3>
+<section>
+    <input id="acceptTerms" name="acceptTerms" type="checkbox" class="required"> <label for="acceptTerms">I agree with the Terms and Conditions.</label>
+    <input type="button" ng-click="submitData()" class="btn btn-success" value="ثبت اطلاعات"/>
+</section>
+   
+
+
+
+
+
+@section scripts{
+    <script src="~/Scripts/jquery.steps.js"></script>
+    <script src="~/Scripts/jquery-ui-1.11.4.js"></script>
+    <script src="~/Scripts/persianDatepicker.js"></script>
+    <script src="~/Scripts/angular-sanitize.js"></script>
+    <script src="~/Scripts/select.js"></script>
+    <script src="~/Scripts/ng-tags-input.js"></script>
+    <script src="~/Scripts/angular-ui/dateparser.js"></script>
+    @*<script src="~/Scripts/angular-ui/datepicker-tpls.js"></script>*@
+    <script src="~/Scripts/angular-ui/position.js"></script>
+    <script src="~/Scripts/angular-datepicker/persian-datepicker-tpls.js"></script>
+    <script src="~/Scripts/angular-datepicker/persiandate.js"></script>
+
+
+    <script>
+
+
+        var app = angular.module('app', ['ui.select', 'ngSanitize', 'ngTagsInput', 'ui.bootstrap.persian.datepicker', ]);
+
+        app.controller('AddCompetitionController', function ($scope, $timeout, $http, $filter, toaster) {
+            
+            $scope.competitionModel = { isReadyActive: true, isRegisterActive: true };
+
+            $scope.competitionModel.presentedSports = [];
+
+            $scope.readyStartDate = {};
+            $scope.readyEndDate = {};
+
+            $scope.registerStartDate = {};
+            $scope.registerEndDate = {};
+
+
+            $scope.sportsList = [];
+            $scope.sportsCategories = [];
+            $scope.sportsDetails = [];
+            init();
+
+
+            function init() {
+                $scope.selectedSport = {};
+                $scope.selectedSport.sport = null;
+                $scope.selectedSport.sportCategory = null;
+                $scope.selectedSport.gender = null;
+                $scope.selectedSport.sportDetail = null;
+                $scope.selectedSport.maxCompetitors = null;
+                $scope.selectedSport.maxTechnicalStaff = null;
+            };
+
+
+           
+
+
+
+
+            $http.get('/sport/admin/getsportslist').success(function (data) {
+                $scope.sportsList = data;
+                //toaster.pop('error', "تاریخ اشتباه", "تاریخ شروع اعلام آمادگی اشتباه است");
+
+            });
+
+            $scope.onSportSelect = function (item, model) {
+                $http.get('/sport/admin/getsportscategorylist', { params: { sportId: $scope.selectedSport.sport.id } }).success(function (data) {
+                    if (data.length == 0) {
+                        $scope.sportsCategories = [];
+                        $scope.sports.selectedSportCategory = null;
+                    }
+                    $scope.sportsCategories = data;
+
+
+                });
+
+
+                //$scope.sportsDetailsList = $http.get('/sport/admin/getsportsdetailslist', { params: { sportId: $scope.sports.selectedSport.id } });
+
+                $http.get('/sport/admin/getsportsdetailslist', { params: { sportId: $scope.selectedSport.sport.id } }).success(function (data) {
+                    $scope.sportsDetails = data;
+                });
+
+            }
+
+            $scope.myChangeFunction = function () {
+
+                console.log($scope.competitionModel.readyEndDate);
+            }
+
+        
+
+            $scope.loadsportDetailss = function () {
+
+                //console.log($http.get('/sport/admin/getsportsdetailslist', { params: { sportId: $scope.sports.selectedSport.id } }));
+                return $http.get('/sport/admin/getsportsdetailslist', { params: { sportId: $scope.selectedSport.sport.id } });
+            }
+
+            $scope.addSportToPresentedSports = function (a) {
+
+                console.log(a);
+
+                $scope.competitionModel.registerStartDate = $filter('date')($scope.competitionModel.registerStartDate, 'MM/dd/yyyy');
+                $scope.competitionModel.registerEndDate = $filter('date')($scope.competitionModel.registerEndDate, 'MM/dd/yyyy');
+                $scope.competitionModel.readyStartDate = $filter('date')($scope.competitionModel.readyStartDate, 'MM/dd/yyyy');
+                $scope.competitionModel.readyEndDate = $filter('date')($scope.competitionModel.readyEndDate, 'MM/dd/yyyy');
+
+                $scope.competitionModel.presentedSports.push($scope.selectedSport);
+
+                console.log($scope.competitionModel);
+
+
+                init();
+
+            };
+
+            
+
+            $scope.disabled = undefined;
+            $scope.searchEnabled = undefined;
+
+            $scope.setInputFocus = function () {
+                $scope.$broadcast('UiSelectDemo1');
+            }
+
+            $scope.enable = function () {
+                $scope.disabled = false;
+            };
+
+            $scope.disable = function () {
+                $scope.disabled = true;
+            };
+
+
+            $scope.tagTransform = function (newTag) {
+                var item = {
+                    name: newTag,
+                    email: newTag.toLowerCase() + '@@email.com',
+                    age: 'unknown',
+                    country: 'unknown'
+                };
+
+                return item;
+            };
+
+
+            $scope.today = function () {
+                //$scope.dt = new Date();
+            };
+            $scope.today();
+
+            $scope.clear = function () {
+                $scope.dt = null;
+            };
+
+            // Disable weekend selection
+            $scope.disabled = function (date, mode) {
+                return (mode === 'day' && date.getDay() === 5);
+            };
+
+            $scope.toggleMin = function () {
+                $scope.minDate = $scope.minDate ? null : new Date();
+            };
+            $scope.toggleMin();
+
+            $scope.openPersian = function ($event) {
+                $event.preventDefault();
+                $event.stopPropagation();
+
+                $scope.persianIsOpen = true;
+                $scope.gregorianIsOpen = false;
+            };
+
+            $scope.dateOptions = {
+                formatYear: 'yy',
+                startingDay: 6
+            };
+
+            //$scope.initDate = new Date('2016-15-20');
+            $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+            $scope.format = $scope.formats[1];
+
+            //$scope.$watch('competitionModel.registerStartDate', function(newValue, oldValue) {
+            //    console.log(newValue);
+            //    //$scope.competitionModel.registerStartDate = $filter('date')(newValue, 'MM/dd/yyyy');
+
+            //}, true);
+
+
+        });
+
+
+        app.filter('propsFilter', function () {
+            return function (items, props) {
+                var out = [];
+
+                if (angular.isArray(items)) {
+                    items.forEach(function (item) {
+                        var itemMatches = false;
+
+                        var keys = Object.keys(props);
+                        for (var i = 0; i < keys.length; i++) {
+                            var prop = keys[i];
+                            var text = props[prop].toLowerCase();
+                            if (item[prop].toString().toLowerCase().indexOf(text) !== -1) {
+                                itemMatches = true;
+                                break;
+                            }
+                        }
+
+                        if (itemMatches) {
+                            out.push(item);
+                        }
+                    });
+                } else {
+                    // Let the output be the input untouched
+                    out = items;
+                }
+
+                return out;
+            };
+        });
+    </script>
+}

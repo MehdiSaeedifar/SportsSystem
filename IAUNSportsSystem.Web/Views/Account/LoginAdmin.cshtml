@@ -1,0 +1,74 @@
+﻿<div class="row" style="margin-top: 20px; margin-bottom: 20px;">
+    <div class="container">
+        <div class="col-md-12">
+            <h2 class="text-center" style="color: #666666; font-size: 24px; font-weight: normal !important; line-height: 1.6em;">ورود به مدیریت سامانه</h2>
+            <div class="text-center" style="border-bottom: 1px solid #ebebeb; width: 50%; height: 15px; background: transparent; margin: auto;">
+                <i style="padding: 0 20px; background-color: #fff; color: #d8d8d8;" class="fa fa-users fa-2x"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 col-sm-6 centered">
+        <input type="hidden" ng-init="redirectUrls = { userPanelUrl: '@ViewBag.UserPanelUrl'} " />
+        <div class="classic-form">
+            <form name="frmLogin" class="form-horizontal" role="form" novalidate ng-submit="login()">
+                <div class="form-group">
+                    <label for="rptpassword" class="col-sm-3 control-label">پست الکترونیکی</label>
+                    <div class="col-sm-9">
+                        <input type="email" class="form-control ltr" name="userEmail" ng-model="user.email" ng-required="true" ng-model-options="{ updateOn: 'default blur', debounce: { default: 1000, blur: 0 } }">
+                        <div class="text-danger col-md-12" ng-show="hasError(frmLogin.userEmail)">
+                            <div class="popover bottom show fx-fade-down" ng-show="hasError(frmLogin.userEmail)">
+                                <div class="arrow"></div>
+                                <div class="popover-content">
+                                    <p ng-if="showError(frmLogin.userEmail,'email')">لطفا پست الکترونیکی معتبر وارد نمایید</p>
+                                    <p ng-if="showError(frmLogin.userEmail,'required')">لطفا پست الکترونیکی را وارد وارد نمایید</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="col-sm-3 control-label">کلمه عبور</label>
+                    <div class="col-sm-9">
+                        <input type="password" class="form-control ltr" name="userPassword" ng-model="user.password" ng-required="true" ng-model-options="{ updateOn: 'default blur', debounce: { default: 1000, blur: 0 } }">
+                        <div class="text-danger col-md-12" ng-show="hasError(frmLogin.userPassword)">
+                            <div class="popover bottom show fx-fade-down" ng-show="hasError(frmLogin.userPassword)">
+                                <div class="arrow"></div>
+                                <div class="popover-content">
+                                    <p ng-if="showError(frmLogin.userPassword,'required')">لطفا کلمه عبور را وارد وارد نمایید</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="rptpassword" class="col-sm-3 control-label"></label>
+                    <div class="col-md-8">
+                        <img class="" ng-src="{{captchaImage.url}}" />
+                        <a class="refresh-captcha" ng-click="refreshCaptcha()"><i class="fa fa-refresh"></i> یکی دیگه</a>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="rptpassword" class="col-md-3 control-label">کد امنیتی</label>
+                    <div class="col-md-5">
+                        <input type="text" class="form-control ltr" name="captcha" ng-model="user.captchaInputText" ng-required="true" />
+                    </div>
+                </div>
+                <div class="alert alert-danger fx-fade-down" ng-show="errors.length > 0">
+                    <ul>
+                        <li ng-repeat="error in errors">{{error}}</li>
+                    </ul>
+                </div>
+                <div class="form-group">
+                    <div class="text-center">
+                        <button ng-disabled="frmLogin.$invalid" type="submit" class="btn btn-primary" style="width: 80%;">ورود</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+

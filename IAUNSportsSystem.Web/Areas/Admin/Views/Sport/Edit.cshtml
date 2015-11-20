@@ -1,0 +1,103 @@
+﻿<form name="frmAddSport" novalidate>
+    <fieldset style="min-height: 100%;">
+        <legend>رشته ورزشی</legend>
+        <span class="btn-back"><a href="#/sport" class="btn btn-primary"><i class="fa fa-reply fa-lg"></i> بازگشت به فهرست رشته‌های ورزشی</a></span>
+        <div class="row">
+            <div class="form-group">
+                <label class="col-md-2">نام رشته ورزشی</label>
+                <div class="col-md-3">
+                    <input type="text" class="form-control" ng-model="sport.name" />
+                </div>
+                <button type="button" class="btn btn-success" ng-click="editSport()">ویرایش نام</button>
+            </div>
+        </div>
+    </fieldset>
+    <fieldset style="min-height: 100%;">
+        <legend>سبک</legend>
+        <div class="row">
+            <div class="form-group">
+                <label class="col-md-2">نام سبک</label>
+                <div class="col-md-3">
+                    <input type="text" class="form-control" ng-model="sportCategory.name" ng-keyup="$event.keyCode == 13 && addSportCategory()" />
+                    <span id="helpBlock" class="help-block">برای مثال برای رشته کشتی، سبک فرنگی است</span>
+                </div>
+                <button type="button" class="btn btn-primary" ng-click="addSportCategory()"><i class="fa fa-lg fa-plus-circle"></i> افزودن سبک</button>
+            </div>
+        </div>
+        <div>
+            <div class="col-md-5" ng-show="sportCategories.length >0 ">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        فهرست سبک‌های ورزشی {{sport.name}}
+                    </div>
+                    <div class="table-responsive">
+                        <table st-resize st-safe-src="sportCategories" st-table="displayedSportCategories" class="table table-bordered table-hover table-condensed th-center">
+                            <thead>
+                                <tr>
+                                    <th><span st-sort="name" st-sort-default="true">نام سبک</span></th>
+                                    <th>عملیات</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="row in displayedSportCategories" class="fx-fade-down">
+                                    <td class="vert-align">{{row.name}}</td>
+                                    <td class="vert-align">
+                                        <button type="button" class="btn btn-danger btn-sm" ng-click="removeSportCategory($index,row.id)">
+                                            <i class="fa fa-trash-o fa-lg"></i> حذف
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </fieldset>
+
+    <fieldset style="min-height: 100%;">
+        <legend>اوزان</legend>
+        <div class="row">
+            <div class="form-group">
+                <label class="col-md-2">وزن یا دسته</label>
+                <div class="col-md-3">
+                    <input type="text" class="form-control" ng-model="sportDetail.name" ng-keyup="$event.keyCode == 13 && addSportDetail()" />
+                    <span id="helpBlock" class="help-block">برای مثال برای رشته کشتی، دسته یا وزن 74 کیلوگرم است</span>
+                </div>
+                <button type="button" ng-click="addSportDetail()" class="btn btn-primary"><i class="fa fa-lg fa-plus-circle"></i> افزودن وزن</button>
+            </div>
+        </div>
+        <div>
+            <div class="col-md-5" ng-show="sportDetails.length >0 ">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        فهرست ‌اوزان رشته {{sport.name}}
+                    </div>
+                    <div class="table-responsive">
+                        <table st-resize st-safe-src="sportDetails" st-table="displayedSportDetails" class="table table-bordered table-hover table-condensed th-center">
+                            <thead>
+                                <tr>
+                                    <th><span st-sort="name" st-sort-default="true">وزن</span></th>
+                                    <th>عملیات</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="row in displayedSportDetails" class="fx-fade-down">
+                                    <td class="vert-align">{{row.name}}</td>
+                                    <td class="vert-align">
+                                        <button type="button" class="btn btn-danger btn-sm" ng-click="removeSportDetail($index,row.id)">
+                                            <i class="fa fa-trash-o fa-lg"></i> حذف
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </fieldset>
+</form>

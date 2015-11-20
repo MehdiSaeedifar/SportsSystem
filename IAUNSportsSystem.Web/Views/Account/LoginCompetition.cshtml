@@ -1,0 +1,63 @@
+﻿<div style="padding: 40px; padding-top: 10px;">
+
+    <div class="row" style="margin-top: 5px; margin-bottom: 50px;">
+        <h2 class="text-center" style="color: #666666; font-size: 24px; font-weight: normal !important; line-height: 1.6em;">{{::competition.competitionName}}</h2>
+        <div class="text-center" style="border-bottom: 1px solid #ebebeb; width: 50%; height: 15px; background: transparent; margin: auto;">
+            <i style="padding: 0 20px; background-color: #fff; color: #d8d8d8;" class="fa fa-users fa-2x"></i>
+        </div>
+    </div>
+    <div class="row">
+        <a href="#/login">
+            <div class="col-md-10 col-md-offset-1 text-center" style="padding: 20px; background-color: #4390df; color: white">
+                <p>ورود به سامانه</p>
+                <h1>ورود</h1>
+            </div>
+        </a>
+    </div>
+    <div class="row" style="padding: 20px 0 20px 0;">
+        <div class="alert alert-warning  text-center">
+            برای استفاده از سامانه حتما از یکی از مرورگرهای <a href="https://www.google.com/chrome/browser/desktop/index.html" target="_blank">chrome</a> و یا <a href="http://www.mozilla.com/firefox/" target="_blank">firefox</a> استفاده کنید.
+        </div>
+    </div>
+    <div class="row" style="margin-top: 50px;">
+        <div id="competitionRulesTab">
+            <tabset justified="true" id="competitionRulesTab">
+                <tab select="alertMe()">
+                    <tab-heading>
+                        <i class="fa fa-info fa-lg"></i> قوانین و دستورالعمل‌ها
+                    </tab-heading>
+                    <div style="" ng-bind-html="competition.rule" class="animated zoomIn"></div>
+                </tab>
+                <tab select="alertMe()">
+                    <tab-heading >
+                        <span class="badge">{{competition.announcements.length}}</span>  <i class="fa fa-bell fa-lg"></i> اطلاعیه‌ها
+                    </tab-heading>
+                    <div class="animated zoomIn">
+                        <ul ng-repeat="announcement in competition.announcements">
+                            <li><a style="cursor: pointer;" ng-click="showAnnouncement(announcement)">{{announcement.title}}</a></li>
+                        </ul>
+                    </div>
+                </tab>
+
+            </tabset>
+        </div>
+
+    </div>
+
+</div>
+
+<script type="text/ng-template" id="showAnnouncement.html">
+    <div>
+        <div class="modal-header">
+            <h3 class="modal-title">{{announcement.title}}</h3>
+        </div>
+
+        <div class="modal-body">
+            <div style="" ng-bind-html="announcement.websiteText"></div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary" ng-click="cancel()">بستن</button>
+        </div>
+    </div>
+</script>
+

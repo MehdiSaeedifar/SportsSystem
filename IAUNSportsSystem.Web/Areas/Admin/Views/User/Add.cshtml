@@ -1,0 +1,117 @@
+﻿<fieldset>
+    <legend>افزودن مدیر</legend>
+    <span class="btn-back"><a href="#/user" class="btn btn-primary"><i class="fa fa-reply fa-lg"></i> بازگشت به فهرست مدیران</a></span>
+    <form name="frmAddUser" class="form-horizontal" role="form" novalidate ng-submit="addUser()">
+        <div class="form-group">
+            <label for="rptpassword" class="col-md-2 control-label">پست الکترونیکی</label>
+            <div class="col-md-4 has-feedback ltr">
+                <input type="email" class="form-control ltr" name="userEmail" ng-model="user.email" ng-required="true" ng-model-options="{ updateOn: 'default blur', debounce: { default: 1000, blur: 0 } }">
+                <span class="glyphicon glyphicon-ok form-control-feedback text-success fx-fade-normal" ng-hide="isInvalid(frmAddUser.userEmail)"></span>
+                <span class="glyphicon glyphicon-remove form-control-feedback text-danger fx-fade-normal" ng-show="hasError(frmAddUser.userEmail)"></span>
+                <div class="text-danger col-md-12" ng-show="hasError(frmAddUser.userEmail)">
+                    <div class="popover bottom show fx-fade-down" ng-show="hasError(frmAddUser.userEmail)">
+                        <div class="arrow"></div>
+                        <div class="popover-content">
+                            <p ng-if="showError(frmAddUser.userEmail,'email')">لطفا پست الکترونیکی معتبر وارد نمایید</p>
+                            <p ng-if="showError(frmAddUser.userEmail,'required')">لطفا پست الکترونیکی را وارد وارد نمایید</p>
+                            <p ng-if="showError(frmAddUser.userEmail,'unique')">این پست الکترونیکی قبلا در سیستم ثبت شده است</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password" class="col-md-2 control-label">کلمه عبور</label>
+            <div class="col-md-4 has-feedback ltr">
+                <input type="password" class="form-control ltr" name="userPassword" ng-model="user.password" ng-required="true" ng-pattern="passwordRegEx" ng-model-options="{ updateOn: 'default blur', debounce: { default: 1000, blur: 0 } }" ng-minlength="6" ng-maxlength="30">
+                <span class="glyphicon glyphicon-ok form-control-feedback text-success fx-fade-normal" ng-hide="isInvalid(frmAddUser.userPassword)"></span>
+                <span class="glyphicon glyphicon-remove form-control-feedback text-danger fx-fade-normal" ng-show="hasError(frmAddUser.userPassword)"></span>
+                <div class="text-danger col-md-12" ng-show="hasError(frmAddUser.userPassword)">
+                    <div class="popover bottom show fx-fade-down" ng-show="hasError(frmAddUser.userPassword)">
+                        <div class="arrow"></div>
+                        <div class="popover-content">
+                            <p ng-if="showError(frmAddUser.userPassword,'required')">لطفا کلمه عبور را وارد وارد نمایید</p>
+                            <p ng-if="showError(frmAddUser.userPassword,'pattern')">کلمه عبور باید ترکیبی از اعداد و حروف انگلیسی باشد</p>
+                            <p ng-if="showError(frmAddUser.userPassword,'minlength')">کلمه عبور باید حداقل 6 حرف باشد</p>
+                            <p ng-if="showError(frmAddUser.userPassword,'maxlength')">کلمه عبور باید حداکثر 30 حرف باشد</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="rptpassword" class="col-md-2 control-label">تکرار کلمه عبور</label>
+            <div class="col-md-4 has-feedback ltr">
+                <input type="password" class="form-control ltr" name="confirmUserPassword" ng-model="user.confirmPassword" match="user.password" ng-required="true" ng-model-options="{ updateOn: 'default blur', debounce: { default: 1000, blur: 0 } }" match="user.password">
+                <span class="glyphicon glyphicon-ok form-control-feedback text-success fx-fade-normal" ng-hide="isInvalid(frmAddUser.confirmUserPassword)"></span>
+                <span class="glyphicon glyphicon-remove form-control-feedback text-danger fx-fade-normal" ng-show="hasError(frmAddUser.confirmUserPassword)"></span>
+                <div class="text-danger col-md-12" ng-show="hasError(frmAddUser.confirmUserPassword)">
+                    <div class="popover bottom show fx-fade-down" ng-show="hasError(frmAddUser.confirmUserPassword)">
+                        <div class="arrow"></div>
+                        <div class="popover-content">
+                            <p ng-if="showError(frmAddUser.confirmUserPassword,'match')">تکرار کلمه عبور با کلمه عبور یکسان نیست</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="name" class="col-md-2 control-label">نام</label>
+            <div class="col-md-4 has-feedback">
+                <input type="text" class="form-control" name="userFirstName" ng-model="user.firstName" ng-required="false" ng-pattern="persianRegEx" ng-model-options="{ updateOn: 'default blur', debounce: { default: 1000, blur: 0 } }" ng-minlength="3" ng-maxlength="30">
+                <span class="glyphicon glyphicon-ok form-control-feedback text-success fx-fade-normal" ng-hide="isInvalid(frmAddUser.userFirstName)"></span>
+                <span class="glyphicon glyphicon-remove form-control-feedback text-danger fx-fade-normal" ng-show="hasError(frmAddUser.userFirstName)"></span>
+                <div class="text-danger col-md-12" ng-show="hasError(frmAddUser.userFirstName)">
+                    <div class="popover bottom show fx-fade-down" ng-show="hasError(frmAddUser.userFirstName)">
+                        <div class="arrow"></div>
+                        <div class="popover-content">
+                            <p ng-if="showError(frmAddUser.userFirstName,'pattern')">لطفا نام را با حروف فارسی وارد نمایید</p>
+                            <p ng-if="showError(frmAddUser.userFirstName,'required')">لطفا نام را وارد نمایید</p>
+                            <p ng-if="showError(frmAddUser.userFirstName,'minlength')">نام باید حداقل 3 حرف باشد</p>
+                            <p ng-if="showError(frmAddUser.userFirstName,'maxlength')">نام باید حداکثر 30 حرف باشد</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="name" class="col-md-2 control-label">نام خانوادگی</label>
+            <div class="col-md-4 has-feedback">
+                <input type="text" class="form-control" name="userLastName" ng-model="user.lastName" ng-required="true" ng-pattern="persianRegEx" ng-model-options="{ updateOn: 'default blur', debounce: { default: 1000, blur: 0 } }" ng-minlength="2" ng-maxlength="40">
+                <span class="glyphicon glyphicon-ok form-control-feedback text-success fx-fade-normal" ng-hide="isInvalid(frmAddUser.userLastName)"></span>
+                <span class="glyphicon glyphicon-remove form-control-feedback text-danger fx-fade-normal" ng-show="hasError(frmAddUser.userLastName)"></span>
+                <div class="text-danger col-md-12" ng-show="hasError(frmAddUser.userLastName)">
+                    <div class="popover bottom show fx-fade-down" ng-show="hasError(frmAddUser.userLastName)">
+                        <div class="arrow"></div>
+                        <div class="popover-content">
+                            <p ng-if="showError(frmAddUser.userLastName,'pattern')">لطفا نام خانوادگی را با حروف فارسی وارد نمایید</p>
+                            <p ng-if="showError(frmAddUser.userLastName,'required')">لطفا نام خانوادگی را وارد نمایید</p>
+                            <p ng-if="showError(frmAddUser.userLastName,'minlength')">نام خانوادگی باید حداقل 2 حرف باشد</p>
+                            <p ng-if="showError(frmAddUser.userLastName,'maxlength')">نام خانوادگی باید حداکثر 40 حرف باشد</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="name" class="col-md-2 control-label">نقش در سیستم</label>
+            <div class="col-md-4">
+                <div class="btn-group">
+                    <label class="btn btn-info" ng-model="user.role" btn-radio="'admin'">مدیر کل</label>
+                    <label class="btn btn-info" ng-model="user.role" btn-radio="'moderator'">مدیر</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="alert alert-danger fx-fade-down" ng-show="errors.length > 0">
+            <ul>
+                <li ng-repeat="error in errors">{{error}}</li>
+            </ul>
+        </div>
+        <div class="form-group">
+            <div class="col-md-2">
+                <button ng-disabled="frmAddUser.$invalid" type="submit" class="btn btn-success">ثبت اطلاعات</button>
+            </div>
+        </div>
+    </form>
+</fieldset>

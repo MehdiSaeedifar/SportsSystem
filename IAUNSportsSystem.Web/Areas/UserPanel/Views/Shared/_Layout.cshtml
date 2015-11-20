@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html ng-app="userPanelApp">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/common")
+    @Styles.Render("~/Content/angularParts")
+    @Styles.Render("~/Content/userPanel")
+    @RenderSection("styles", required: false)
+</head>
+<body>
+    <div id="wrapper" ng-controller="LayoutController" ng-cloak>
+        <nav id="mainNav" class="navbar navbar-default" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="@Url.Action("index", "home", new {area = ""})">
+                        <img style="height: 60px;" class="pull-right" src="~/Content/IAU_Najafabad_Branch_logo.png" alt="" />
+                        <div class="text-center pull-right">
+                            <div style="padding-bottom: 7px;">سامانه برگزاری مسابقات ورزشی</div>
+                            <div style="font-size: 14px; color: #808080;">دانشگاه آزاد اسلامی واحد نجف آباد</div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav hidden-sm">
+                        <li ng-class="{active: $route.current.activeRoute == 'dashboard'}"><a href="#/dashboard">خانه</a></li>
+                        <li ng-class="{active: $route.current.activeRoute == 'readiness'}"><a href="#/readiness">اعلام آمادگی</a></li>
+                        <li ng-class="{active: $route.current.activeRoute == 'register'}"><a href="#/register">ثبت نام</a></li>
+                        <li ng-class="{active: $route.current.activeRoute == 'card'}"><a href="#/card">دریافت کارت</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav visible-sm">
+                        <li class="active"><a href="#/dashboard">خانه</a></li>
+                        <li class="dropdown">
+                            <a href="" class="dropdown-toggle" data-toggle="dropdown">مسابقات<span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li ng-class="{active: $route.current.activeRoute == 'readiness'}"><a href="#/readiness">اعلام آمادگی</a></li>
+                                <li ng-class="{active: $route.current.activeRoute == 'register'}"><a href="#/register">ثبت نام</a></li>
+                                <li ng-class="{active: $route.current.activeRoute == 'card'}"><a href="#/card">دریافت کارت</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-left">
+                        <li class="dropdown">
+                            <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> {{currentUser.fullName}} <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#/representativeuser/edit">ویرایش مشخصات</a></li>
+                                <li><a href="#/representativeuser/changepassword">تغییر کلمه عبور</a></li>
+                                <li class="divider"></li>
+                                <li><a class="btn btn-link" ng-click="signOut()"><i class="fa fa-sign-out fa-lg"></i> خروج </a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div id="pageWrapper" class="container">
+            @RenderBody()
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container">
+            <div class="text-center footer-text">
+                <div class="copyright-text">تمامی حقوق متعلق به سازنده می باشد</div>
+                <div class="copyright-text">Copyright &copy; 1394</div>
+                <div><span class="label label-warning">نسخه آزمایشی</span></div>
+            </div>
+        </div>
+    </footer>
+
+    <toaster-container toaster-options="{'position-class': 'toast-top-center', 'newest-ontop': 'false'}"></toaster-container>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/common")
+    @Scripts.Render("~/bundles/userPanel")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

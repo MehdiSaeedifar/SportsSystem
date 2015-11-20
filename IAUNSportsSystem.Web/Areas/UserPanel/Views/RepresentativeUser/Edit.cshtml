@@ -1,0 +1,126 @@
+﻿<fieldset>
+    <legend>ویرایش مشخصات فردی</legend>
+    <form name="frmRegisterUser" class="form-horizontal form-group-sm" role="form" novalidate ng-submit="registerUser()">
+        <div class="form-group">
+            <label for="rptpassword" class="col-md-2 control-label"><span ng-show="showError(frmRegisterUser.userEmail,'required')" class="glyphicon text-danger mandatory fx-fade-normal">*</span> پست الکترونیکی</label>
+            <div class="col-md-4 has-feedback ltr">
+                <input type="email" class="form-control ltr" name="userEmail" ng-model="user.email" ng-required="true" ng-model-options="{ updateOn: 'default blur', debounce: { default: 1000, blur: 0 } }">
+                <span class="glyphicon glyphicon-ok form-control-feedback text-success fx-fade-normal" ng-hide="isInvalid(frmRegisterUser.userEmail)"></span>
+                <span class="glyphicon glyphicon-remove form-control-feedback text-danger fx-fade-normal" ng-show="hasError(frmRegisterUser.userEmail)"></span>
+                <div class="text-danger col-md-12" ng-show="hasError(frmRegisterUser.userEmail)">
+                    <div class="popover bottom show fx-fade-down" ng-show="hasError(frmRegisterUser.userEmail)">
+                        <div class="arrow"></div>
+                        <div class="popover-content">
+                            <p ng-if="showError(frmRegisterUser.userEmail,'email')">لطفا پست الکترونیکی معتبر وارد نمایید</p>
+                            <p ng-if="showError(frmRegisterUser.userEmail,'required')">لطفا پست الکترونیکی را وارد وارد نمایید</p>
+                            <p ng-if="showError(frmRegisterUser.userEmail,'unique')">این پست الکترونیکی قبلا در سیستم ثبت شده است</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password" class="col-md-2 control-label"><span ng-show="showError(frmRegisterUser.userNationalCode,'required')" class="glyphicon text-danger mandatory fx-fade-normal">*</span> کد ملی ده رقمی</label>
+            <div class="col-md-4 has-feedback ltr">
+                <input type="text" class="form-control ltr" name="userNationalCode" ng-model="user.nationalCode" ng-required="true" ng-pattern="numberRegEx" ng-model-options="{ updateOn: 'default blur', debounce: { default: 1000, blur: 0 } }" ng-minlength="10" ng-maxlength="10">
+                <span class="glyphicon glyphicon-ok form-control-feedback text-success fx-fade-normal" ng-hide="isInvalid(frmRegisterUser.userNationalCode)"></span>
+                <span class="glyphicon glyphicon-remove form-control-feedback text-danger fx-fade-normal" ng-show="hasError(frmRegisterUser.userNationalCode)"></span>
+                <div class="text-danger col-md-12" ng-show="hasError(frmRegisterUser.userNationalCode)">
+                    <div class="popover bottom show fx-fade-down" ng-show="hasError(frmRegisterUser.userNationalCode)">
+                        <div class="arrow"></div>
+                        <div class="popover-content">
+                            <p ng-if="showError(frmRegisterUser.userNationalCode,'pattern')">لطفا کد ملی 10 رقمی را به صورت عدد وارد نمایید</p>
+                            <p ng-if="showError(frmRegisterUser.userNationalCode,'required')">لطفا کد ملی 10 رقمی را وارد نمایید</p>
+                            <p ng-if="showError(frmRegisterUser.userNationalCode,'minlength') || showError(frmRegisterUser.userNationalCode,'maxlength') ">کد ملی عددی 10 رقمی است</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="name" class="col-md-2 control-label"><span ng-show="showError(frmRegisterUser.userFirstName,'required')" class="glyphicon text-danger mandatory fx-fade-normal">*</span> نام</label>
+            <div class="col-md-4 has-feedback">
+                <input type="text" class="form-control" name="userFirstName" ng-model="user.firstName" ng-required="true" ng-pattern="persianRegEx" ng-model-options="{ updateOn: 'default blur', debounce: { default: 1000, blur: 0 } }" ng-minlength="3" ng-maxlength="30">
+                <span class="glyphicon glyphicon-ok form-control-feedback text-success fx-fade-normal" ng-hide="isInvalid(frmRegisterUser.userFirstName)"></span>
+                <span class="glyphicon glyphicon-remove form-control-feedback text-danger fx-fade-normal" ng-show="hasError(frmRegisterUser.userFirstName)"></span>
+                <div class="text-danger col-md-12" ng-show="hasError(frmRegisterUser.userFirstName)">
+                    <div class="popover bottom show fx-fade-down" ng-show="hasError(frmRegisterUser.userFirstName)">
+                        <div class="arrow"></div>
+                        <div class="popover-content">
+                            <p ng-if="showError(frmRegisterUser.userFirstName,'pattern')">لطفا نام را با حروف فارسی وارد نمایید</p>
+                            <p ng-if="showError(frmRegisterUser.userFirstName,'required')">لطفا نام را وارد نمایید</p>
+                            <p ng-if="showError(frmRegisterUser.userFirstName,'minlength')">نام باید حداقل 3 حرف باشد</p>
+                            <p ng-if="showError(frmRegisterUser.userFirstName,'maxlength')">نام باید حداکثر 30 حرف باشد</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="name" class="col-md-2 control-label"><span ng-show="showError(frmRegisterUser.userLastName,'required')" class="glyphicon text-danger mandatory fx-fade-normal">*</span> نام خانوادگی</label>
+            <div class="col-md-4 has-feedback">
+                <input type="text" class="form-control" name="userLastName" ng-model="user.lastName" ng-required="true" ng-pattern="persianRegEx" ng-model-options="{ updateOn: 'default blur', debounce: { default: 1000, blur: 0 } }" ng-minlength="2" ng-maxlength="40">
+                <span class="glyphicon glyphicon-ok form-control-feedback text-success fx-fade-normal" ng-hide="isInvalid(frmRegisterUser.userLastName)"></span>
+                <span class="glyphicon glyphicon-remove form-control-feedback text-danger fx-fade-normal" ng-show="hasError(frmRegisterUser.userLastName)"></span>
+                <div class="text-danger col-md-12" ng-show="hasError(frmRegisterUser.userLastName)">
+                    <div class="popover bottom show fx-fade-down" ng-show="hasError(frmRegisterUser.userLastName)">
+                        <div class="arrow"></div>
+                        <div class="popover-content">
+                            <p ng-if="showError(frmRegisterUser.userLastName,'pattern')">لطفا نام خانوادگی را با حروف فارسی وارد نمایید</p>
+                            <p ng-if="showError(frmRegisterUser.userLastName,'required')">لطفا نام خانوادگی را وارد نمایید</p>
+                            <p ng-if="showError(frmRegisterUser.userLastName,'minlength')">نام خانوادگی باید حداقل 2 حرف باشد</p>
+                            <p ng-if="showError(frmRegisterUser.userLastName,'maxlength')">نام خانوادگی باید حداکثر 40 حرف باشد</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="email" class="col-md-2 control-label"><span ng-show="showError(frmRegisterUser.userFatherName,'required')" class="glyphicon text-danger mandatory fx-fade-normal">*</span> نام پدر</label>
+            <div class="col-md-4 has-feedback">
+                <input type="text" class="form-control" name="userFatherName" ng-model="user.fatherName" ng-required="true" ng-pattern="persianRegEx" ng-model-options="{ updateOn: 'default blur', debounce: { default: 1000, blur: 0 } }" ng-minlength="3" ng-maxlength="30">
+                <span class="glyphicon glyphicon-ok form-control-feedback text-success fx-fade-normal" ng-hide="isInvalid(frmRegisterUser.userFatherName)"></span>
+                <span class="glyphicon glyphicon-remove form-control-feedback text-danger fx-fade-normal" ng-show="hasError(frmRegisterUser.userFatherName)"></span>
+                <div class="text-danger col-md-12" ng-show="hasError(frmRegisterUser.userFatherName)">
+                    <div class="popover bottom show fx-fade-down" ng-show="hasError(frmRegisterUser.userFatherName)">
+                        <div class="arrow"></div>
+                        <div class="popover-content">
+                            <p ng-if="showError(frmRegisterUser.userFatherName,'pattern')">لطفا نام پدر را با حروف فارسی وارد نمایید</p>
+                            <p ng-if="showError(frmRegisterUser.userFatherName,'required')">لطفا نام پدر را وارد نمایید</p>
+                            <p ng-if="showError(frmRegisterUser.userFatherName,'minlength')">نام پدر باید حداقل 3 حرف باشد</p>
+                            <p ng-if="showError(frmRegisterUser.userFatherName,'maxlength')">نام پدر باید حداکثر 30 حرف باشد</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="rptpassword" class="col-md-2 control-label"><span ng-show="showError(frmRegisterUser.userMobileNumber,'required')" class="glyphicon text-danger mandatory fx-fade-normal">*</span> تلفن همراه</label>
+            <div class="col-md-4 has-feedback ltr">
+                <input type="text" class="form-control ltr" name="userMobileNumber" ng-model="user.mobileNumber" ng-required="true" ng-pattern="mobileNumberRegEx" ng-model-options="{ updateOn: 'default blur', debounce: { default: 1000, blur: 0 } }">
+                <span class="glyphicon glyphicon-ok form-control-feedback text-success fx-fade-normal" ng-hide="isInvalid(frmRegisterUser.userMobileNumber)"></span>
+                <span class="glyphicon glyphicon-remove form-control-feedback text-danger fx-fade-normal" ng-show="hasError(frmRegisterUser.userMobileNumber)"></span>
+                <div class="text-danger col-md-12" ng-show="hasError(frmRegisterUser.userMobileNumber)">
+                    <div class="popover bottom show fx-fade-down" ng-show="hasError(frmRegisterUser.userMobileNumber)">
+                        <div class="arrow"></div>
+                        <div class="popover-content">
+                            <p ng-if="showError(frmRegisterUser.userMobileNumber,'pattern')">شماره موبایل را به شکل 09131234567 وارد نمایید</p>
+                            <p ng-if="showError(frmRegisterUser.userMobileNumber,'required')">لطفا شماره موبایل را وارد نمایید</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="alert alert-danger fx-fade-down" ng-show="errors.length > 0">
+            <ul>
+                <li ng-repeat="error in errors">{{error}}</li>
+            </ul>
+        </div>
+        <div class="form-group">
+            <div class="col-md-4">
+                <button ng-disabled="frmRegisterUser.$invalid" type="submit" class="btn btn-primary">ثبت اطلاعات</button>
+            </div>
+        </div>
+
+    </form>
+</fieldset>

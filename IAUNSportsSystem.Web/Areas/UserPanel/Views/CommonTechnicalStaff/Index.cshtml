@@ -1,0 +1,101 @@
+﻿<fieldset>
+    <legend> اعضای کادر اجرایی {{::competitionName}}</legend>
+    <span class="btn-back"><a href="#/register/{{::competitionId}}" class="btn btn-primary"><i class="fa fa-reply fa-lg"></i> بازگشت به فهرست رشته‌های ورزشی</a></span>
+    <div class="row">
+        <div class="col-md-12" style="margin: 20px 0 20px 0;">
+            <div class="pull-right">
+                <a class="btn btn-success" ng-disabled="technicalStaffsList.length >= maxTechnicalStaffs" href="#/commontechnicalstaff/add/{{::competitionId}}"> <i class="fa fa-lg fa-plus"></i> افزودن کادر اجرایی جدید </a>
+                <p class="text-danger" ng-show="technicalStaffsList.length >= maxTechnicalStaffs">سقف مجاز اعضای کادر اجرایی پر شده است</p>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="pull-right" style="margin: 5px 0 10px 0;">
+                <div class="alert alert-info">
+                    <ul class="list-inline">
+                        <li class="text-success">تعداد اعضای کادر اجرایی ثبت شده: {{technicalStaffsList.length}} نفر</li>
+                        <li class="text-danger">سقف مجاز تعداد اعضای کادر اجرایی: {{::maxTechnicalStaffs}} نفر</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="fx-fade-up" ng-show="technicalStaffsList.length > 0">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                فهرست اعضای کادر اجرایی
+            </div>
+            <div class="table-responsive">
+                <table st-resize st-safe-src="technicalStaffsList" st-table="displayedTechnicalStaffsList" class="table table-bordered table-hover table-condensed th-center">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>عکس</th>
+                            <th><span st-sort="firstName">نام</span></th>
+                            <th><span st-sort="lastName" st-sort-default="true">نام خانوادگی</span></th>
+                            <th><span st-sort="isApproved">وضعیت بررسی</span></th>
+                            <th><span st-sort="nationalCode">کد ملی</span></th>
+                            <th><span st-sort="roleName">سمت</span></th>
+                            <th>عملیات</th>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th>
+                                <input st-search="firstName" placeholder="جستجو در نام" class="input-sm form-control" type="search" />
+                            </th>
+                            <th>
+                                <input st-search="lastName" placeholder="جستجو در نام خانوادگی" class="input-sm form-control" type="search" />
+                            </th>
+                            <th></th>
+                            <th><input st-search="nationalCode" placeholder="جستجو در کد ملی" class="input-sm form-control" type="search" /></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="row in displayedTechnicalStaffsList" class="fx-fade-down" ng-class="{success: row.isApproved == true , danger : row.isApproved == false}">
+                            <td>{{$index+1}}</td>
+                            <td class="vert-align">
+                                <img style="max-height: 120px;" ng-src="/file/home/gettechnicalstaffimage?fileName={{row.image}}" class="img-responsive img-circle center-block" />
+                            </td>
+                            <td class="vert-align">{{row.firstName}}</td>
+                            <td class="vert-align">{{row.lastName}}</td>
+                            <td class="vert-align"> <span class="label" ng-class="{'label-success': row.isApproved == true , 'label-danger' : row.isApproved == false, 'label-default' : row.isApproved == null }">{{row.isApproved | status }}</span></td>
+                            <td class="vert-align">{{row.nationalCode}}</td>
+                            <td class="vert-align">{{row.roleName}}</td>
+                            <td class="vert-align">
+                                <div style="margin: 10px;">
+                                    <a class="btn btn-primary btn-sm" href="#/commontechnicalstaff/edit/{{competitionId}}/{{row.id}}">
+                                        <i class="fa fa-edit fa-lg"></i> ویرایش
+                                    </a>
+                                </div>
+                                <button class="btn btn-danger btn-sm" href="#" ng-click="deleteTechnicalStaff(row)">
+                                    <i class="fa fa-trash-o fa-lg"></i> حذف
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+    </div>
+</fieldset>
+
+<script type="text/ng-template" id="deleteTechnicalStaff.html">
+    <div class="modal-header">
+        <h3 class="modal-title"></h3>
+    </div>
+    <div class="modal-body">
+        <div class="alert alert-danger">
+            آیا از حذف  {{technicalStaff.firstName}} {{technicalStaff.lastName}} مطمئن هستید؟
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="cancel()">انصراف</button>
+        <button class="btn btn-danger" ng-click="ok()">بله</button>
+    </div>
+</script>
+

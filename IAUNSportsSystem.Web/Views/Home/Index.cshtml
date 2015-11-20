@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "صفحه اصلی";
+}
+
+@Html.Action("RunningCompetitionsList", "Home")
+
+<div style="height:10px;"></div>
+
+@Html.Action("GetRecentNews", "Home")
+
+
+<div class="row" style="margin-top:40px;">
+    <div class="container">
+        <div class="col-md-12">
+            <h2 class="text-center" style="color:#666666;font-size:24px;line-height:1.6em;">پیوندها</h2>
+            <div class="text-center" style="border-bottom:1px solid #ebebeb; width:50%;height:15px; background:transparent; margin:auto;">
+                <i style="padding:0 20px; background-color:#fff; color:#d8d8d8;" class="fa fa-external-link fa-2x"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row" style="margin-bottom:70px;margin-top:50px;">
+    <div class="container">
+        <div id="clients" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="item active">
+                    <div class="row">
+                        <div class="carousel-clients">
+                            <div class="col-md-3"><a href="http://www.iau.ac.ir/" rel="nofollow" target="_blank">دانشگاه آزاد اسلامی</a></div>
+                            <div class="col-md-3"><a href="http://www.ffiri.ir/" rel="nofollow" target="_blank">فدراسیون فوتبال</a></div>
+                            <div class="col-md-3"><a href="http://iranvolleyball.com/" rel="nofollow" target="_blank">فدراسیون والیبال</a></div>
+                            <div class="col-md-3"><a href="http://www.iawf.ir/" rel="nofollow" target="_blank">فدراسیون کشتی</a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="row">
+                        <div class="carousel-clients">
+                            <div class="col-md-3"><a href="http://www.iranbasketball.org/" rel="nofollow" target="_blank">فدراسیون بسکتبال</a></div>
+                            <div class="col-md-3"><a href="http://irsf.ir/" rel="nofollow" target="_blank">فدراسیون شنا</a></div>
+                            <div class="col-md-3"><a href="http://www.msy.gov.ir/" rel="nofollow" target="_blank">وزارت ورزش و جوانان</a></div>
+                            <div class="col-md-3"><a href="http://iriaaf.ir/" rel="nofollow" target="_blank">فدراسیون دو‌و‌میدانی</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

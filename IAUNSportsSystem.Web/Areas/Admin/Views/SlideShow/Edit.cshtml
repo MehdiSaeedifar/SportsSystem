@@ -1,0 +1,98 @@
+﻿<fieldset>
+    <legend>ویرایش اسلاید</legend>
+    <span class="btn-back"><a href="#/slideshow" class="btn btn-primary"><i class="fa fa-reply fa-lg"></i> بازگشت به فهرست اسلایدشو</a></span>
+    <form name="frmSlide" class="form-horizontal" novalidate ng-submit="addSlideImage()">
+        <div class="form-group">
+            <label for="inputEmail3" class="col-md-1 control-label">عنوان</label>
+            <div class="col-md-4">
+                <input type="text" class="form-control" id="inputEmail3" ng-model="slide.title">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputPassword3" class="col-md-1 control-label">متن</label>
+            <div class="col-md-4">
+                <textarea class="form-control" rows="3" ng-model="slide.text"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputEmail3" class="col-md-1 control-label">لینک</label>
+            <div class="col-md-4">
+                <input type="text" class="form-control ltr" id="inputEmail3" ng-model="slide.link">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputEmail3" class="col-md-1 control-label">ترتیب</label>
+            <div class="col-md-1">
+                <input type="number" class="form-control ltr" id="inputEmail3" ng-model="slide.order">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputEmail3" class="col-md-1 control-label">تصویر</label>
+            <div class="col-md-3">
+                <img ng-show="slide.image" style="width: 300px; height: 200px;" ng-src="/content/slideshowimages/{{slide.image}}" alt="" />
+                <button class="btn btn-primary" type="button" ng-click="showSlideShowImages()">انتخاب تصویر</button>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-3">
+                <button ng-disabled="frmSlide.$invalid" type="submit" class="btn btn-success">ثبت اطلاعات</button>
+            </div>
+        </div>
+    </form>
+</fieldset>
+<script type="text/ng-template" id="slideShowImages.html">
+    <div class="modal-header">
+        <h3 class="modal-title"></h3>
+    </div>
+    <div class="modal-body">
+        <tabset>
+            <tab heading="آپلود تصویر">
+                <div>
+                    <div class="dropbox" ngf-drop ngf-select ng-model="files" ngf-change="upload($files)" ng-model-rejected="rejFiles"
+                         ngf-drag-over-class="{accept:'dragover', reject:'dragover-err', delay:100}"
+                         ngf-multiple="false" ngf-allow-dir="true" ngf-accept="'.jpg,.png'"
+                         ngf-drop-available="dropAvailable" ngf-min-size='10' ngf-max-size='300000'>
+                        <div style="margin-top: 100px;">
+                            <div ng-hide="dropAvailable">File Drop not available</div>
+                            <span>عکس خود را با حداکثر حجم 300 کیلوبایت و با فرمت jpg یا png  در این کادر رها کنید</span>
+                            <br>
+                            یا اینجا را کلیک کنید
+                        </div>
+                    </div>
+                </div>
+            </tab>
+            <tab heading="فهرست تصاویر" select="showSlideImagesList()">
+                <div class="table-responsive">
+                    <table st-resize st-safe-src="slideImages" st-table="displayedSlideImages" class="table table-bordered table-hover table-condensed th-center">
+                        <thead>
+                            <tr>
+                                <th><span st-sort="firstName" st-sort-default="true">تصویر</span></th>
+                                <th><span st-sort="lastName" st-sort-default="true">عنوان</span></th>
+                                <th>عملیات</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="row in displayedSlideImages" class="fx-fade-down">
+                                <td class="vert-align"><img style="width:100px;height:80px;" ng-src="/content/slideshowimages/{{row}}" alt="Alternate Text" /></td>
+                                <td class="vert-align">{{row}}</td>
+                                <td class="vert-align">
+                                    <button class="btn btn-primary btn-sm" ng-click="selectSlideImage(row)">
+                                        <i class="fa fa-file-photo-o fa-lg"></i> انتخاب
+                                    </button>
+                                    <button class="btn btn-danger btn-sm" ng-click="deleteSlideImage(row)">
+                                        <i class="fa fa-trash-o fa-lg"></i> حذف
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </tab>
+        </tabset>
+
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="cancel()">انصراف</button>
+        <button class="btn btn-danger" ng-click="ok()">بله</button>
+    </div>
+</script>

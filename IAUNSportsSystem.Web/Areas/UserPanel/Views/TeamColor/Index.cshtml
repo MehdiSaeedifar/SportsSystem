@@ -1,0 +1,81 @@
+﻿<fieldset>
+    <legend>انتخاب رنگ لباس {{::competitionSport.sportName}} {{::competitionSport.sportCategory}} {{::competitionSport.sportDetail}} {{::competitionSport.gender | gender: 'plural'}}</legend>
+    <span class="btn-back"><a href="#/competitor/{{::participationId}}" class="btn btn-primary"><i class="fa fa-reply fa-lg"></i> بازگشت به فهرست بازیکنان</a></span>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-info">
+                <h4>لطفا به موارد زیر توجه فرمایید</h4>
+                <ul class="" style="line-height: 30px;">
+                    <li>وارد کردن فیلد‌های ستاره دار الزامی است.</li>
+                    <li>وارد کردن رنگ اول و دوم  لباس تیم ضروری است.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <form name="frmAddTeamColor" class="form-horizontal form-group-sm" novalidate ng-submit="addTeamColor()">
+        <div class="row">
+            <div class="form-group col-md-4">
+                <label for="exampleInputEmail1" class="control-label col-md-4"><span ng-show="showError(frmAddTeamColor.firstColor,'required')" class="glyphicon text-danger mandatory fx-fade-normal">*</span> رنگ اول</label>
+                <div class="col-md-8 has-feedback">
+                    <input type="text" class="form-control" name="firstColor" ng-model="firstColor" ng-required="true" ng-pattern="persianRegex" ng-model-options="{ debounce: 500 }" ng-minlength="2" ng-maxlength="40">
+                    <span class="glyphicon glyphicon-ok form-control-feedback text-success fx-fade-normal" ng-hide="isInvalid(frmAddTeamColor.firstColor)"></span>
+                    <span class="glyphicon glyphicon-remove form-control-feedback text-danger fx-fade-normal" ng-show="hasError(frmAddTeamColor.firstColor)"></span>
+                    <div class="text-danger col-md-12" ng-show="hasError(frmAddTeamColor.firstColor)">
+                        <div class="popover bottom show fx-fade-down" ng-show="hasError(frmAddTeamColor.firstColor)">
+                            <div class="arrow"></div>
+                            <div class="popover-content">
+                                <p ng-if="showError(frmAddTeamColor.firstColor,'required')">لطفا رنگ اول را وارد نمایید</p>
+                                <p ng-if="showError(frmAddTeamColor.firstColor,'pattern')">لطفا رنگ را به صورت فارسی وارد نمایید</p>
+                                <p ng-if="showError(frmAddTeamColor.firstColor,'minlength')">رنگ باید حداقل دو حرف باشد</p>
+                                <p ng-if="showError(frmAddTeamColor.firstColor,'maxlangth')">رنگ باید حداکثر چهل حرف باشد</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="exampleInputEmail1" class="control-label col-md-4"><span ng-show="showError(frmAddTeamColor.secondColor,'required')" class="glyphicon text-danger mandatory fx-fade-normal">*</span> رنگ دوم</label>
+                <div class="col-md-8 has-feedback">
+                    <input type="text" class="form-control" name="secondColor" ng-model="secondColor" ng-required="true" ng-pattern="persianRegex" ng-model-options="{ debounce: 500 }" ng-minlength="2" ng-maxlength="40">
+                    <span class="glyphicon glyphicon-ok form-control-feedback text-success fx-fade-normal" ng-hide="isInvalid(frmAddTeamColor.secondColor)"></span>
+                    <span class="glyphicon glyphicon-remove form-control-feedback text-danger fx-fade-normal" ng-show="hasError(frmAddTeamColor.secondColor)"></span>
+                    <div class="text-danger col-md-12" ng-show="hasError(frmAddTeamColor.secondColor)">
+                        <div class="popover bottom show fx-fade-down" ng-show="hasError(frmAddTeamColor.secondColor)">
+                            <div class="arrow"></div>
+                            <div class="popover-content">
+                                <p ng-if="showError(frmAddTeamColor.secondColor,'required')">لطفا رنگ دوم را وارد نمایید</p>
+                                <p ng-if="showError(frmAddTeamColor.secondColor,'pattern')">لطفا رنگ را به صورت فارسی وارد نمایید</p>
+                                <p ng-if="showError(frmAddTeamColor.secondColor,'minlength')">رنگ باید حداقل دو حرف باشد</p>
+                                <p ng-if="showError(frmAddTeamColor.secondColor,'maxlangth')">رنگ باید حداکثر چهل حرف باشد</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="exampleInputEmail1" class="control-label col-md-4"> رنگ سوم</label>
+                <div class="col-md-8 has-feedback">
+                    <input type="text" class="form-control" name="thirdColor" ng-model="thirdColor" ng-required="false" ng-pattern="persianRegex" ng-model-options="{ debounce: 500 }" ng-minlength="2" ng-maxlength="40">
+                    <span class="glyphicon glyphicon-ok form-control-feedback text-success fx-fade-normal" ng-hide="isInvalid(frmAddTeamColor.thirdColor)"></span>
+                    <span class="glyphicon glyphicon-remove form-control-feedback text-danger fx-fade-normal" ng-show="hasError(frmAddTeamColor.thirdColor)"></span>
+                    <div class="text-danger col-md-12" ng-show="hasError(frmAddTeamColor.thirdColor)">
+                        <div class="popover bottom show fx-fade-down" ng-show="hasError(frmAddTeamColor.thirdColor)">
+                            <div class="arrow"></div>
+                            <div class="popover-content">
+                                <p ng-if="showError(frmAddTeamColor.thirdColor,'required')">لطفا رنگ سوم را وارد نمایید</p>
+                                <p ng-if="showError(frmAddTeamColor.thirdColor,'pattern')">لطفا رنگ را به صورت فارسی وارد نمایید</p>
+                                <p ng-if="showError(frmAddTeamColor.thirdColor,'minlength')">رنگ باید حداقل دو حرف باشد</p>
+                                <p ng-if="showError(frmAddTeamColor.thirdColor,'maxlangth')">رنگ باید حداکثر چهل حرف باشد</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-1">
+                <button class="btn btn-success" ng-disabled="frmAddTeamColor.$invalid || submitButton.disable">{{submitButton.text}}</button>
+            </div>
+        </div>
+    </form>
+</fieldset>

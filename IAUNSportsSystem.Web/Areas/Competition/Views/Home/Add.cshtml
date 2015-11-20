@@ -1,0 +1,155 @@
+﻿<div class="row-fluid">
+    <div class="col-md-12">
+
+        <form name="frmAddCompetition" id="frmAddCompetition" novalidate ng-submit="addCompetition()">
+            <fieldset>
+                <legend>افزودن مسابقه جدید</legend>
+                <div class="form-horizontal">
+
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-md-2 control-label">عنوان مسابقه</label>
+                        <div class="col-md-5">
+                            <input required ng-minlength="5" ng-maxlength="250" type="text" class="form-control" name="competitionName" ng-model="competitionModel.Name" unique-input="/competition/home/checkuniquename" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" ng-model="competitionModel.isReadyActive"> فعال سازی اعلام آمادگی
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group fx-fade-right" ng-show="competitionModel.isReadyActive">
+                        <div class="row-fluid">
+                            <label for="inputPassword3" class="col-md-2 control-label">تاریخ شروع اعلام آمادگی</label>
+                            <div class="col-md-4">
+                                <div class="row-fluid">
+                                    <div class="col-md-3">
+                                        <input ng-required="competitionModel.isReadyActive" ng-model="readyStartDate.day" name="readyStartDay" type="number" min="1" max="31" class="form-control ltr text-center" placeholder="روز" />
+                                    </div>
+                                    <div class="pull-right" style="font-family: Tahoma; line-height: 30px;">/</div>
+                                    <div class="col-md-3">
+                                        <input ng-required="competitionModel.isReadyActive" ng-model="readyStartDate.month" type="number" min="1" max="12" name="readyStartMonth" class="form-control ltr text-center" placeholder="ماه" />
+                                    </div>
+                                    <div class="pull-right" style="font-family: Tahoma; line-height: 30px;">/</div>
+                                    <div class="col-md-3">
+                                        <input ng-required="competitionModel.isReadyActive" ng-model="readyStartDate.year" type="number" min="1394" max="1410" name="readyStartYear" class="form-control ltr text-center" placeholder="سال" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <label for="inputPassword3" class="col-md-2 control-label">تاریخ پایان اعلام آمادگی</label>
+                            <div class="col-md-4">
+                                <div class="row-fluid">
+                                    <div class="col-md-3">
+                                        <input type="number" min="1" max="31" ng-required="competitionModel.isReadyActive" ng-model="readyEndDate.day" name="readyEndDay" class="form-control ltr text-center" placeholder="روز" />
+                                    </div>
+                                    <div class="pull-right" style="font-family: Tahoma; line-height: 30px;">/</div>
+                                    <div class="col-md-3">
+                                        <input ng-required="competitionModel.isReadyActive" ng-model="readyEndDate.month" name="readyEndMonth" type="number" min="1" max="12" class="form-control ltr text-center" placeholder="ماه" />
+                                    </div>
+                                    <div class="pull-right" style="font-family: Tahoma; line-height: 30px;">/</div>
+                                    <div class="col-md-3">
+                                        <input ng-required="competitionModel.isReadyActive" ng-model="readyEndDate.year" name="readyEndYear" type="number" min="1394" max="1410" class="form-control ltr text-center" placeholder="سال" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" ng-model="competitionModel.isRegisterActive"> فعال سازی ثبت نام
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group fx-fade-right" ng-show="competitionModel.isRegisterActive">
+                        <div class="row-fluid">
+                            <label for="inputPassword3" class="col-md-2 control-label">تاریخ شروع ثبت نام</label>
+                            <div class="col-md-4">
+                                <div class="row-fluid">
+                                    <div class="col-md-3">
+                                        <input ng-required="competitionModel.isRegisterActive" ng-model="registerStartDate.day" name="registerStartDay" type="number" min="1" max="31" class="form-control ltr text-center" placeholder="روز" />
+                                    </div>
+                                    <div class="pull-right" style="font-family: Tahoma; line-height: 30px;">/</div>
+                                    <div class="col-md-3">
+                                        <input ng-required="competitionModel.isRegisterActive" ng-model="registerStartDate.month" type="number" min="1" max="12" name="registerreadyStartMonth" class="form-control ltr text-center" placeholder="ماه" />
+                                    </div>
+                                    <div class="pull-right" style="font-family: Tahoma; line-height: 30px;">/</div>
+                                    <div class="col-md-3">
+                                        <input ng-required="competitionModel.isRegisterActive" ng-model="registerStartDate.year" type="number" min="1394" max="1410" name="registerStartYear" class="form-control ltr text-center" placeholder="سال" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <label for="inputPassword3" class="col-md-2 control-label">تاریخ پایان ثبت نام</label>
+                            <div class="col-md-4">
+                                <div class="row-fluid">
+                                    <div class="col-md-3">
+                                        <input type="number" min="1" max="31" ng-required="competitionModel.isRegisterActive" ng-model="registerEndDate.day" name="registerEndDay" class="form-control ltr text-center" placeholder="روز" />
+                                    </div>
+                                    <div class="pull-right" style="font-family: Tahoma; line-height: 30px;">/</div>
+                                    <div class="col-md-3">
+                                        <input ng-required="competitionModel.isRegisterActive" ng-model="registerEndDate.month" name="registerEndMonth" type="number" min="1" max="12" class="form-control ltr text-center" placeholder="ماه" />
+                                    </div>
+                                    <div class="pull-right" style="font-family: Tahoma; line-height: 30px;">/</div>
+                                    <div class="col-md-3">
+                                        <input ng-required="competitionModel.isRegisterActive" ng-model="registerEndDate.year" name="registerEndYear" type="number" min="1394" max="1410" class="form-control ltr text-center" placeholder="سال" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-2 col-md-offset-1 validation-summary-errors fx-fade-down" ng-show="frmAddCompetition.competitionName.$dirty && frmAddCompetition.competitionName.$invalid">
+                            <small ng-show="frmAddCompetition.competitionName.$error.unique">
+                                قبلا مسابقه ای با این عنوان در سیستم ثبت شده است.
+                            </small>
+                            <small ng-show="frmAddCompetition.competitionName.$error.required">
+                                عنوان مسابقه باید وارد شود.
+                            </small>
+                            <small ng-show="frmAddCompetition.competitionName.$error.minlength">
+                                عنوان مسابقه حداقل 5 حرف می تواند باشد.
+                            </small>
+                            <small ng-show="frmAddCompetition.competitionName.$error.maxlength">
+                                عنوان مسابقه حداکثر 250 حرف می تواند باشد.
+                            </small>
+                        </div>
+
+                        @*<div class="col-md-2" ng-show="frmAddCompetition.competitionName.$dirty && frmAddCompetition.competitionName.$invalid">
+                                <small class="validation-summary-errors"
+                                       ng-show="frmAddCompetition.competitionName.$error.required">
+                                    عنوان مسابقه باید وارد شود.
+                                </small>
+                                <small class="validation-summary-errors"
+                                       ng-show="frmAddCompetition.competitionName.$error.minlength">
+                                    عنوان مسابقه حداقل 5 حرف می تواند باشد.
+                                </small>
+                                <small class="validation-summary-errors"
+                                       ng-show="frmAddCompetition.competitionName.$error.maxlength">
+                                    عنوان مسابقه حداکثر 250 حرف می تواند باشد.
+                                </small>
+                            </div>*@
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row-fluid">
+                            <div class="col-md-offset-1">
+                                <button type="submit" ng-disabled="frmAddCompetition.$invalid" class="btn btn-primary">ثبت مسابقه</button>
+                                <a href="/admin/#/competitionsport/add/{{competitionModel.id}}" class="btn btn-warning fx-fade-down" ng-show="competitionModel.id">وارد کردن رشته‌های ورزشی</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </fieldset>
+        </form>
+
+    </div>
+</div>
+

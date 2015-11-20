@@ -1,0 +1,198 @@
+﻿<fieldset>
+    <legend>افزودن مسابقه جدید</legend>
+    <span class="btn-back"><a href="#/competition" class="btn btn-primary"><i class="fa fa-reply fa-lg"></i> بازگشت به فهرست مسابقات</a></span>
+    <form name="frmAddCompetition" id="frmAddCompetition" class="form-horizontal form-group-sm" novalidate ng-submit="addCompetition()">
+        <div class="form-group">
+            <label for="inputEmail3" class="col-md-2 control-label">عنوان مسابقه</label>
+            <div class="col-md-5">
+                <input required ng-minlength="5" ng-maxlength="250" type="text" class="form-control" name="competitionName" ng-model="competitionModel.name" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-6 col-md-offset-2">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" ng-model="competitionModel.isReadyActive"> فعال سازی اعلام آمادگی
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group fx-fade-right" ng-show="competitionModel.isReadyActive">
+            <label for="inputPassword3" class="col-md-2 control-label">تاریخ شروع اعلام آمادگی</label>
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-12">
+                        <input style="width: 55px;" ng-required="competitionModel.isReadyActive" ng-model="readyStartDate.day" name="readyStartDay" type="number" min="1" max="31" class="form-control ltr text-center pull-right" placeholder="روز" ng-model-options="{ updateOn: 'default blur', debounce: { default: 1000, blur: 0 } }" />
+
+                        <div class="pull-right" style="font-family: Tahoma; line-height: 30px;">/</div>
+
+                        <input style="width: 55px;" ng-required="competitionModel.isReadyActive" ng-model="readyStartDate.month" type="number" min="1" max="12" name="insuranceEndDateMonth" class="form-control ltr text-center pull-right" placeholder="ماه" ng-model-options="{ updateOn: 'default blur', debounce: { default: 1000, blur: 0 } }" />
+
+                        <div class="pull-right" style="font-family: Tahoma; line-height: 30px;">/</div>
+
+                        <input style="width: 65px;" ng-required="competitionModel.isReadyActive" ng-model="readyStartDate.year" type="number" min="1390" max="1410" name="insuranceEndDateYear" class="form-control ltr text-center pull-right" placeholder="سال" ng-model-options="{ updateOn: 'default blur', debounce: { default: 1000, blur: 0 } }" />
+                    </div>
+                </div>
+
+            </div>
+            <label for="inputPassword3" class="col-md-2 control-label">تاریخ پایان اعلام آمادگی</label>
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-12">
+                        <input style="width: 55px;" ng-required="competitionModel.isReadyActive" ng-model="readyEndDate.day" name="readyStartDay" type="number" min="1" max="31" class="form-control ltr text-center pull-right" placeholder="روز" ng-model-options="{ updateOn: 'default blur', debounce: { default: 1000, blur: 0 } }" />
+
+                        <div class="pull-right" style="font-family: Tahoma; line-height: 30px;">/</div>
+
+                        <input style="width: 55px;" ng-required="competitionModel.isReadyActive" ng-model="readyEndDate.month" type="number" min="1" max="12" name="insuranceEndDateMonth" class="form-control ltr text-center pull-right" placeholder="ماه" ng-model-options="{ updateOn: 'default blur', debounce: { default: 1000, blur: 0 } }" />
+
+                        <div class="pull-right" style="font-family: Tahoma; line-height: 30px;">/</div>
+
+                        <input style="width: 65px;" ng-required="competitionModel.isReadyActive" ng-model="readyEndDate.year" type="number" min="1390" max="1400" name="insuranceEndDateYear" class="form-control ltr text-center pull-right" placeholder="سال" ng-model-options="{ updateOn: 'default blur', debounce: { default: 1000, blur: 0 } }" />
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-6 col-md-offset-2">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" ng-model="competitionModel.isRegisterActive"> فعال سازی ثبت نام
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group fx-fade-right" ng-show="competitionModel.isRegisterActive">
+            <label for="inputPassword3" class="col-md-2 control-label">تاریخ شروع ثبت نام</label>
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-12">
+                        <input style="width: 55px;" ng-required="competitionModel.isRegisterActive" ng-model="registerStartDate.day" name="registerStartDay" type="number" min="1" max="31" class="form-control ltr text-center pull-right" placeholder="روز" ng-model-options="{ updateOn: 'default blur', debounce: { default: 1000, blur: 0 } }" />
+
+                        <div class="pull-right" style="font-family: Tahoma; line-height: 30px;">/</div>
+
+                        <input style="width: 55px;" ng-required="competitionModel.isRegisterActive" ng-model="registerStartDate.month" type="number" min="1" max="12" name="registerreadyStartMonth" class="form-control ltr text-center pull-right" placeholder="ماه" ng-model-options="{ updateOn: 'default blur', debounce: { default: 1000, blur: 0 } }" />
+
+                        <div class="pull-right" style="font-family: Tahoma; line-height: 30px;">/</div>
+
+                        <input style="width: 65px;" ng-required="competitionModel.isRegisterActive" ng-model="registerStartDate.year" type="number" min="1394" max="1410" name="registerStartYear" class="form-control ltr text-center pull-right" placeholder="سال" ng-model-options="{ updateOn: 'default blur', debounce: { default: 1000, blur: 0 } }" />
+                    </div>
+                </div>
+
+            </div>
+
+            <label for="inputPassword3" class="col-md-2 control-label">تاریخ پایان ثبت نام</label>
+
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-12">
+                        <input type="number" style="width: 55px;" min="1" max="31" ng-required="competitionModel.isRegisterActive" ng-model="registerEndDate.day" name="registerEndDay" class="form-control ltr text-center pull-right" placeholder="روز" ng-model-options="{ updateOn: 'default blur', debounce: { default: 1000, blur: 0 } }" />
+
+                        <div class="pull-right" style="font-family: Tahoma; line-height: 30px;">/</div>
+
+                        <input style="width: 55px;" ng-required="competitionModel.isRegisterActive" ng-model="registerEndDate.month" name="registerEndMonth" type="number" min="1" max="12" class="form-control ltr text-center pull-right" placeholder="ماه" ng-model-options="{ updateOn: 'default blur', debounce: { default: 1000, blur: 0 } }" />
+
+                        <div class="pull-right" style="font-family: Tahoma; line-height: 30px;">/</div>
+
+                        <input style="width: 65px;" ng-required="competitionModel.isRegisterActive" ng-model="registerEndDate.year" name="registerEndYear" type="number" min="1394" max="1410" class="form-control ltr text-center pull-right" placeholder="سال" ng-model-options="{ updateOn: 'default blur', debounce: { default: 1000, blur: 0 } }" />
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-6 col-md-offset-2">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" ng-model="competitionModel.isPrintCardActive"> فعال سازی چاپ کارت
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group fx-fade-right" ng-show="competitionModel.isPrintCardActive">
+            <label for="inputPassword3" class="col-md-2 control-label">تاریخ شروع چاپ کارت</label>
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-12">
+                        <input style="width: 55px;" ng-required="competitionModel.isPrintCardActive" ng-model="printCardStartDate.day" name="printCardStartDay" type="number" min="1" max="31" class="form-control ltr text-center pull-right" placeholder="روز" ng-model-options="{ updateOn: 'default blur', debounce: { default: 1000, blur: 0 } }" />
+
+                        <div class="pull-right" style="font-family: Tahoma; line-height: 30px;">/</div>
+
+                        <input style="width: 55px;" ng-required="competitionModel.isPrintCardActive" ng-model="printCardStartDate.month" type="number" min="1" max="12" name="printCardEndStartMonth" class="form-control ltr text-center pull-right" placeholder="ماه" ng-model-options="{ updateOn: 'default blur', debounce: { default: 1000, blur: 0 } }" />
+
+                        <div class="pull-right" style="font-family: Tahoma; line-height: 30px;">/</div>
+
+                        <input style="width: 65px;" ng-required="competitionModel.isPrintCardActive" ng-model="printCardStartDate.year" type="number" min="1390" max="1400" name="printCardEndYear" class="form-control ltr text-center pull-right" placeholder="سال" ng-model-options="{ updateOn: 'default blur', debounce: { default: 1000, blur: 0 } }" />
+                    </div>
+                </div>
+            </div>
+
+            <label for="inputPassword3" class="col-md-2 control-label">تاریخ پایان چاپ کارت</label>
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-12">
+                        <input style="width: 55px;" ng-required="competitionModel.isPrintCardActive" ng-model="printCardEndDate.day" name="printCardEndDay" type="number" min="1" max="31" class="form-control ltr text-center pull-right" placeholder="روز" ng-model-options="{ updateOn: 'default blur', debounce: { default: 1000, blur: 0 } }" />
+
+                        <div class="pull-right" style="font-family: Tahoma; line-height: 30px;">/</div>
+
+                        <input style="width: 55px;" ng-required="competitionModel.isPrintCardActive" ng-model="printCardEndDate.month" type="number" min="1" max="12" name="printCardEndMonth" class="form-control ltr text-center pull-right" placeholder="ماه" ng-model-options="{ updateOn: 'default blur', debounce: { default: 1000, blur: 0 } }" />
+
+                        <div class="pull-right" style="font-family: Tahoma; line-height: 30px;">/</div>
+
+                        <input style="width: 65px;" ng-required="competitionModel.isPrintCardActive" ng-model="printCardEndDate.year" type="number" min="1390" max="1400" name="printCardEndYear" class="form-control ltr text-center pull-right" placeholder="سال" ng-model-options="{ updateOn: 'default blur', debounce: { default: 1000, blur: 0 } }" />
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label">سقف تعداد خدمه</label>
+            <div class="col-md-1">
+                <input required type="number" class="form-control ltr" name="maxCommonTechnicalStaffs" ng-model="competitionModel.maxCommonTechnicalStaffs" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label">قوانین و دستور العمل ها</label>
+            <div class="col-md-6">
+                <div ckeditor="editorOptions" ng-model="competitionModel.rule" ready=""></div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="form-group col-md-6">
+                <label for="exampleInputEmail1" class="control-label col-md-4">لوگوی مسابقات</label>
+                <div class="col-md-8">
+                    <div data-ng-switch data-on="!logoImageUrl">
+                        <div class="dropbox" ngf-drop ngf-select ng-model="files" ngf-change="uploadLogoImage($files)" ng-model-rejected="rejFiles"
+                             ngf-drag-over-class="{accept:'dragover', reject:'dragover-err', delay:100}"
+                             ngf-multiple="false" ngf-allow-dir="true" ngf-accept="'.jpg,.png'"
+                             ngf-drop-available="dropAvailable" ngf-min-size='10' ngf-max-size='200000'>
+                            <div data-ng-switch-when="true" style="margin-top: 100px;">
+                                <div ng-hide="dropAvailable">File Drop not available</div>
+                                <span>لوگوی را با حداکثر حجم 200 کیلوبایت و با فرمت jpg یا png  در این کادر رها کنید</span>
+                                <br>
+                                یا اینجا را کلیک کنید
+                            </div>
+                            <div data-ng-switch-when="false">
+                                <img style="max-height: 220px;" ng-src="{{logoImageUrl}}" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center" style="padding: 5px;" ng-show="logoImageUrl"><a ng-href="{{logoImageUrl}}" target="_blank"><i class="fa fa-lg fa-search-plus"></i> نمایش تصویر</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10 col-md-offset-1">
+                <button type="submit" ng-disabled="frmAddCompetition.$invalid" class="btn btn-primary">ثبت مسابقه</button>
+                <a href="/admin/#/competitionsport/add/{{competitionModel.id}}" class="btn btn-warning fx-fade-down" ng-show="competitionModel.id">مشاهده فهرست رشته‌های ورزشی</a>
+            </div>
+        </div>
+    </form>
+</fieldset>
+

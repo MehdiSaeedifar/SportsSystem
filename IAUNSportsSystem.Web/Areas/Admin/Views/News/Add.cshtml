@@ -1,0 +1,29 @@
+﻿<fieldset>
+    <legend>افزودن خبر </legend>
+    <span class="btn-back"><a href="#/news" class="btn btn-primary"><i class="fa fa-reply fa-lg"></i> بازگشت به فهرست اخبار</a></span>
+    <form name="frmNews" class="form-horizontal form-group-sm" role="form" novalidate ng-submit="submitNews()">
+        <div class="form-group">
+            <label for="rptpassword" class="col-md-2 control-label"><span ng-show="showError(frmNews.title,'required')" class="glyphicon text-danger mandatory fx-fade-normal">*</span> عنوان خبر</label>
+            <div class="col-md-4 has-feedback">
+                <input type="text" class="form-control" name="title" ng-model="news.title" ng-required="true" ng-model-options="{ updateOn: 'default blur', debounce: { default: 1000, blur: 0 } }">
+            </div>
+        </div>
+        <div class="form-group fx-fade-down">
+            <label for="rptpassword" class="col-md-2 control-label"><span ng-show="showError(frmNews.body,'required')" class="glyphicon text-danger mandatory fx-fade-normal">*</span> متن پست سایت</label>
+            <div class="col-md-5">
+                <textarea ckeditor="editorOptions" class="form-control" ng-model="news.body" name="body" rows="4" style="height: auto;" ng-required="false"></textarea>
+            </div>
+        </div>
+        <div class="alert alert-danger fx-fade-down" ng-show="errors.length > 0">
+            <ul>
+                <li ng-repeat="error in errors">{{error}}</li>
+            </ul>
+        </div>
+        <div class="form-group">
+            <div class="col-md-4">
+                <button ng-disabled="frmNews.$invalid" type="submit" class="btn btn-primary">ثبت خبر</button>
+            </div>
+        </div>
+    </form>
+</fieldset>
+

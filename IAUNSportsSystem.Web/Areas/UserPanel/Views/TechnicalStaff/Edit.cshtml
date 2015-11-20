@@ -1,0 +1,209 @@
+﻿<fieldset style="background-color: #fff;">
+    <legend id="topSection">افزودن خدمه {{::competition.a}}</legend>
+    <span class="btn-back"><a href="#/technicalstaff/{{::participationId}}" clas clas clas class="btn btn-primary"><i class="fa fa-reply fa-lg"></i> بازگشت به فهرست اعضای کادر فنی</a></span>
+    <div class="alert alert-info">
+        <h4>لطفا به موارد زیر توجه فرمایید</h4>
+        <ul class="" style="line-height: 30px;">
+            <li>وارد کردن فیلد‌های ستاره دار الزامی است.</li>
+            <li>لطفا در وارد کردن اطلاعات، نهایت دقت را مبذول فرمایید تا روند بررسی اطلاعات تسریع گردد.</li>
+            <li>تا پایان مهلت اعلام شده برای ثبت نام، شما قادر خواهید بود تا با مراجعه به سایت اطلاعات وارد شده را ویرایش کنید.</li>
+        </ul>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div ng-if="technicalStaff.isApproved == false" class="alert alert-danger" style="margin-bottom: 0; margin-top: 20px;">
+                <h4>لطفا اشکالات زیر را برطرف نمایید:</h4>
+                <div ng-bind-html="technicalStaff.error"></div>
+            </div>
+        </div>
+    </div>
+    <fieldset>
+        <legend>اطلاعات فردی و ضروری</legend>
+        <form name="frmAddTechnicalStaff" class="form-horizontal form-group-sm" novalidate ng-submit="addTechnicalStaff(frmAddTechnicalStaff)">
+            <div class="row">
+                <div class="form-group col-md-4">
+                    <label class="control-label col-md-4"><span ng-show="showError(frmAddTechnicalStaff.nationalCode,'required')" class="glyphicon text-danger mandatory">*</span> کد ملی </label>
+                    <div class="col-md-8 has-feedback ltr">
+                        <input type="text" class="form-control ltr" name="nationalCode" ng-model="technicalStaff.nationalCode" ng-required="true" ng-pattern="numberRegEx" ng-model-options="{ updateOn: 'default blur', debounce: { default: 1000, blur: 0 } }" ng-minlength="10" ng-maxlength="10">
+                        <span class="glyphicon glyphicon-ok form-control-feedback text-success fx-fade-normal" ng-hide="isInvalid(frmAddTechnicalStaff.nationalCode)"></span>
+                        <span class="glyphicon glyphicon-remove form-control-feedback text-danger fx-fade-normal" ng-show="hasError(frmAddTechnicalStaff.nationalCode)"></span>
+                        <div class="text-danger col-md-12" ng-show="hasError(frmAddTechnicalStaff.nationalCode)">
+                            <div class="popover bottom show fx-fade-down" ng-show="hasError(frmAddTechnicalStaff.nationalCode)">
+                                <div class="arrow"></div>
+                                <div class="popover-content">
+                                    <p ng-if="showError(frmAddTechnicalStaff.nationalCode,'pattern')">لطفا کد ملی 10 رقمی را به صورت عدد وارد نمایید</p>
+                                    <p ng-if="showError(frmAddTechnicalStaff.nationalCode,'required')">لطفا کد ملی 10 رقمی را وارد نمایید</p>
+                                    <p ng-if="showError(frmAddTechnicalStaff.nationalCode,'minlength') || showError(frmAddTechnicalStaff.nationalCode,'maxlength') ">کد ملی عددی 10 رقمی است</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        <label for="exampleInputEmail1" class="control-label col-md-4"><span ng-show="showError(frmAddTechnicalStaff.firstName,'required')" class="glyphicon text-danger mandatory fx-fade-normal">*</span> نام</label>
+                        <div class="col-md-8 has-feedback">
+                            <input type="text" class="form-control" name="firstName" ng-model="technicalStaff.firstName" ng-required="true" ng-pattern="persianRegex" ng-model-options="{ debounce: 500 }" ng-minlength="3" ng-maxlength="40">
+                            <span class="glyphicon glyphicon-ok form-control-feedback text-success fx-fade-normal" ng-hide="isInvalid(frmAddTechnicalStaff.firstName)"></span>
+                            <span class="glyphicon glyphicon-remove form-control-feedback text-danger fx-fade-normal" ng-show="hasError(frmAddTechnicalStaff.firstName)"></span>
+                            <div class="text-danger col-md-12" ng-show="hasError(frmAddTechnicalStaff.firstName)">
+                                <div class="popover bottom show fx-fade-down" ng-show="hasError(frmAddTechnicalStaff.firstName)">
+                                    <div class="arrow"></div>
+                                    <div class="popover-content">
+                                        <p ng-if="showError(frmAddTechnicalStaff.firstName,'required')">لطفا نام را وارد نمایید</p>
+                                        <p ng-if="showError(frmAddTechnicalStaff.firstName,'pattern')">لطفا نام را به صورت فارسی وارد نمایید</p>
+                                        <p ng-if="showError(frmAddTechnicalStaff.firstName,'minlength')">نام باید حداقل سه حرف باشد</p>
+                                        <p ng-if="showError(frmAddTechnicalStaff.firstName,'maxlangth')">نام باید حداکثر چهل حرف باشد</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="exampleInputEmail1" class="control-label col-md-4"><span ng-show="showError(frmAddTechnicalStaff.lastName,'required')" class="glyphicon text-danger mandatory">*</span> نام خانوادگی</label>
+                        <div class="col-md-8 has-feedback">
+                            <input type="text" class="form-control" name="lastName" ng-model="technicalStaff.lastName" ng-required="true" ng-pattern="persianRegex" ng-model-options="{ debounce: 500 }" ng-minlength="2" ng-maxlength="80">
+                            <span class="glyphicon glyphicon-ok form-control-feedback text-success" ng-hide="isInvalid(frmAddTechnicalStaff.lastName)"></span>
+                            <span class="glyphicon glyphicon-remove form-control-feedback text-danger" ng-show="hasError(frmAddTechnicalStaff.lastName)"></span>
+                            <div class="text-danger col-md-12" ng-show="hasError(frmAddTechnicalStaff.lastName)">
+                                <div class="popover bottom show">
+                                    <div class="arrow"></div>
+                                    <div class="popover-content">
+                                        <p ng-if="showError(frmAddTechnicalStaff.lastName,'required')">لطفا نام خانوادگی را وارد نمایید</p>
+                                        <p ng-if="showError(frmAddTechnicalStaff.lastName,'pattern')">لطفا نام خانوادگی را به صورت فارسی وارد نمایید</p>
+                                        <p ng-if="showError(frmAddTechnicalStaff.lastName,'minlength')">نام خانوادگی باید حداقل دو حرف باشد</p>
+                                        <p ng-if="showError(frmAddTechnicalStaff.lastName,'maxlangth')">نام خانوادگی باید حداکثر هشتاد حرف باشد</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        <label for="exampleInputEmail1" class="control-label col-md-4"><span ng-show="showError(frmAddTechnicalStaff.fatherName,'required')" class="glyphicon text-danger mandatory">*</span> نام پدر</label>
+                        <div class="col-md-8 has-feedback">
+                            <input type="text" class="form-control" name="fatherName" ng-model="technicalStaff.fatherName" ng-required="true" ng-pattern="persianRegex" ng-model-options="{ debounce: 500 }" ng-minlength="3" ng-maxlength="40">
+                            <span class="glyphicon glyphicon-ok form-control-feedback text-success" ng-hide="isInvalid(frmAddTechnicalStaff.fatherName)"></span>
+                            <span class="glyphicon glyphicon-remove form-control-feedback text-danger" ng-show="hasError(frmAddTechnicalStaff.fatherName)"></span>
+                            <div class="text-danger col-md-12" ng-show="hasError(frmAddTechnicalStaff.fatherName)">
+                                <div class="popover bottom show">
+                                    <div class="arrow"></div>
+                                    <div class="popover-content">
+                                        <p ng-if="showError(frmAddTechnicalStaff.fatherName,'required')">لطفا نام پدر را وارد نمایید</p>
+                                        <p ng-if="showError(frmAddTechnicalStaff.fatherName,'pattern')">لطفا نام پدر را به صورت فارسی وارد نمایید</p>
+                                        <p ng-if="showError(frmAddTechnicalStaff.fatherName,'minlength')">نام پدر باید حداقل سه حرف باشد</p>
+                                        <p ng-if="showError(frmAddTechnicalStaff.fatherName,'maxlangth')">نام پدر باید حداکثر چهل حرف باشد</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        <label for="inputPassword3" class="col-md-4 control-label"><span ng-show="showError(frmAddTechnicalStaff.birthDateDay,'required') || showError(frmAddTechnicalStaff.birthDateMonth,'required') || showError(frmAddTechnicalStaff.birthDateYear,'required')" class="glyphicon text-danger mandatory">*</span> تاریخ تولد</label>
+                        <div class="col-md-8">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <input style="width: 42px;" ng-required="true" ng-model="birthDate.day" name="birthDateDay" type="number" min="1" max="31" class="form-control ltr text-center pull-right" placeholder="روز" ng-model-options="{ debounce: 500 }" />
+                                    <div class="pull-right" style="font-family: Tahoma; line-height: 30px;">/</div>
+                                    <input style="width: 42px;" ng-required="true" ng-model="birthDate.month" type="number" min="1" max="12" name="birthDateMonth" class="form-control ltr text-center pull-right" placeholder="ماه" ng-model-options="{ debounce: 500 }" />
+                                    <div class="pull-right" style="font-family: Tahoma; line-height: 30px;">/</div>
+                                    <input style="width: 55px;" ng-required="true" ng-model="birthDate.year" type="number" min="1300" max="1390" name="birthDateYear" class="form-control ltr text-center pull-right" placeholder="سال" ng-model-options="{ debounce: 500 }" />
+                                </div>
+                                <div class="text-danger col-md-12" ng-show="hasError(frmAddTechnicalStaff.birthDateDay) || hasError(frmAddTechnicalStaff.birthDateMonth) || hasError(frmAddTechnicalStaff.birthDateYear)">
+                                    <div class="popover bottom show">
+                                        <div class="arrow"></div>
+                                        <div class="popover-content">
+                                            <p ng-if="showError(frmAddTechnicalStaff.birthDateDay,'required') && isDirty(frmAddTechnicalStaff.birthDateDay)">لطفا روز تولد را وارد نمایید</p>
+                                            <p ng-if="showError(frmAddTechnicalStaff.birthDateDay,'min') || showError(frmAddTechnicalStaff.birthDateDay,'max')">روز تولد می تواند بین 1 تا 31 باشد</p>
+                                            <p ng-if="showError(frmAddTechnicalStaff.birthDateDay,'number') && isDirty(frmAddTechnicalStaff.birthDateDay)">لطفا روز تولد را به صورت عدد وارد نمایید</p>
+                                            <p ng-if="showError(frmAddTechnicalStaff.birthDateMonth,'required') && isDirty(frmAddTechnicalStaff.birthDateMonth)">لطفا ماه تولد را وارد نمایید</p>
+                                            <p ng-if="showError(frmAddTechnicalStaff.birthDateMonth,'min') || showError(frmAddTechnicalStaff.birthDateMonth,'max')">ماه تولد می تواند بین 1 تا 12 باشد</p>
+                                            <p ng-if="showError(frmAddTechnicalStaff.birthDateMonth,'number') && isDirty(frmAddTechnicalStaff.birthDateMonth)">لطفا ماه تولد را به صورت عدد وارد نمایید</p>
+                                            <p ng-if="showError(frmAddTechnicalStaff.birthDateYear,'required') && isDirty(frmAddTechnicalStaff.birthDateYear)">لطفا سال تولد را وارد نمایید</p>
+                                            <p ng-if="showError(frmAddTechnicalStaff.birthDateYear,'min') || showError(frmAddTechnicalStaff.birthDateYear,'max')">سال تولد می تواند بین 1300 تا 1390 باشد</p>
+                                            <p ng-if="showError(frmAddTechnicalStaff.birthDateYear,'number') && isDirty(frmAddTechnicalStaff.birthDateYear)">لطفا سال تولد را به صورت عددی وارد نمایید</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="exampleInputEmail1" class="control-label col-md-4">تلفن همراه</label>
+                        <div class="col-md-8 has-feedback ltr">
+                            <input type="text" class="form-control ltr" name="mobileNumber" ng-model="technicalStaff.mobileNumber" ng-pattern="mobileNumberRegex" ng-pattern="mobileNumberRegex" ng-model-options="{ updateOn: 'default blur', debounce: { default: 1000, blur: 0 } }">
+                            <div class="text-danger col-md-12" ng-show="hasError(frmAddTechnicalStaff.mobileNumber)">
+                                <div class="popover bottom show">
+                                    <div class="arrow"></div>
+                                    <div class="popover-content">
+                                        <p ng-if="showError(frmAddTechnicalStaff.mobileNumber,'pattern')">تلفن همراه وارد شده باید برای مثال به شکل 09131234567 باشد</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label for="exampleInputEmail1" class="control-label col-md-2"><span ng-show="showError(frmAddTechnicalStaff.userImageUrl,'required')" class="glyphicon text-danger mandatory">*</span> عکس</label>
+                        <div class="col-md-8">
+                            <div data-ng-switch data-on="!imageFiles.userImageUrl">
+                                <div class="dropbox" ngf-drop ngf-select ng-model="files" ngf-change="uploadUserImage($files)" ng-model-rejected="rejFiles"
+                                     ngf-drag-over-class="{accept:'dragover', reject:'dragover-err', delay:100}"
+                                     ngf-multiple="false" ngf-allow-dir="true" ngf-accept="'.jpg,.png'"
+                                     ngf-drop-available="dropAvailable" ngf-min-size='10' ngf-max-size='100000'>
+                                    <div data-ng-switch-when="true" style="margin-top: 100px;">
+                                        <div ng-hide="dropAvailable">File Drop not available</div>
+                                        <span>عکس خود را با حداکثر حجم 100 کیلوبایت و با فرمت jpg یا png  در این کادر رها کنید</span>
+                                        <br>
+                                        یا اینجا را کلیک کنید
+                                    </div>
+                                    <div data-ng-switch-when="false">
+                                        <img style="max-height: 220px;" ng-src="{{imageFiles.userImageUrl}}" />
+                </div>
+                                </div>
+                            </div>
+                            <div class="progress" ng-hide="uploadProgressBars.userImage.value ==0 || uploadProgressBars.userImage.value == 100">
+                                <div class="progress-bar" role="progressbar" ng-style="{width: uploadProgressBars.userImage.value+'%'}">
+                                    {{uploadProgressBars.userImage.value}}%
+                                </div>
+                            </div>
+                            <div class="text-center" style="padding: 5px;" ng-show="imageFiles.userImageUrl">
+                                <a ng-href="{{imageFiles.userImageUrl}}" target="_blank"><i class="fa fa-lg fa-search-plus"></i> نمایش تصویر</a>
+                            </div>
+                            <input type="hidden" name="userImageUrl" ng-model="imageFiles.userImageUrl" ng-required="true" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-4">
+                    <label for="exampleInputEmail1" class="control-label col-md-4">سمت</label>
+                    <div class="col-md-8">
+                        <select class="form-control" placeholder="asdasd" ng-options="item.id as item.name for item in technicalStaffRoles" ng-model="technicalStaff.technicalStaffRoleId" ng-required="true"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="alert alert-danger fx-fade-down" ng-show="errors.length > 0">
+                <ul>
+                    <li ng-repeat="error in errors">{{error}}</li>
+                </ul>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-4">
+                    <div class="col-md-4">
+                        <button type="submit" class="btn btn-success" ng-disabled="frmAddTechnicalStaff.$invalid || submitButton.disable">{{submitButton.text}}</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </fieldset>
+</fieldset>
+

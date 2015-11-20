@@ -1,0 +1,79 @@
+﻿<fieldset>
+    <legend>مدیران سیستم</legend>
+    <div class="row">
+        <div class="col-md-5" style="padding-top: 15px; padding-bottom: 20px;">
+            <a href="#/user/add" class="btn btn-success">
+                <i class="fa fa-lg fa-user-plus"></i> افزودن مدیر
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    فهرست مدیران سیستم
+                </div>
+                <div class="table-responsive">
+                    <table st-resize st-safe-src="users" st-table="displayedUsers" class="table table-bordered table-hover table-condensed th-center">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th><span st-sort="firstName">نام</span></th>
+                            <th><span st-sort="lastName" st-sort-default="true">نام خانوادگی</span></th>
+                            <th><span st-sort="email">پست الکترونیکی</span></th>
+                            <th><span st-sort="role">نقش</span></th>
+                            <th>عملیات</th>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <th>
+                                <input st-search="firstName" placeholder="جستجو در نام" class="input-sm form-control" type="search"/>
+                            </th>
+                            <th><input st-search="lastName" placeholder="جستجو در نام خانوادگی" class="input-sm form-control" type="search"/></th>
+                            <th><input st-search="email" placeholder="جستجو در پست الکترونیکی" class="input-sm form-control" type="search"/></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="row in displayedUsers" class="fx-fade-down">
+                            <td>{{$index+1}}</td>
+                            <td class="vert-align">{{row.firstName}}</td>
+                            <td class="vert-align">{{row.lastName}}</td>
+                            <td class="vert-align">{{row.email}}</td>
+                            <td class="vert-align">{{row.role}}</td>
+                            <td class="vert-align">
+                                <a class="btn btn-primary btn-sm" href="#/user/edit/{{row.id}}">
+                                    <i class="fa fa-edit fa-lg"></i> ویرایش
+                                </a>
+                                <button class="btn btn-danger btn-sm" ng-click="deleteUser($index,row)">
+                                    <i class="fa fa-trash-o fa-lg"></i> حذف
+                                </button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</fieldset>
+
+<script type="text/ng-template" id="deleteUser.html">
+    <div class="modal-header">
+        <h3 class="modal-title"></h3>
+    </div>
+    <div class="modal-body">
+        <div class="alert alert-danger">
+            آیا از حذف  {{user.firstName}} {{ user.lastName}} مطمئن هستید؟
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="cancel()">انصراف</button>
+        <button class="btn btn-danger" ng-click="ok()">بله</button>
+    </div>
+</script>
+
+
+
+

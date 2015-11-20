@@ -1,0 +1,474 @@
+﻿<fieldset id="topSection" style="background-color: #fff;">
+    <legend>افزودن بازیکن جدید {{::competitionSport.sportName}} {{::competitionSport.sportCategory}} {{::competitionSport.sportDetail}} {{::competitionSport.gender | gender: 'plural'}}</legend>
+    <span class="btn-back"><a href="#/competitor/{{competitionSport.id}}" class="btn btn-primary"><i class="fa fa-reply fa-lg"></i> بازگشت به فهرست بازیکنان</a></span>
+    <div class="alert alert-info">
+        <h4>لطفا به موارد زیر توجه فرمایید</h4>
+        <ul class="" style="line-height: 30px;">
+            <li>وارد کردن فیلد‌های ستاره دار الزامی است.</li>
+            <li>لطفا در وارد کردن اطلاعات، نهایت دقت را مبذول فرمایید تا روند بررسی اطلاعات تسریع گردد.</li>
+            <li>تا پایان مهلت اعلام شده برای ثبت نام، شما قادر خواهید بود تا با مراجعه به سایت اطلاعات وارد شده را ویرایش کنید.</li>
+        </ul>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="text-center" style="margin: 5px 0 0 0;">
+                <div class="alert alert-success" style="margin-bottom: 0;">
+                    <ul class="list-inline">
+                        <li class="text-success">تعداد بازیکنان ثبت شده: {{competitionSport.competitorsCount}} نفر</li>
+                        <li class="text-danger">سقف مجاز بازیکنان: {{competitionSport.maxCompetitors}} نفر</li>
+                    </ul>
+                </div>
+                <div ng-if="competitionSport.maxCompetitors == competitionSport.competitorsCount" class="alert alert-danger" style="margin-bottom: 0; margin-top: 20px;">
+                    <h5>سقف مجاز بازیکنان پر شده است.</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <form name="frmAddCompetitor" class="form-horizontal form-group-sm" novalidate ng-submit="addCompetitor(frmAddCompetitor)">
+        <fieldset>
+            <legend>اطلاعات فردی و ضروری</legend>
+            <div class="row">
+
+                <div class="form-group col-md-4">
+                    <label for="exampleInputEmail1" class="control-label col-md-4"><span ng-show="showError(frmAddCompetitor.firstName,'required')" class="glyphicon text-danger mandatory fx-fade-normal">*</span> نام</label>
+                    <div class="col-md-8 has-feedback">
+                        <input type="text" class="form-control" name="firstName" ng-model="competitor.firstName" ng-required="true" ng-pattern="persianRegex" ng-model-options="{ updateOn: 'default blur', debounce: { default: 1000, blur: 0 } }" ng-minlength="3" ng-maxlength="40">
+                        <span class="glyphicon glyphicon-ok form-control-feedback text-success fx-fade-normal" ng-hide="isInvalid(frmAddCompetitor.firstName)"></span>
+                        <span class="glyphicon glyphicon-remove form-control-feedback text-danger fx-fade-normal" ng-show="hasError(frmAddCompetitor.firstName)"></span>
+                        <div class="text-danger col-md-12" ng-show="hasError(frmAddCompetitor.firstName)">
+                            <div class="popover bottom show fx-fade-down" ng-show="hasError(frmAddCompetitor.firstName)">
+                                <div class="arrow"></div>
+                                <div class="popover-content">
+                                    <p ng-if="showError(frmAddCompetitor.firstName,'required')">لطفا نام را وارد نمایید</p>
+                                    <p ng-if="showError(frmAddCompetitor.firstName,'pattern')">لطفا نام را به صورت فارسی وارد نمایید</p>
+                                    <p ng-if="showError(frmAddCompetitor.firstName,'minlength')">نام باید حداقل سه حرف باشد</p>
+                                    <p ng-if="showError(frmAddCompetitor.firstName,'maxlangth')">نام باید حداکثر چهل حرف باشد</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label for="exampleInputEmail1" class="control-label col-md-4"><span ng-show="showError(frmAddCompetitor.lastName,'required')" class="glyphicon text-danger mandatory">*</span> نام خانوادگی</label>
+                    <div class="col-md-8 has-feedback">
+                        <input type="text" class="form-control" name="lastName" ng-model="competitor.lastName" ng-required="true" ng-pattern="persianRegex" ng-model-options="{ updateOn: 'default blur', debounce: { default: 1000, blur: 0 } }" ng-minlength="2" ng-maxlength="80">
+                        <span class="glyphicon glyphicon-ok form-control-feedback text-success" ng-hide="isInvalid(frmAddCompetitor.lastName)"></span>
+                        <span class="glyphicon glyphicon-remove form-control-feedback text-danger" ng-show="hasError(frmAddCompetitor.lastName)"></span>
+                        <div class="text-danger col-md-12" ng-show="hasError(frmAddCompetitor.lastName)">
+                            <div class="popover bottom show">
+                                <div class="arrow"></div>
+                                <div class="popover-content">
+                                    <p ng-if="showError(frmAddCompetitor.lastName,'required')">لطفا نام خانوادگی را وارد نمایید</p>
+                                    <p ng-if="showError(frmAddCompetitor.lastName,'pattern')">لطفا نام خانوادگی را به صورت فارسی وارد نمایید</p>
+                                    <p ng-if="showError(frmAddCompetitor.lastName,'minlength')">نام خانوادگی باید حداقل دو حرف باشد</p>
+                                    <p ng-if="showError(frmAddCompetitor.lastName,'maxlangth')">نام خانوادگی باید حداکثر هشتاد حرف باشد</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label for="exampleInputEmail1" class="control-label col-md-4"><span ng-show="showError(frmAddCompetitor.fatherName,'required')" class="glyphicon text-danger mandatory">*</span> نام پدر</label>
+                    <div class="col-md-8 has-feedback">
+                        <input type="text" class="form-control" name="fatherName" ng-model="competitor.fatherName" ng-required="true" ng-pattern="persianRegex" ng-model-options="{ updateOn: 'default blur', debounce: { default: 1000, blur: 0 } }" ng-minlength="3" ng-maxlength="40">
+                        <span class="glyphicon glyphicon-ok form-control-feedback text-success" ng-hide="isInvalid(frmAddCompetitor.fatherName)"></span>
+                        <span class="glyphicon glyphicon-remove form-control-feedback text-danger" ng-show="hasError(frmAddCompetitor.fatherName)"></span>
+                        <div class="text-danger col-md-12" ng-show="hasError(frmAddCompetitor.fatherName)">
+                            <div class="popover bottom show">
+                                <div class="arrow"></div>
+                                <div class="popover-content">
+                                    <p ng-if="showError(frmAddCompetitor.fatherName,'required')">لطفا نام پدر را وارد نمایید</p>
+                                    <p ng-if="showError(frmAddCompetitor.fatherName,'pattern')">لطفا نام پدر را به صورت فارسی وارد نمایید</p>
+                                    <p ng-if="showError(frmAddCompetitor.fatherName,'minlength')">نام پدر باید حداقل سه حرف باشد</p>
+                                    <p ng-if="showError(frmAddCompetitor.fatherName,'maxlangth')">نام پدر باید حداکثر چهل حرف باشد</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="form-group col-md-4">
+                    <label for="exampleInputEmail1" class="control-label col-md-4"><span ng-show="showError(frmAddCompetitor.nationalCode,'required')" class="glyphicon text-danger mandatory">*</span> کد ملی</label>
+                    <div class="col-md-8 has-feedback ltr">
+                        <input type="text" class="form-control ltr" name="nationalCode" ng-model="competitor.nationalCode" ng-required="true" ng-pattern="numberRegEx" ng-model-options="{ updateOn: 'default blur', debounce: { default: 1000, blur: 0 } }" ng-minlength="10" ng-maxlength="10">
+                        <span class="glyphicon glyphicon-ok form-control-feedback text-success fx-fade-normal" ng-hide="isInvalid(frmAddCompetitor.nationalCode)"></span>
+                        <span class="glyphicon glyphicon-remove form-control-feedback text-danger fx-fade-normal" ng-show="hasError(frmAddCompetitor.nationalCode)"></span>
+                        <div class="text-danger col-md-12" ng-show="hasError(frmAddCompetitor.nationalCode)">
+                            <div class="popover bottom show fx-fade-down" ng-show="hasError(frmAddCompetitor.nationalCode)">
+                                <div class="arrow"></div>
+                                <div class="popover-content">
+                                    <p ng-if="showError(frmAddCompetitor.nationalCode,'pattern')">لطفا کد ملی 10 رقمی را به صورت عدد وارد نمایید</p>
+                                    <p ng-if="showError(frmAddCompetitor.nationalCode,'required')">لطفا کد ملی 10 رقمی را وارد نمایید</p>
+                                    <p ng-if="showError(frmAddCompetitor.nationalCode,'minlength') || showError(frmAddCompetitor.nationalCode,'maxlength') ">کد ملی عددی 10 رقمی است</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label for="exampleInputEmail1" class="control-label col-md-4"><span ng-show="showError(frmAddCompetitor.studentNumber,'required')" class="glyphicon text-danger mandatory">*</span> شماره دانشجویی</label>
+                    <div class="col-md-8 has-feedback ltr">
+                        <input type="text" class="form-control ltr" name="studentNumber" ng-model="competitor.studentNumber" ng-required="true" ng-pattern="numberRegEx" ng-model-options="{ updateOn: 'default blur', debounce: { default: 1000, blur: 0 } }" minlength="5">
+                        <span class="glyphicon glyphicon-ok form-control-feedback text-success fx-fade-normal" ng-hide="isInvalid(frmAddCompetitor.studentNumber)"></span>
+                        <span class="glyphicon glyphicon-remove form-control-feedback text-danger fx-fade-normal" ng-show="hasError(frmAddCompetitor.studentNumber)"></span>
+                        <div class="text-danger col-md-12" ng-show="hasError(frmAddCompetitor.studentNumber)">
+                            <div class="popover bottom show">
+                                <div class="arrow"></div>
+                                <div class="popover-content">
+                                    <p ng-if="showError(frmAddCompetitor.studentNumber,'pattern')">لطفا شماره دانشجویی را به صورت عدد وارد نمایید</p>
+                                    <p ng-if="showError(frmAddCompetitor.studentNumber,'required')">لطفا شماره دانشجویی را وارد نمایید</p>
+                                    <p ng-if="showError(frmAddCompetitor.studentNumber,'minlength')">شماره دانشجویی حداقل 5 عدداست</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label for="inputPassword3" class="col-md-4 control-label"><span ng-show="showError(frmAddCompetitor.birthDateDay,'required') || showError(frmAddCompetitor.birthDateMonth,'required') || showError(frmAddCompetitor.birthDateYear,'required')" class="glyphicon text-danger mandatory">*</span> تاریخ تولد</label>
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <input style="width: 42px;" ng-required="true" ng-model="birthDate.day" name="birthDateDay" type="number" min="1" max="31" class="form-control ltr text-center pull-right" placeholder="روز" ng-model-options="{ updateOn: 'default blur', debounce: { default: 1000, blur: 0 } }" />
+                                <div class="pull-right" style="font-family: Tahoma; line-height: 30px;">/</div>
+                                <input style="width: 42px;" ng-required="true" ng-model="birthDate.month" type="number" min="1" max="12" name="birthDateMonth" class="form-control ltr text-center pull-right" placeholder="ماه" ng-model-options="{ updateOn: 'default blur', debounce: { default: 1000, blur: 0 } }" />
+                                <div class="pull-right" style="font-family: Tahoma; line-height: 30px;">/</div>
+                                <input style="width: 55px;" ng-required="true" ng-model="birthDate.year" type="number" min="1300" max="1390" name="birthDateYear" class="form-control ltr text-center pull-right" placeholder="سال" ng-model-options="{ updateOn: 'default blur', debounce: { default: 1000, blur: 0 } }" />
+                            </div>
+
+                        </div>
+                        <div class="text-danger col-md-12" ng-show="hasError(frmAddCompetitor.birthDateDay) || hasError(frmAddCompetitor.birthDateMonth) || hasError(frmAddCompetitor.birthDateYear)">
+                            <div class="popover bottom show">
+                                <div class="arrow"></div>
+                                <div class="popover-content">
+                                    <p ng-if="showError(frmAddCompetitor.birthDateDay,'required') && isDirty(frmAddCompetitor.birthDateDay)">لطفا روز تولد را وارد نمایید</p>
+                                    <p ng-if="showError(frmAddCompetitor.birthDateDay,'min') || showError(frmAddCompetitor.birthDateDay,'max')">روز تولد می تواند بین 1 تا 31 باشد</p>
+                                    <p ng-if="showError(frmAddCompetitor.birthDateDay,'number') && isDirty(frmAddCompetitor.birthDateDay)">لطفا روز تولد را به صورت عددی وارد نمایید</p>
+                                    <p ng-if="showError(frmAddCompetitor.birthDateMonth,'required') && isDirty(frmAddCompetitor.birthDateMonth)">لطفا ماه تولد را وارد نمایید</p>
+                                    <p ng-if="showError(frmAddCompetitor.birthDateMonth,'number') && isDirty(frmAddCompetitor.birthDateMonth)">لطفا ماه تولد را به صورت عدد وارد نمایید</p>
+                                    <p ng-if="showError(frmAddCompetitor.birthDateMonth,'min') || showError(frmAddCompetitor.birthDateMonth,'max')">ماه تولد می تواند بین 1 تا 12 باشد</p>
+                                    <p ng-if="showError(frmAddCompetitor.birthDateYear,'required') && isDirty(frmAddCompetitor.birthDateYear)">لطفا سال تولد را وارد نمایید</p>
+                                    <p ng-if="showError(frmAddCompetitor.birthDateYear,'number') && isDirty(frmAddCompetitor.birthDateYear)">لطفا سال تولد را به صورت عددی وارد نمایید</p>
+                                    <p ng-if="showError(frmAddCompetitor.birthDateYear,'min') || showError(frmAddCompetitor.birthDateYear,'max')">سال تولد می تواند بین 1300 تا 1390 باشد</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="form-group col-md-4">
+                    <label for="exampleInputEmail1" class="control-label col-md-4">رشته تحصیلی</label>
+                    <div class="col-md-8">
+                        <ui-select ng-required="true" name="studyFieldId" ng-model="competitor.studyFieldId" theme="bootstrap">
+                            <ui-select-match allow-clear="false" placeholder="رشته تحصیلی راانتخاب کنید">{{$select.selected.name}}</ui-select-match>
+                            <ui-select-choices repeat="item.id as item in viewModel.studyFields | filter: $select.search">
+                                <span ng-bind-html="item.name | highlight: $select.search"></span>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label for="exampleInputEmail1" class="control-label col-md-4">مقطع تحصیلی</label>
+                    <div class="col-md-8">
+                        <select class="form-control" name="studyFieldDegreeId" placeholder="asdasd" ng-options="item.id as item.name for item in viewModel.studyFieldDegrees" ng-model="competitor.studyFieldDegreeId" ng-required="true"></select>
+                    </div>
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label for="exampleInputEmail1" class="control-label col-md-4"><span ng-show="showError(frmAddCompetitor.insuranceNumber,'required')" class="glyphicon text-danger mandatory">*</span> شماره کارت بیمه</label>
+                    <div class="col-md-8 has-feedback ltr">
+                        <input type="text" class="form-control ltr" name="insuranceNumber" ng-model="competitor.insuranceNumber" ng-required="true" ng-pattern="numberRegEx" ng-model-options="{ updateOn: 'default blur', debounce: { default: 1000, blur: 0 } }" minlength="5">
+                        <span class="glyphicon glyphicon-ok form-control-feedback text-success fx-fade-normal" ng-hide="isInvalid(frmAddCompetitor.insuranceNumber)"></span>
+                        <span class="glyphicon glyphicon-remove form-control-feedback text-danger fx-fade-normal" ng-show="hasError(frmAddCompetitor.insuranceNumber)"></span>
+                        <div class="text-danger col-md-12" ng-show="hasError(frmAddCompetitor.insuranceNumber)">
+                            <div class="popover bottom show">
+                                <div class="arrow"></div>
+                                <div class="popover-content">
+                                    <p ng-if="showError(frmAddCompetitor.insuranceNumber,'pattern')">لطفا شماره کارت بیمه را به صورت عدد وارد نمایید</p>
+                                    <p ng-if="showError(frmAddCompetitor.insuranceNumber,'required')">لطفا شماره کارت بیمه را وارد نمایید</p>
+                                    <p ng-if="showError(frmAddCompetitor.insuranceNumber,'minlength')">شماره کارت بیمه حداقل 5 عدداست</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="form-group col-md-4">
+                    <label for="inputPassword3" class="col-md-4 control-label"><span ng-show="showError(frmAddCompetitor.insuranceEndDateDay,'required') || showError(frmAddCompetitor.insuranceEndDateMonth,'required') || showError(frmAddCompetitor.insuranceEndDateYear,'required')" class="glyphicon text-danger mandatory">*</span>تاریخ اتمام بیمه</label>
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <input style="width: 42px;" ng-required="true" ng-model="insuranceEndDate.day" name="insuranceEndDateDay" type="number" min="1" max="31" class="form-control ltr text-center pull-right" placeholder="روز" ng-model-options="{ updateOn: 'default blur', debounce: { default: 1000, blur: 0 } }" />
+                                <div class="pull-right" style="font-family: Tahoma; line-height: 30px;">/</div>
+                                <input style="width: 42px;" ng-required="true" ng-model="insuranceEndDate.month" type="number" min="1" max="12" name="insuranceEndDateMonth" class="form-control ltr text-center pull-right" placeholder="ماه" ng-model-options="{ updateOn: 'default blur', debounce: { default: 1000, blur: 0 } }" />
+                                <div class="pull-right" style="font-family: Tahoma; line-height: 30px;">/</div>
+                                <input style="width: 55px;" ng-required="true" ng-model="insuranceEndDate.year" type="number" min="1393" max="1404" name="insuranceEndDateYear" class="form-control ltr text-center pull-right" placeholder="سال" ng-model-options="{ updateOn: 'default blur', debounce: { default: 1000, blur: 0 } }" />
+                            </div>
+                            <div class="text-danger col-md-12" ng-show="hasError(frmAddCompetitor.insuranceEndDateDay) || hasError(frmAddCompetitor.insuranceEndDateMonth) || hasError(frmAddCompetitor.insuranceEndDateYear)">
+                                <div class="popover bottom show">
+                                    <div class="arrow"></div>
+                                    <div class="popover-content">
+                                        <p ng-if="showError(frmAddCompetitor.insuranceEndDateDay,'required') && isDirty(frmAddCompetitor.insuranceEndDateDay)">لطفا روز را وارد نمایید</p>
+                                        <p ng-if="showError(frmAddCompetitor.insuranceEndDateDay,'min') || showError(frmAddCompetitor.insuranceEndDateDay,'max')">روز می تواند بین 1 تا 31 باشد</p>
+                                        <p ng-if="showError(frmAddCompetitor.insuranceEndDateDay,'number') && isDirty(frmAddCompetitor.insuranceEndDateDay)">لطفا روز را به صورت عددی وارد نمایید</p>
+                                        <p ng-if="showError(frmAddCompetitor.insuranceEndDateMonth,'required') && isDirty(frmAddCompetitor.insuranceEndDateMonth)">لطفا ماه را وارد نمایید</p>
+                                        <p ng-if="showError(frmAddCompetitor.insuranceEndDateMonth,'min') || showError(frmAddCompetitor.insuranceEndDateMonth,'max')">ماه می تواند بین 1 تا 12 باشد</p>
+                                        <p ng-if="showError(frmAddCompetitor.insuranceEndDateMonth,'number') && isDirty(frmAddCompetitor.insuranceEndDateMonth)">لطفا ماه را به صورت عدد وارد نمایید</p>
+                                        <p ng-if="showError(frmAddCompetitor.insuranceEndDateYear,'required') && isDirty(frmAddCompetitor.insuranceEndDateYear)">لطفا سال را وارد نمایید</p>
+                                        <p ng-if="showError(frmAddCompetitor.insuranceEndDateYear,'min') || showError(frmAddCompetitor.insuranceEndDateYear,'max')">سال می تواند بین 1393 تا 1404 باشد</p>
+                                        <p ng-if="showError(frmAddCompetitor.insuranceEndDateYear,'number') && isDirty(frmAddCompetitor.insuranceEndDateYear)">لطفا سال تولد را به صورت عددی وارد نمایید</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </fieldset>
+
+        <fieldset>
+            <legend>اطلاعات اختیاری</legend>
+            <div class="row">
+
+                <div class="form-group col-md-4">
+                    <label for="exampleInputEmail1" class="control-label col-md-4">پست الکترونیکی</label>
+                    <div class="col-md-8">
+                        <input type="email" class="form-control ltr" name="email" ng-model="competitor.email" ng-model-options="{ updateOn: 'default blur', debounce: { default: 1000, blur: 0 } }">
+                        <div class="text-danger col-md-12" ng-show="hasError(frmAddCompetitor.email)">
+                            <div class="popover bottom show">
+                                <div class="arrow"></div>
+                                <div class="popover-content">
+                                    <p ng-if="showError(frmAddCompetitor.email,'email')">پست الکترونیکی وارد شده صحیح نمی باشد</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label for="exampleInputEmail1" class="control-label col-md-4">تلفن همراه</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control ltr" name="mobileNumber" ng-model="competitor.mobileNumber" ng-pattern="mobileNumberRegex" ng-model-options="{ updateOn: 'default blur', debounce: { default: 1000, blur: 0 } }">
+                        <div class="text-danger col-md-12" ng-show="hasError(frmAddCompetitor.mobileNumber)">
+                            <div class="popover bottom show">
+                                <div class="arrow"></div>
+                                <div class="popover-content">
+                                    <p ng-if="showError(frmAddCompetitor.mobileNumber,'pattern')">تلفن همراه وارد شده باید برای مثال به شکل 09131234567 باشد</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label for="exampleInputEmail1" class="control-label col-md-4">تلفن ثابت</label>
+                    <div class="col-md-8">
+                        <input type="number" class="form-control ltr" name="phoneNumber" ng-model="competitor.phoneNumber" ng-model-options="{ updateOn: 'default blur', debounce: { default: 1000, blur: 0 } }">
+                        <div class="text-danger col-md-12" ng-show="hasError(frmAddCompetitor.phoneNumber)">
+                            <div class="popover bottom show">
+                                <div class="arrow"></div>
+                                <div class="popover-content">
+                                    <p ng-if="showError(frmAddCompetitor.phoneNumber,'number')">شماره تلفن به صورت عددی است</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-md-4">
+                    <label for="exampleInputEmail1" class="control-label col-md-4">وزن</label>
+                    <div class="col-md-5">
+                        <input type="number" class="form-control" id="exampleInputEmail1" name="weight" placeholder="به کیلوگرم" ng-model="competitor.weight" ng-model-options="{ updateOn: 'default blur', debounce: { default: 1000, blur: 0 } }" min="20" max="200">
+                        <div class="text-danger col-md-12" ng-show="hasError(frmAddCompetitor.weight)">
+                            <div class="popover bottom show">
+                                <div class="arrow"></div>
+                                <div class="popover-content">
+                                    <p ng-if="showError(frmAddCompetitor.weight,'max') || showError(frmAddCompetitor.weight,'min')|| showError(frmAddCompetitor.weight,'number')">وزن باید بین 20 تا 200 باشد</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label for="exampleInputEmail1" class="control-label col-md-4">قد</label>
+                    <div class="col-md-5">
+                        <input type="number" name="height" class="form-control" id="exampleInputEmail1" placeholder="به سانتی متر" ng-model="competitor.height" ng-model-options="{ updateOn: 'default blur', debounce: { default: 1000, blur: 0 } }" min="50" max="220">
+                        <div class="text-danger col-md-12" ng-show="hasError(frmAddCompetitor.height)">
+                            <div class="popover bottom show">
+                                <div class="arrow"></div>
+                                <div class="popover-content">
+                                    <p ng-if="showError(frmAddCompetitor.height,'max') || showError(frmAddCompetitor.height,'min')|| showError(frmAddCompetitor.height,'number')">قد باید بین 50 تا 220 باشد</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </fieldset>
+
+        <fieldset>
+            <legend>تصاویر مدارک</legend>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="exampleInputEmail1" class="control-label col-md-2"> <span ng-show="showError(frmAddCompetitor.userImageUrl,'required')" class="glyphicon text-danger mandatory">*</span> عکس</label>
+                    <div class="col-md-8">
+                        <div data-ng-switch data-on="!imageFiles.userImageUrl">
+                            <div class="dropbox" ngf-drop ngf-select ng-model="files" ngf-change="uploadUserImage($files)" ng-model-rejected="rejFiles"
+                                 ngf-drag-over-class="{accept:'dragover', reject:'dragover-err', delay:100}"
+                                 ngf-multiple="false" ngf-allow-dir="true" ngf-accept="'.jpg,.png'"
+                                 ngf-drop-available="dropAvailable" ngf-min-size='10' ngf-max-size='100000'>
+                                <div data-ng-switch-when="true" style="margin-top: 100px;">
+                                    <div ng-hide="dropAvailable">File Drop not available</div>
+                                    @*<div ng-show="dropAvailable">Drop Images or PDFs</div>*@
+                                    <span>عکس خود را با حداکثر حجم 100 کیلوبایت و با فرمت jpg یا png  در این کادر رها کنید</span>
+                                    <br>
+                                    یا اینجا را کلیک کنید
+                                </div>
+                                <div data-ng-switch-when="false">
+                                    <img class="img-responsive" style="max-height: 220px; display: inline;" ng-src="{{imageFiles.userImageUrl}}" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="progress" ng-hide="uploadProgressBars.userImage.value ==0 || uploadProgressBars.userImage.value == 100">
+                            <div class="progress-bar" role="progressbar" ng-style="{width: uploadProgressBars.userImage.value+'%'}">
+                                {{uploadProgressBars.userImage.value}}%
+                            </div>
+                        </div>
+                        <div class="text-center" style="padding: 5px;" ng-show="imageFiles.userImageUrl">
+                            <a ng-href="{{imageFiles.userImageUrl}}" target="_blank"><i class="fa fa-lg fa-search-plus"></i> نمایش تصویر</a>
+                        </div>
+                        <input type="hidden" name="userImageUrl" ng-model="imageFiles.userImageUrl" ng-required="true" />
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="exampleInputEmail1" class="control-label col-md-4"> <span ng-show="showError(frmAddCompetitor.studentCertificateImageUrl,'required')" class="glyphicon text-danger mandatory">*</span> گواهی اشتفال به تحصیل</label>
+                    <div class="col-md-8">
+                        <div data-ng-switch data-on="!imageFiles.studentCertificateImageUrl">
+                            <div class="dropbox" ngf-drop ngf-select ng-model="files" ngf-change="uploadStudentCertificateImage($files)" ng-model-rejected="rejFiles"
+                                 ngf-drag-over-class="{accept:'dragover', reject:'dragover-err', delay:100}"
+                                 ngf-multiple="false" ngf-allow-dir="true" ngf-accept="'.jpg,.png'"
+                                 ngf-drop-available="dropAvailable" ngf-min-size='10' ngf-max-size='200000'>
+                                <div data-ng-switch-when="true" style="margin-top: 100px;">
+                                    <div ng-hide="dropAvailable">File Drop not available</div>
+                                    @*<div ng-show="dropAvailable">Drop Images or PDFs</div>*@
+                                    <span>عکس خود را با حداکثر حجم 200 کیلوبایت و با فرمت jpg یا png  در این کادر رها کنید</span>
+                                    <br>
+                                    یا اینجا را کلیک کنید
+                                </div>
+                                <div data-ng-switch-when="false">
+                                    <img class="img-responsive" style="max-height: 220px; display: inline;" ng-src="{{imageFiles.studentCertificateImageUrl}}" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="progress" ng-hide="uploadProgressBars.studentCertificateImage.value ==0 || uploadProgressBars.studentCertificateImage.value == 100">
+                            <div class="progress-bar" role="progressbar" ng-style="{width: uploadProgressBars.studentCertificateImage.value+'%'}">
+                                {{uploadProgressBars.studentCertificateImage.value}}%
+                            </div>
+                        </div>
+                        <div class="text-center" style="padding: 5px;" ng-show="imageFiles.studentCertificateImageUrl">
+                            <a ng-href="{{imageFiles.studentCertificateImageUrl}}" target="_blank"><i class="fa fa-lg fa-search-plus"></i> نمایش تصویر</a>
+                        </div>
+                        <input type="hidden" name="studentCertificateImageUrl" ng-model="imageFiles.studentCertificateImageUrl" ng-required="true" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="exampleInputEmail1" class="control-label col-md-2"><span ng-show="showError(frmAddCompetitor.insuranceImageUrl,'required')" class="glyphicon text-danger mandatory">*</span> کارت بیمه</label>
+                    <div class="col-md-8">
+                        <div data-ng-switch data-on="!imageFiles.insuranceImageUrl">
+                            <div class="dropbox" ngf-drop ngf-select ng-model="files" ngf-change="uploadInsuranceImage($files)" ng-model-rejected="rejFiles"
+                                 ngf-drag-over-class="{accept:'dragover', reject:'dragover-err', delay:100}"
+                                 ngf-multiple="false" ngf-allow-dir="true" ngf-accept="'.jpg,.png'"
+                                 ngf-drop-available="dropAvailable" ngf-min-size='10' ngf-max-size='200000'>
+                                <div data-ng-switch-when="true" style="margin-top: 100px;">
+                                    <div ng-hide="dropAvailable">File Drop not available</div>
+                                    @*<div ng-show="dropAvailable">Drop Images or PDFs</div>*@
+                                    <span>عکس خود را با حداکثر حجم 200 کیلوبایت و با فرمت jpg یا png  در این کادر رها کنید</span>
+                                    <br>
+                                    یا اینجا را کلیک کنید
+                                </div>
+                                <div data-ng-switch-when="false">
+                                    <img class="img-responsive" style="max-height: 220px;display: inline;" ng-src="{{imageFiles.insuranceImageUrl}}" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="progress" ng-hide="uploadProgressBars.insuranceImage.value ==0 || uploadProgressBars.insuranceImage.value == 100">
+                            <div class="progress-bar" role="progressbar" ng-style="{width: uploadProgressBars.insuranceImage.value+'%'}">
+                                {{uploadProgressBars.insuranceImage.value}}%
+                            </div>
+                        </div>
+                        <div class="text-center" style="padding: 5px;" ng-show="imageFiles.insuranceImageUrl">
+                            <a ng-href="{{imageFiles.insuranceImageUrl}}" target="_blank"><i class="fa fa-lg fa-search-plus"></i> نمایش تصویر</a>
+                        </div>
+                        <input type="hidden" name="insuranceImageUrl" ng-model="imageFiles.insuranceImageUrl" ng-required="true" />
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="exampleInputEmail1" class="control-label col-md-4"><span ng-show="showError(frmAddCompetitor.azmoonConfirmationImageUrl,'required')" class="glyphicon text-danger mandatory">*</span> تائیدیه مرکز آزمون</label>
+                    <div class="col-md-8">
+                        <div data-ng-switch data-on="!imageFiles.azmoonConfirmationImageUrl">
+                            <div class="dropbox" ngf-drop ngf-select ng-model="files" ngf-change="uploadAzmoonConfirmationImage($files)" ng-model-rejected="rejFiles"
+                                 ngf-drag-over-class="{accept:'dragover', reject:'dragover-err', delay:100}"
+                                 ngf-multiple="false" ngf-allow-dir="true" ngf-accept="'.jpg,.png'"
+                                 ngf-drop-available="dropAvailable" ngf-min-size='10' ngf-max-size='200000'>
+                                <div data-ng-switch-when="true" style="margin-top: 100px;">
+                                    <div ng-hide="dropAvailable">File Drop not available</div>
+                                    @*<div ng-show="dropAvailable">Drop Images or PDFs</div>*@
+                                    <span>عکس خود را با حداکثر حجم 200 کیلوبایت و با فرمت jpg یا png  در این کادر رها کنید</span>
+                                    <br>
+                                    یا اینجا را کلیک کنید
+                                </div>
+                                <div data-ng-switch-when="false">
+                                    <img class="img-responsive" style="max-height: 220px;display: inline;" ng-src="{{imageFiles.azmoonConfirmationImageUrl}}" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="progress" ng-hide="uploadProgressBars.azmoonConfirmationImage.value ==0 || uploadProgressBars.azmoonConfirmationImage.value == 100">
+                            <div class="progress-bar" role="progressbar" ng-style="{width: uploadProgressBars.azmoonConfirmationImage.value+'%'}">
+                                {{uploadProgressBars.azmoonConfirmationImage.value}}%
+                            </div>
+                        </div>
+                        <div class="text-center" style="padding: 5px;" ng-show="imageFiles.azmoonConfirmationImageUrl">
+                            <a ng-href="{{imageFiles.azmoonConfirmationImageUrl}}" target="_blank"><i class="fa fa-lg fa-search-plus"></i> نمایش تصویر</a>
+                        </div>
+                        <input type="hidden" name="azmoonConfirmationImageUrl" ng-model="imageFiles.azmoonConfirmationImageUrl" ng-required="true" />
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <div class="alert alert-danger fx-fade-down" ng-show="errors.length > 0">
+            <ul>
+                <li ng-repeat="error in errors">{{error}}</li>
+            </ul>
+        </div>
+        <div>
+            <button class="btn btn-primary" ng-disabled="frmAddCompetitor.$invalid || competitionSport.maxCompetitors == competitionSport.competitorsCount || submitButton.disable" type="submit"><i class="fa fa-check fa-lg"></i> {{submitButton.text}} </button>
+            <a href="#/competitor/{{competitionSport.id}}" class="btn btn-warning"><i class="fa fa-reply fa-lg"></i> بازگشت به فهرست بازیکنان</a>
+        </div>
+
+    </form>
+</fieldset>

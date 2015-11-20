@@ -1,0 +1,1020 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5924E83A-20E6-426D-8D3D-427BE92A5EE5}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>IAUNSportsSystem.Web</RootNamespace>
+    <AssemblyName>IAUNSportsSystem.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="DNTProfiler.Common">
+      <HintPath>..\packages\DNTProfiler.EntityFramework.Core.1.2.814.0\lib\net45\DNTProfiler.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="DNTProfiler.EntityFramework.Core">
+      <HintPath>..\packages\DNTProfiler.EntityFramework.Core.1.2.814.0\lib\net45\DNTProfiler.EntityFramework.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Elmah">
+      <HintPath>..\packages\elmah.corelibrary.1.2\lib\Elmah.dll</HintPath>
+    </Reference>
+    <Reference Include="Elmah.Mvc">
+      <HintPath>..\packages\Elmah.Mvc.2.1.2\lib\net40\Elmah.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus">
+      <HintPath>..\packages\EPPlus.4.0.3\lib\net20\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp">
+      <HintPath>..\packages\iTextSharp.5.5.5\lib\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp.pdfa">
+      <HintPath>..\packages\itextsharp.pdfa.5.5.5\lib\itextsharp.pdfa.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp.xmlworker">
+      <HintPath>..\packages\itextsharp.xmlworker.5.5.5\lib\itextsharp.xmlworker.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PdfRpt">
+      <HintPath>..\packages\PdfReport.2.8\lib\net45\PdfRpt.dll</HintPath>
+    </Reference>
+    <Reference Include="Postal">
+      <HintPath>..\packages\Postal.Mvc5.1.2.0\lib\net45\Postal.dll</HintPath>
+    </Reference>
+    <Reference Include="RazorEngine">
+      <HintPath>..\packages\RazorEngine.3.4.1\lib\net45\RazorEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap">
+      <HintPath>..\packages\structuremap.3.1.1.134\lib\net40\StructureMap.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap.Net4">
+      <HintPath>..\packages\structuremap.3.1.1.134\lib\net40\StructureMap.Net4.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap.Web">
+      <HintPath>..\packages\structuremap.web.3.1.0.133\lib\net40\StructureMap.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Expression.Blend.Sdk.1.0.2\lib\net45\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="WebActivatorEx">
+      <HintPath>..\packages\WebActivatorEx.2.0.5\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\StructuremapMvc.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AnnouncementController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CompetitionController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CompetitionRepresentativeUserController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CompetitionSportController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DormController.cs" />
+    <Compile Include="Areas\Admin\Controllers\NewsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ReadinessController.cs" />
+    <Compile Include="Areas\Admin\Controllers\RegisterController.cs" />
+    <Compile Include="Areas\Admin\Controllers\RepresentativeUserController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SlideShowController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SportController.cs" />
+    <Compile Include="Areas\Admin\Controllers\StudyFieldController.cs" />
+    <Compile Include="Areas\Admin\Controllers\StudyFieldDegreeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\TechnicalStaffRoleController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UniversityController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UserController.cs" />
+    <Compile Include="Areas\Announcement\AnnouncementAreaRegistration.cs" />
+    <Compile Include="Areas\Announcement\Controllers\AdminController.cs" />
+    <Compile Include="Areas\Announcement\ViewModels\AnnouncementViewModel.cs" />
+    <Compile Include="Areas\Card\CardAreaRegistration.cs" />
+    <Compile Include="Areas\Card\Controllers\UserPanelController.cs" />
+    <Compile Include="Areas\CommonTechnicalStaff\CommonTechnicalStaffAreaRegistration.cs" />
+    <Compile Include="Areas\CommonTechnicalStaff\Controllers\UserPanelController.cs" />
+    <Compile Include="Areas\CompetitionRepresentativeUser\CompetitionRepresentativeUserAreaRegistration.cs" />
+    <Compile Include="Areas\CompetitionRepresentativeUser\Controllers\AdminController.cs" />
+    <Compile Include="Areas\CompetitionSport\CompetitionSportAreaRegistration.cs" />
+    <Compile Include="Areas\CompetitionSport\Controllers\HomeController.cs" />
+    <Compile Include="Areas\CompetitionSport\ViewModels\AddCompetitionSportViewModel.cs" />
+    <Compile Include="Areas\Competition\CompetitionAreaRegistration.cs" />
+    <Compile Include="Areas\Competition\Controllers\AdminController.cs" />
+    <Compile Include="Areas\Competition\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Competition\ViewModels\CompetitionViewModel.cs" />
+    <Compile Include="Areas\Competitor\CompetitorAreaRegistration.cs" />
+    <Compile Include="Areas\Competitor\Controllers\AdminController.cs" />
+    <Compile Include="Areas\Competitor\Controllers\UserPanelController.cs" />
+    <Compile Include="Areas\Competitor\ViewModels\CompetitorViewModel.cs" />
+    <Compile Include="Areas\Dorm\Controllers\AdminController.cs" />
+    <Compile Include="Areas\Dorm\DormAreaRegistration.cs" />
+    <Compile Include="Areas\Dorm\Models\DormViewModel.cs" />
+    <Compile Include="Areas\File\Controllers\HomeController.cs" />
+    <Compile Include="Areas\File\Controllers\SlideShowController.cs" />
+    <Compile Include="Areas\File\FileAreaRegistration.cs" />
+    <Compile Include="Areas\News\Controllers\AdminController.cs" />
+    <Compile Include="Areas\News\Controllers\HomeController.cs" />
+    <Compile Include="Areas\News\NewsAreaRegistration.cs" />
+    <Compile Include="Areas\News\ViewModels\NewsViewModel.cs" />
+    <Compile Include="Areas\Participation\Controllers\CompetitorController.cs" />
+    <Compile Include="Areas\Participation\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Participation\Controllers\UserPanelController.cs" />
+    <Compile Include="Areas\Participation\ParticipationAreaRegistration.cs" />
+    <Compile Include="Areas\Participation\ViewModels\AddCompetitorViewModel.cs" />
+    <Compile Include="Areas\Participation\ViewModels\EditApprovalViewModel.cs" />
+    <Compile Include="Areas\Readiness\Controllers\AdminController.cs" />
+    <Compile Include="Areas\Readiness\ReadinessAreaRegistration.cs" />
+    <Compile Include="Areas\Register\Controllers\AdminController.cs" />
+    <Compile Include="Areas\Register\RegisterAreaRegistration.cs" />
+    <Compile Include="Areas\Register\ViewModels\TechnicalStaffApprovalViewModel.cs" />
+    <Compile Include="Areas\Report\Controllers\AdminController.cs" />
+    <Compile Include="Areas\Report\Controllers\CardsController.cs" />
+    <Compile Include="Areas\Report\ReportAreaRegistration.cs" />
+    <Compile Include="Areas\RepresentativeUser\Controllers\AdminController.cs" />
+    <Compile Include="Areas\RepresentativeUser\Controllers\HomeController.cs" />
+    <Compile Include="Areas\RepresentativeUser\Controllers\RegisterController.cs" />
+    <Compile Include="Areas\RepresentativeUser\Controllers\UserPanelController.cs" />
+    <Compile Include="Areas\RepresentativeUser\RepresentativeUserAreaRegistration.cs" />
+    <Compile Include="Areas\RepresentativeUser\ViewModels\ChangePasswordViewModel.cs" />
+    <Compile Include="Areas\RepresentativeUser\ViewModels\RegisterRepresentativeUser.cs" />
+    <Compile Include="Areas\RepresentativeUser\ViewModels\RepresentativeUserViewModel.cs" />
+    <Compile Include="Areas\SlideShow\Controllers\HomeController.cs" />
+    <Compile Include="Areas\SlideShow\SlideShowAreaRegistration.cs" />
+    <Compile Include="Areas\SlideShow\ViewModels\SlideShowIitemViewModel.cs" />
+    <Compile Include="Areas\Sport\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Sport\SportAreaRegistration.cs" />
+    <Compile Include="Areas\Sport\ViewModels\AddSportCategoryViewModel.cs" />
+    <Compile Include="Areas\Sport\ViewModels\AddSportDetailViewModel.cs" />
+    <Compile Include="Areas\Sport\ViewModels\AddSportViewModel.cs" />
+    <Compile Include="Areas\StudyFieldDegree\Controllers\HomeController.cs" />
+    <Compile Include="Areas\StudyFieldDegree\StudyFieldDegreeAreaRegistration.cs" />
+    <Compile Include="Areas\StudyFieldDegree\ViewModels\StudyFieldDegreeViewModel.cs" />
+    <Compile Include="Areas\StudyField\Controllers\HomeController.cs" />
+    <Compile Include="Areas\StudyField\StudyFieldAreaRegistration.cs" />
+    <Compile Include="Areas\StudyField\ViewModels\StudyFieldViewModel.cs" />
+    <Compile Include="Areas\TechnicalStaffRole\Controllers\AdminController.cs" />
+    <Compile Include="Areas\TechnicalStaffRole\TechnicalStaffRoleAreaRegistration.cs" />
+    <Compile Include="Areas\TechnicalStaffRole\ViewModels\TechnicalStaffRoleModel.cs" />
+    <Compile Include="Areas\TechnicalStaff\Controllers\UserPanelController.cs" />
+    <Compile Include="Areas\TechnicalStaff\TechnicalStaffAreaRegistration.cs" />
+    <Compile Include="Areas\TechnicalStaff\ViewModels\TechnicalStaffViewModel.cs" />
+    <Compile Include="Areas\University\Controllers\HomeController.cs" />
+    <Compile Include="Areas\University\Models\AddUniversityViewModel.cs" />
+    <Compile Include="Areas\University\UniversityAreaRegistration.cs" />
+    <Compile Include="Areas\UserPanel\Controllers\CardController.cs" />
+    <Compile Include="Areas\UserPanel\Controllers\CompetitorController.cs" />
+    <Compile Include="Areas\UserPanel\Controllers\HomeController.cs" />
+    <Compile Include="Areas\UserPanel\Controllers\ReadinessController.cs" />
+    <Compile Include="Areas\UserPanel\Controllers\RegisterController.cs" />
+    <Compile Include="Areas\UserPanel\Controllers\CommonTechnicalStaffController.cs" />
+    <Compile Include="Areas\UserPanel\Controllers\TeamColorController.cs" />
+    <Compile Include="Areas\UserPanel\Controllers\TechnicalStaffController.cs" />
+    <Compile Include="Areas\UserPanel\Controllers\RepresentativeUserController.cs" />
+    <Compile Include="Areas\UserPanel\UserPanelAreaRegistration.cs" />
+    <Compile Include="Areas\User\Controllers\HomeController.cs" />
+    <Compile Include="Areas\User\UserAreaRegistration.cs" />
+    <Compile Include="Areas\User\ViewModels\UserViewModel.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="ExtensionMethods\HtmlExtensions.cs" />
+    <Compile Include="ExtensionMethods\UrlExtensions.cs" />
+    <Compile Include="Filters\ForceWww.cs" />
+    <Compile Include="Filters\SiteAuthorize.cs" />
+    <Compile Include="HttpCompress\CompressingFilter.cs" />
+    <Compile Include="HttpCompress\DeflateFilter.cs" />
+    <Compile Include="HttpCompress\Enums.cs" />
+    <Compile Include="HttpCompress\GZipFilter.cs" />
+    <Compile Include="HttpCompress\HttpModule.cs" />
+    <Compile Include="HttpCompress\HttpOutputFilter.cs" />
+    <Compile Include="HttpCompress\SectionHandler.cs" />
+    <Compile Include="HttpCompress\Settings.cs" />
+    <Compile Include="Infrastructure\WebViewPageExtensions.cs" />
+    <Compile Include="Infrastructure\YeKeInterceptor.cs" />
+    <Compile Include="IrisMembership\SystemRoles.cs" />
+    <Compile Include="Reporting\CommonTechnicaStaffReport.cs" />
+    <Compile Include="Reporting\TechnicalStaffCardReport.cs" />
+    <Compile Include="Reporting\CardReport.cs" />
+    <Compile Include="Reporting\IndividualSportsReport.cs" />
+    <Compile Include="ViewModels\DeniedUsersNotifications.cs" />
+    <Compile Include="ViewModels\LoginModel.cs" />
+    <Compile Include="Infrastructure\JsonValidationErrors.cs" />
+    <Compile Include="PersianCaptcha\CaptchaHelpers.cs" />
+    <Compile Include="PersianCaptcha\CaptchaImageResult.cs" />
+    <Compile Include="PersianCaptcha\HumanReadableInteger.cs" />
+    <Compile Include="PersianCaptcha\NoBrowserCache.cs" />
+    <Compile Include="PersianCaptcha\SecurityExtensions.cs" />
+    <Compile Include="PersianCaptcha\ValidateCaptchaAttribute.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Controllers\CaptchaController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="DependencyResolution\ControllerConvention.cs" />
+    <Compile Include="DependencyResolution\DefaultRegistry.cs" />
+    <Compile Include="DependencyResolution\IoC.cs" />
+    <Compile Include="DependencyResolution\StructureMapDependencyScope.cs" />
+    <Compile Include="DependencyResolution\StructureMapScopeModule.cs" />
+    <Compile Include="Filters\AllowUploadSpecialFilesOnlyAttribute.cs" />
+    <Compile Include="Filters\JsonHandlerAttribute.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\ExtensionMethods.cs" />
+    <Compile Include="Infrastructure\CacheManager.cs" />
+    <Compile Include="Infrastructure\JsonNetResult.cs" />
+    <Compile Include="IrisMembership\FormsAuthenticationService.cs" />
+    <Compile Include="IrisMembership\IFormsAuthenticationService.cs" />
+    <Compile Include="IrisMembership\IPrincipalService.cs" />
+    <Compile Include="IrisMembership\IrisCookie.cs" />
+    <Compile Include="IrisMembership\IrisIdentity.cs" />
+    <Compile Include="IrisMembership\IrisPrincipal.cs" />
+    <Compile Include="IrisMembership\IrisRole.cs" />
+    <Compile Include="IrisMembership\IrisSupportPrincipalService.cs" />
+    <Compile Include="IrisMembership\IrisUser.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reporting\DocsPdfReport.cs" />
+    <Compile Include="ViewModels\JqGridData.cs" />
+    <Compile Include="ViewModels\PresianDateViewModel.cs" />
+    <Compile Include="ViewModels\ReadyCompetitionNotificationEmail.cs" />
+    <Compile Include="ViewModels\RegisterUserViewModel.cs" />
+    <Compile Include="WebTasks\DeniedUsersNotificationTask.cs" />
+    <Compile Include="WebTasks\ScheduledTasksRegistry.cs" />
+    <Compile Include="WebTasks\CompetitionsNotificationsTask.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\Azmoon_Confirmation_Image\test.txt" />
+    <Content Include="App_Data\ErrorsLog\test.txt" />
+    <Content Include="App_Data\Insurance_Image\test.txt" />
+    <Content Include="App_Data\Logo_Image\test.txt" />
+    <Content Include="App_Data\Student_Certificate_Image\test.txt" />
+    <Content Include="App_Data\TechnicalStaff_Image\test.txt" />
+    <Content Include="App_Data\tmp\test.txt" />
+    <Content Include="App_Data\User_Image\test.txt" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Fonts\irsans.svg" />
+    <Content Include="Content\admin-rtl.css" />
+    <Content Include="Content\admin.css" />
+    <Content Include="Content\animate.css" />
+    <Content Include="Content\bootstrap-rtl\bootstrap-flipped.css" />
+    <Content Include="Content\bootstrap-rtl\bootstrap-flipped.min.css" />
+    <Content Include="Content\bootstrap-rtl\bootstrap-rtl.css" />
+    <Content Include="Content\bootstrap-rtl\bootstrap-rtl.min.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\IAU_Najafabad_Branch_logo.png" />
+    <Content Include="Content\images\background_browser.gif" />
+    <Content Include="Content\images\browser_chrome.gif" />
+    <Content Include="Content\images\browser_firefox.gif" />
+    <Content Include="Content\images\browser_konqueror.gif" />
+    <Content Include="Content\images\browser_msie.gif" />
+    <Content Include="Content\images\browser_opera.gif" />
+    <Content Include="Content\images\browser_safari.gif" />
+    <Content Include="Content\jquery.reject.css" />
+    <Content Include="Content\navbar.css" />
+    <Content Include="Content\ng-tags-input.bootstrap.css" />
+    <Content Include="Content\ng-tags-input.css" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="Content\select.css" />
+    <Content Include="Content\select2-bootstrap.css" />
+    <Content Include="Content\select2.css" />
+    <Content Include="Content\select2.png" />
+    <Content Include="Content\shattered.png" />
+    <Content Include="Content\shattered2.png" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Content\slide02.jpg" />
+    <Content Include="Content\SlideShowImages\test.txt" />
+    <Content Include="Content\user-panel.css" />
+    <Content Include="Design\DeniedUserEmail.html" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\bootstrap-rtl\bootstrap-flipped.css.map" />
+    <Content Include="Content\bootstrap-rtl\bootstrap-rtl.css.map" />
+    <Content Include="Areas\CompetitionSport\Views\Home\Add.cshtml" />
+    <Content Include="Areas\CompetitionSport\Views\web.config" />
+    <Content Include="Areas\Competition\Views\Admin\Add.cshtml" />
+    <Content Include="Areas\Competition\Views\Admin\Index.cshtml" />
+    <Content Include="Areas\Competition\Views\Home\Add.cshtml" />
+    <Content Include="Areas\Competition\Views\web.config" />
+    <Content Include="Areas\File\Views\web.config" />
+    <Content Include="Areas\Participation\Views\Competitor\Index.cshtml" />
+    <Content Include="Areas\Participation\Views\web.config" />
+    <Content Include="Areas\RepresentativeUser\Views\Register\Index.cshtml" />
+    <Content Include="Areas\RepresentativeUser\Views\web.config" />
+    <Content Include="Areas\Sport\Views\web.config" />
+    <Content Include="Areas\University\Views\web.config" />
+    <Content Include="packages.config" />
+    <Content Include="readme.txt" />
+    <Content Include="Scripts\angular-animate.js" />
+    <Content Include="Scripts\angular-animate.min.js" />
+    <Content Include="Scripts\angular-input-match.js" />
+    <Content Include="Content\loading-bar.css" />
+    <Content Include="Scripts\angular-loadingbar\loading-bar.js" />
+    <Content Include="Scripts\angular-mocks.js" />
+    <Content Include="Scripts\angular-route.js" />
+    <Content Include="Scripts\angular-route.min.js" />
+    <Content Include="Scripts\angular-sanitize.js" />
+    <Content Include="Scripts\angular-sanitize.min.js" />
+    <Content Include="Scripts\angular-scroll.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.min.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap.min.js" />
+    <Content Include="Scripts\angular-validation-match.js" />
+    <Content Include="Scripts\angular.js" />
+    <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\AppScripts\accountApp.js" />
+    <Content Include="Scripts\AppScripts\accountAppConfig.js" />
+    <Content Include="Scripts\AppScripts\app.js" />
+    <Content Include="Scripts\AppScripts\appconfig.js" />
+    <Content Include="Scripts\AppScripts\commonConstants.js" />
+    <Content Include="Scripts\AppScripts\Controllers\Account\AccountController.js" />
+    <Content Include="Scripts\AppScripts\Controllers\Admin\AdminController.js" />
+    <Content Include="Scripts\AppScripts\Controllers\UserPanel\UserPanelController.js" />
+    <Content Include="Scripts\AppScripts\Directives\directives.js" />
+    <Content Include="Scripts\AppScripts\Services\accountService.js" />
+    <Content Include="Scripts\AppScripts\Services\userPanelService.js" />
+    <Content Include="Scripts\AppScripts\Services\adminService.js" />
+    <Content Include="Scripts\AppScripts\userPanelApp.js" />
+    <Content Include="Scripts\AppScripts\userPanelAppConfig.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\ckeditor\CHANGES.md" />
+    <Content Include="Scripts\ckeditor\LICENSE.md" />
+    <Content Include="Scripts\ckeditor\plugins\scayt\LICENSE.md" />
+    <Content Include="Scripts\ckeditor\plugins\scayt\README.md" />
+    <Content Include="Scripts\ckeditor\plugins\wsc\LICENSE.md" />
+    <Content Include="Scripts\ckeditor\plugins\wsc\README.md" />
+    <Content Include="Scripts\ckeditor\README.md" />
+    <Content Include="Scripts\ckeditor\samples\assets\posteddata.php" />
+    <Content Include="Scripts\ckeditor\samples\plugins\htmlwriter\assets\outputforflash\outputforflash.fla" />
+    <Content Include="Scripts\ckeditor\samples\sample_posteddata.php" />
+    <Content Include="Scripts\ckeditor\skins\bootstrapck\readme.md" />
+    <Content Include="Scripts\ckeditor\skins\bootstrapck\scss\browser-specific\gecko\editor_gecko.scss" />
+    <Content Include="Scripts\ckeditor\skins\bootstrapck\scss\browser-specific\ie7\dialog_ie7.scss" />
+    <Content Include="Scripts\ckeditor\skins\bootstrapck\scss\browser-specific\ie7\editor_ie7.scss" />
+    <Content Include="Scripts\ckeditor\skins\bootstrapck\scss\browser-specific\ie8\dialog_ie8.scss" />
+    <Content Include="Scripts\ckeditor\skins\bootstrapck\scss\browser-specific\ie8\editor_ie8.scss" />
+    <Content Include="Scripts\ckeditor\skins\bootstrapck\scss\browser-specific\iequirks\dialog_iequirks.scss" />
+    <Content Include="Scripts\ckeditor\skins\bootstrapck\scss\browser-specific\iequirks\editor_iequirks.scss" />
+    <Content Include="Scripts\ckeditor\skins\bootstrapck\scss\browser-specific\ie\dialog_ie.scss" />
+    <Content Include="Scripts\ckeditor\skins\bootstrapck\scss\browser-specific\ie\editor_ie.scss" />
+    <Content Include="Scripts\ckeditor\skins\bootstrapck\scss\browser-specific\opera\dialog_opera.scss" />
+    <Content Include="Scripts\ckeditor\skins\bootstrapck\scss\components\editor.scss" />
+    <Content Include="Scripts\ckeditor\skins\bootstrapck\scss\components\_colorpanel.scss" />
+    <Content Include="Scripts\ckeditor\skins\bootstrapck\scss\components\_elementspath.scss" />
+    <Content Include="Scripts\ckeditor\skins\bootstrapck\scss\components\_mainui.scss" />
+    <Content Include="Scripts\ckeditor\skins\bootstrapck\scss\components\_menu.scss" />
+    <Content Include="Scripts\ckeditor\skins\bootstrapck\scss\components\_panel.scss" />
+    <Content Include="Scripts\ckeditor\skins\bootstrapck\scss\components\_presets.scss" />
+    <Content Include="Scripts\ckeditor\skins\bootstrapck\scss\components\_reset.scss" />
+    <Content Include="Scripts\ckeditor\skins\bootstrapck\scss\components\_richcombo.scss" />
+    <Content Include="Scripts\ckeditor\skins\bootstrapck\scss\components\_toolbar.scss" />
+    <Content Include="Scripts\ckeditor\skins\bootstrapck\scss\config\_colors.scss" />
+    <Content Include="Scripts\ckeditor\skins\bootstrapck\scss\config\_config.scss" />
+    <Content Include="Scripts\ckeditor\skins\bootstrapck\scss\config\_defaults.scss" />
+    <Content Include="Scripts\ckeditor\skins\bootstrapck\scss\dialog\dialog.scss" />
+    <Content Include="Scripts\angular-animate.min.js.map" />
+    <Content Include="Scripts\angular-route.min.js.map" />
+    <Content Include="Scripts\angular-sanitize.min.js.map" />
+    <Content Include="Scripts\angular.min.js.map" />
+    <Content Include="Areas\UserPanel\Views\web.config" />
+    <Content Include="Areas\UserPanel\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\UserPanel\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\UserPanel\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Participation\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Participation\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\Readiness\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Readiness\UserList.cshtml" />
+    <Content Include="Areas\UserPanel\Views\Readiness\Index.cshtml" />
+    <Content Include="Areas\UserPanel\Views\Register\Index.cshtml" />
+    <Content Include="Areas\UserPanel\Views\Register\ApprovedParticipations.cshtml" />
+    <Content Include="Areas\Admin\Views\Sport\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Sport\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\Sport\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\University\Index.cshtml" />
+    <Content Include="Areas\StudyField\Views\web.config" />
+    <Content Include="Areas\Admin\Views\StudyField\Index.cshtml" />
+    <Content Include="Areas\StudyFieldDegree\Views\web.config" />
+    <Content Include="Areas\Admin\Views\StudyFieldDegree\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\User\Index.cshtml" />
+    <Content Include="Areas\User\Views\web.config" />
+    <Content Include="Areas\Admin\Views\User\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\User\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\SlideShow\Index.cshtml" />
+    <Content Include="Areas\SlideShow\Views\web.config" />
+    <Content Include="Areas\Admin\Views\SlideShow\Add.cshtml" />
+    <Content Include="Scripts\angular-ui\dateparser.js" />
+    <Content Include="Scripts\angular-ui\datepicker-tpls.js" />
+    <Content Include="Scripts\angular-ui\position.js" />
+    <Content Include="Scripts\ckeditor\adapters\jquery.js" />
+    <Content Include="Scripts\ckeditor\angular-ckeditor.js" />
+    <Content Include="Scripts\ckeditor\build-config.js" />
+    <Content Include="Scripts\ckeditor\ckeditor.js" />
+    <Content Include="Scripts\ckeditor\config.js" />
+    <Content Include="Scripts\ckeditor\contents.css" />
+    <Content Include="Scripts\ckeditor\lang\en.js" />
+    <Content Include="Scripts\ckeditor\lang\fa.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\a11yhelp.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\af.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\ar.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\bg.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\ca.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\cs.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\cy.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\da.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\de.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\el.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\en-gb.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\en.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\eo.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\es.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\et.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\fa.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\fi.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\fr-ca.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\fr.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\gl.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\gu.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\he.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\hi.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\hr.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\hu.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\id.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\it.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\ja.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\km.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\ko.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\ku.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\lt.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\lv.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\mk.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\mn.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\nb.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\nl.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\no.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\pl.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\pt-br.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\pt.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\ro.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\ru.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\si.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\sk.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\sl.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\sq.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\sr-latn.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\sr.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\sv.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\th.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\tr.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\tt.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\ug.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\uk.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\vi.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\zh-cn.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\zh.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\_translationstatus.txt" />
+    <Content Include="Scripts\ckeditor\plugins\clipboard\dialogs\paste.js" />
+    <Content Include="Scripts\ckeditor\plugins\dialog\dialogDefinition.js" />
+    <Content Include="Scripts\ckeditor\plugins\icons.png" />
+    <Content Include="Scripts\ckeditor\plugins\icons_hidpi.png" />
+    <Content Include="Scripts\ckeditor\plugins\image\dialogs\image.js" />
+    <Content Include="Scripts\ckeditor\plugins\image\images\noimage.png" />
+    <Content Include="Scripts\ckeditor\plugins\link\dialogs\anchor.js" />
+    <Content Include="Scripts\ckeditor\plugins\link\dialogs\link.js" />
+    <Content Include="Scripts\ckeditor\plugins\link\images\anchor.png" />
+    <Content Include="Scripts\ckeditor\plugins\link\images\hidpi\anchor.png" />
+    <Content Include="Scripts\ckeditor\plugins\magicline\images\hidpi\icon-rtl.png" />
+    <Content Include="Scripts\ckeditor\plugins\magicline\images\hidpi\icon.png" />
+    <Content Include="Scripts\ckeditor\plugins\magicline\images\icon-rtl.png" />
+    <Content Include="Scripts\ckeditor\plugins\magicline\images\icon.png" />
+    <Content Include="Scripts\ckeditor\plugins\pastefromword\filter\default.js" />
+    <Content Include="Scripts\ckeditor\plugins\scayt\dialogs\options.js" />
+    <Content Include="Scripts\ckeditor\plugins\scayt\dialogs\toolbar.css" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\af.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\ar.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\bg.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\ca.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\cs.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\cy.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\da.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\de.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\el.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\en-gb.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\en.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\eo.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\es.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\et.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\fa.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\fi.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\fr-ca.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\fr.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\gl.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\he.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\hr.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\hu.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\id.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\it.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\ja.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\km.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\ku.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\lt.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\lv.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\nb.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\nl.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\no.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\pl.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\pt-br.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\pt.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\ru.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\si.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\sk.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\sl.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\sq.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\sv.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\th.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\tr.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\tt.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\ug.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\uk.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\vi.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\zh-cn.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\zh.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\_translationstatus.txt" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\specialchar.js" />
+    <Content Include="Scripts\ckeditor\plugins\tabletools\dialogs\tableCell.js" />
+    <Content Include="Scripts\ckeditor\plugins\table\dialogs\table.js" />
+    <Content Include="Scripts\ckeditor\plugins\wsc\dialogs\ciframe.html" />
+    <Content Include="Scripts\ckeditor\plugins\wsc\dialogs\tmpFrameset.html" />
+    <Content Include="Scripts\ckeditor\plugins\wsc\dialogs\wsc.css" />
+    <Content Include="Scripts\ckeditor\plugins\wsc\dialogs\wsc.js" />
+    <Content Include="Scripts\ckeditor\plugins\wsc\dialogs\wsc_ie.js" />
+    <Content Include="Scripts\ckeditor\samples\ajax.html" />
+    <Content Include="Scripts\ckeditor\samples\api.html" />
+    <Content Include="Scripts\ckeditor\samples\appendto.html" />
+    <Content Include="Scripts\ckeditor\samples\assets\inlineall\logo.png" />
+    <Content Include="Scripts\ckeditor\samples\assets\outputxhtml\outputxhtml.css" />
+    <Content Include="Scripts\ckeditor\samples\assets\sample.jpg" />
+    <Content Include="Scripts\ckeditor\samples\assets\uilanguages\languages.js" />
+    <Content Include="Scripts\ckeditor\samples\datafiltering.html" />
+    <Content Include="Scripts\ckeditor\samples\divreplace.html" />
+    <Content Include="Scripts\ckeditor\samples\index.html" />
+    <Content Include="Scripts\ckeditor\samples\inlineall.html" />
+    <Content Include="Scripts\ckeditor\samples\inlinebycode.html" />
+    <Content Include="Scripts\ckeditor\samples\inlinetextarea.html" />
+    <Content Include="Scripts\ckeditor\samples\jquery.html" />
+    <Content Include="Scripts\ckeditor\samples\plugins\dialog\assets\my_dialog.js" />
+    <Content Include="Scripts\ckeditor\samples\plugins\dialog\dialog.html" />
+    <Content Include="Scripts\ckeditor\samples\plugins\divarea\divarea.html" />
+    <Content Include="Scripts\ckeditor\samples\plugins\enterkey\enterkey.html" />
+    <Content Include="Scripts\ckeditor\samples\plugins\htmlwriter\assets\outputforflash\outputforflash.swf" />
+    <Content Include="Scripts\ckeditor\samples\plugins\htmlwriter\assets\outputforflash\swfobject.js" />
+    <Content Include="Scripts\ckeditor\samples\plugins\htmlwriter\outputforflash.html" />
+    <Content Include="Scripts\ckeditor\samples\plugins\htmlwriter\outputhtml.html" />
+    <Content Include="Scripts\ckeditor\samples\plugins\magicline\magicline.html" />
+    <Content Include="Scripts\ckeditor\samples\plugins\toolbar\toolbar.html" />
+    <Content Include="Scripts\ckeditor\samples\plugins\wysiwygarea\fullpage.html" />
+    <Content Include="Scripts\ckeditor\samples\readonly.html" />
+    <Content Include="Scripts\ckeditor\samples\replacebyclass.html" />
+    <Content Include="Scripts\ckeditor\samples\replacebycode.html" />
+    <Content Include="Scripts\ckeditor\samples\sample.css" />
+    <Content Include="Scripts\ckeditor\samples\sample.js" />
+    <Content Include="Scripts\ckeditor\samples\tabindex.html" />
+    <Content Include="Scripts\ckeditor\samples\uicolor.html" />
+    <Content Include="Scripts\ckeditor\samples\uilanguages.html" />
+    <Content Include="Scripts\ckeditor\samples\xhtmlstyle.html" />
+    <Content Include="Scripts\ckeditor\skins\bootstrapck\.temp\css\dialog.css" />
+    <Content Include="Scripts\ckeditor\skins\bootstrapck\.temp\css\dialog_ie.css" />
+    <Content Include="Scripts\ckeditor\skins\bootstrapck\.temp\css\dialog_ie7.css" />
+    <Content Include="Scripts\ckeditor\skins\bootstrapck\.temp\css\dialog_ie8.css" />
+    <Content Include="Scripts\ckeditor\skins\bootstrapck\.temp\css\dialog_iequirks.css" />
+    <Content Include="Scripts\ckeditor\skins\bootstrapck\.temp\css\dialog_opera.css" />
+    <Content Include="Scripts\ckeditor\skins\bootstrapck\.temp\css\editor.css" />
+    <Content Include="Scripts\ckeditor\skins\bootstrapck\.temp\css\editor_gecko.css" />
+    <Content Include="Scripts\ckeditor\skins\bootstrapck\.temp\css\editor_ie.css" />
+    <Content Include="Scripts\ckeditor\skins\bootstrapck\.temp\css\editor_ie7.css" />
+    <Content Include="Scripts\ckeditor\skins\bootstrapck\.temp\css\editor_ie8.css" />
+    <Content Include="Scripts\ckeditor\skins\bootstrapck\.temp\css\editor_iequirks.css" />
+    <Content Include="Scripts\ckeditor\skins\bootstrapck\dialog.css" />
+    <Content Include="Scripts\ckeditor\skins\bootstrapck\dialog_ie.css" />
+    <Content Include="Scripts\ckeditor\skins\bootstrapck\dialog_ie7.css" />
+    <Content Include="Scripts\ckeditor\skins\bootstrapck\dialog_ie8.css" />
+    <Content Include="Scripts\ckeditor\skins\bootstrapck\dialog_iequirks.css" />
+    <Content Include="Scripts\ckeditor\skins\bootstrapck\dialog_opera.css" />
+    <Content Include="Scripts\ckeditor\skins\bootstrapck\editor.css" />
+    <Content Include="Scripts\ckeditor\skins\bootstrapck\editor_gecko.css" />
+    <Content Include="Scripts\ckeditor\skins\bootstrapck\editor_ie.css" />
+    <Content Include="Scripts\ckeditor\skins\bootstrapck\editor_ie7.css" />
+    <Content Include="Scripts\ckeditor\skins\bootstrapck\editor_ie8.css" />
+    <Content Include="Scripts\ckeditor\skins\bootstrapck\editor_iequirks.css" />
+    <Content Include="Scripts\ckeditor\skins\bootstrapck\icons.png" />
+    <Content Include="Scripts\ckeditor\skins\bootstrapck\icons_hidpi.png" />
+    <Content Include="Scripts\ckeditor\skins\bootstrapck\images\arrow.png" />
+    <Content Include="Scripts\ckeditor\skins\bootstrapck\images\close.png" />
+    <Content Include="Scripts\ckeditor\skins\bootstrapck\images\hidpi\close.png" />
+    <Content Include="Scripts\ckeditor\skins\bootstrapck\images\hidpi\lock-open.png" />
+    <Content Include="Scripts\ckeditor\skins\bootstrapck\images\hidpi\lock.png" />
+    <Content Include="Scripts\ckeditor\skins\bootstrapck\images\hidpi\refresh.png" />
+    <Content Include="Scripts\ckeditor\skins\bootstrapck\images\lock-open.png" />
+    <Content Include="Scripts\ckeditor\skins\bootstrapck\images\lock.png" />
+    <Content Include="Scripts\ckeditor\skins\bootstrapck\images\refresh.png" />
+    <Content Include="Scripts\ckeditor\skins\bootstrapck\sample\bootstrapck-sample.html" />
+    <Content Include="Scripts\ckeditor\skins\bootstrapck\sample\css\bootstrapck-sample.css" />
+    <Content Include="Scripts\ckeditor\skins\bootstrapck\sample\js\analytics.js" />
+    <Content Include="Scripts\ckeditor\skins\bootstrapck\sample\js\jquery-1.11.0.min.js" />
+    <Content Include="Scripts\ckeditor\styles.js" />
+    <Content Include="Scripts\FileAPI.flash.swf" />
+    <Content Include="Scripts\FileAPI.js" />
+    <Content Include="Scripts\FileAPI.min.js" />
+    <Content Include="Scripts\jquery-2.1.3.min.map" />
+    <Content Include="Areas\UserPanel\Views\TechnicalStaff\Add.cshtml" />
+    <Content Include="Areas\TechnicalStaff\Views\web.config" />
+    <Content Include="Areas\TechnicalStaffRole\Views\web.config" />
+    <Content Include="Content\Fonts\irsans.ttf" />
+    <Content Include="Areas\UserPanel\Views\Competitor\Index.cshtml" />
+    <Content Include="Areas\Competitor\Views\web.config" />
+    <Content Include="Areas\UserPanel\Views\Competitor\Edit.cshtml" />
+    <Content Include="Areas\UserPanel\Views\TechnicalStaff\Index.cshtml" />
+    <Content Include="Areas\UserPanel\Views\TechnicalStaff\Edit.cshtml" />
+    <Content Include="Areas\CommonTechnicalStaff\Views\web.config" />
+    <Content Include="Areas\UserPanel\Views\CommonTechnicalStaff\Index.cshtml" />
+    <Content Include="Areas\UserPanel\Views\CommonTechnicalStaff\Add.cshtml" />
+    <Content Include="Areas\UserPanel\Views\CommonTechnicalStaff\Edit.cshtml" />
+    <Content Include="Areas\UserPanel\Views\TeamColor\Index.cshtml" />
+    <Content Include="Areas\Dorm\Views\web.config" />
+    <Content Include="Areas\Admin\Views\Dorm\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\TechnicalStaffRole\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\RepresentativeUser\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Competition\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\CompetitionSport\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\CompetitionRepresentativeUser\Index.cshtml" />
+    <Content Include="Areas\CompetitionRepresentativeUser\Views\web.config" />
+    <Content Include="Areas\Admin\Views\Competition\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Competition\Edit.cshtml" />
+    <Content Include="Areas\Report\Views\web.config" />
+    <Content Include="Areas\Admin\Views\Register\Index.cshtml" />
+    <Content Include="Areas\Register\Views\web.config" />
+    <Content Include="Areas\Admin\Views\Register\SportsList.cshtml" />
+    <Content Include="Areas\Admin\Views\Register\CompetitorsList.cshtml" />
+    <Content Include="Areas\Admin\Views\Register\TechnicalStaffsList.cshtml" />
+    <Content Include="Areas\Admin\Views\Register\CommonTechnicalStaffsList.cshtml" />
+    <Content Include="Areas\UserPanel\Views\Readiness\CompetitionSportsList.cshtml" />
+    <Content Include="Content\Fonts\irsans.eot" />
+    <Content Include="Content\Fonts\irsans.woff" />
+    <Content Include="Content\Fonts\irsans.woff2" />
+    <Content Include="Areas\UserPanel\Views\Readiness\ConfirmCompetitionSportsList.cshtml" />
+    <Content Include="Areas\UserPanel\Views\Card\Index.cshtml" />
+    <Content Include="Areas\Card\Views\web.config" />
+    <Content Include="Areas\UserPanel\Views\RepresentativeUser\Edit.cshtml" />
+    <Content Include="Areas\UserPanel\Views\RepresentativeUser\ChangePassword.cshtml" />
+    <Content Include="Areas\Admin\Views\Announcement\Index.cshtml" />
+    <Content Include="Areas\Announcement\Views\web.config" />
+    <Content Include="Areas\Admin\Views\Announcement\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\Announcement\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\News\Index.cshtml" />
+    <Content Include="Areas\News\Views\web.config" />
+    <Content Include="Areas\Admin\Views\News\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\News\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\SlideShow\Edit.cshtml" />
+    <Content Include="Areas\Readiness\Views\web.config" />
+    <Content Include="Scripts\jquery.reject.js" />
+    <Content Include="Scripts\ng-scrollbar.js" />
+    <Content Include="Scripts\site.js" />
+    <Content Include="Views\Home\GetRecentNews.cshtml" />
+    <Content Include="Areas\News\Views\Home\List.cshtml" />
+    <Content Include="Areas\UserPanel\Views\Home\Dashboard.cshtml" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Areas\News\Views\Home\Show.cshtml" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="Properties\PublishProfiles\IAUNSportsSystem.pubxml" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <None Include="Scripts\jquery-2.1.3.intellisense.js" />
+    <Content Include="Scripts\jquery-2.1.3.js" />
+    <Content Include="Scripts\jquery-2.1.3.min.js" />
+    <Content Include="Scripts\jquery-ui-1.11.4.js" />
+    <Content Include="Scripts\jquery-ui-1.11.4.min.js" />
+    <Content Include="Scripts\jquery.onecarousel.min.js" />
+    <Content Include="Scripts\jquery.steps.js" />
+    <Content Include="Scripts\jquery.steps.min.js" />
+    <Content Include="Scripts\jquery.ui.widget.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\modified-bootstrap.js" />
+    <Content Include="Scripts\moment-jalaali.js" />
+    <Content Include="Scripts\moment-with-locales.js" />
+    <Content Include="Scripts\moment-with-locales.min.js" />
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\moment.min.js" />
+    <Content Include="Scripts\ng-chosen.js" />
+    <Content Include="Scripts\ng-file-upload-all.js" />
+    <Content Include="Scripts\ng-file-upload-all.min.js" />
+    <Content Include="Scripts\ng-file-upload-shim.js" />
+    <Content Include="Scripts\ng-file-upload-shim.min.js" />
+    <Content Include="Scripts\ng-file-upload.js" />
+    <Content Include="Scripts\ng-file-upload.min.js" />
+    <Content Include="Scripts\ng-tags-input.js" />
+    <Content Include="Scripts\ngFx.js" />
+    <Content Include="Scripts\ngFxBundle.js" />
+    <Content Include="Scripts\persianDatepicker.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.matchmedia.addListener.js" />
+    <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\select.js" />
+    <Content Include="Scripts\select2\angular-select2.js" />
+    <Content Include="Scripts\select2\select2.js" />
+    <Content Include="Scripts\smart-table.js" />
+    <Content Include="Scripts\toaster\toaster.css" />
+    <Content Include="Scripts\toaster\toaster.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Error\NotFound.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\_RunningCompetitionsList.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\Index.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Home\_SlideShow.cshtml" />
+    <Content Include="Views\Account\LoginCompetition.cshtml" />
+    <Content Include="Views\Test\Index.cshtml" />
+    <Content Include="Views\Emails\Web.config" />
+    <Content Include="Views\Emails\_ViewStart.cshtml" />
+    <Content Include="Views\Emails\ReadyCompetition.Html.cshtml" />
+    <Content Include="Views\Emails\ReadyCompetition.cshtml" />
+    <Content Include="Views\Emails\RegisterCompetition.cshtml" />
+    <Content Include="Views\Emails\RegisterCompetition.Html.cshtml" />
+    <Content Include="Views\Emails\PrintCardCompetition.Html.cshtml" />
+    <Content Include="Views\Emails\PrintCardCompetition.cshtml" />
+    <Content Include="Views\Emails\DeniedUsers.Html.cshtml" />
+    <Content Include="Views\Emails\DeniedUsers.cshtml" />
+    <Content Include="Views\Account\LoginAdmin.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Announcement\Views\Admin\" />
+    <Folder Include="Areas\Announcement\Views\Shared\" />
+    <Folder Include="Areas\Card\Models\" />
+    <Folder Include="Areas\Card\Views\Shared\" />
+    <Folder Include="Areas\Card\Views\UserPanel\" />
+    <Folder Include="Areas\CommonTechnicalStaff\Models\" />
+    <Folder Include="Areas\CommonTechnicalStaff\Views\Shared\" />
+    <Folder Include="Areas\CommonTechnicalStaff\Views\UserPanel\" />
+    <Folder Include="Areas\CompetitionRepresentativeUser\Models\" />
+    <Folder Include="Areas\CompetitionRepresentativeUser\Views\Admin\" />
+    <Folder Include="Areas\CompetitionRepresentativeUser\Views\Shared\" />
+    <Folder Include="Areas\CompetitionSport\Views\Shared\" />
+    <Folder Include="Areas\Competition\Views\Shared\" />
+    <Folder Include="Areas\Competitor\Views\Admin\" />
+    <Folder Include="Areas\Competitor\Views\Shared\" />
+    <Folder Include="Areas\Competitor\Views\UserPanel\" />
+    <Folder Include="Areas\Dorm\Views\Admin\" />
+    <Folder Include="Areas\Dorm\Views\Shared\" />
+    <Folder Include="Areas\File\Models\" />
+    <Folder Include="Areas\File\Views\Home\" />
+    <Folder Include="Areas\File\Views\Shared\" />
+    <Folder Include="Areas\File\Views\SlideShow\" />
+    <Folder Include="Areas\News\Views\Shared\" />
+    <Folder Include="Areas\Participation\Views\Home\" />
+    <Folder Include="Areas\Participation\Views\UserPanel\" />
+    <Folder Include="Areas\Readiness\Models\" />
+    <Folder Include="Areas\Readiness\Views\Admin\" />
+    <Folder Include="Areas\Readiness\Views\Shared\" />
+    <Folder Include="Areas\Register\Views\Admin\" />
+    <Folder Include="Areas\Register\Views\Shared\" />
+    <Folder Include="Areas\Report\Models\" />
+    <Folder Include="Areas\Report\Views\Admin\" />
+    <Folder Include="Areas\Report\Views\PrintCards\" />
+    <Folder Include="Areas\Report\Views\Shared\" />
+    <Folder Include="Areas\RepresentativeUser\Views\Admin\" />
+    <Folder Include="Areas\RepresentativeUser\Views\Home\" />
+    <Folder Include="Areas\RepresentativeUser\Views\Shared\" />
+    <Folder Include="Areas\RepresentativeUser\Views\UserPanel\" />
+    <Folder Include="Areas\SlideShow\Views\Home\" />
+    <Folder Include="Areas\SlideShow\Views\Shared\" />
+    <Folder Include="Areas\Sport\Views\Shared\" />
+    <Folder Include="Areas\StudyFieldDegree\Views\Home\" />
+    <Folder Include="Areas\StudyFieldDegree\Views\Shared\" />
+    <Folder Include="Areas\StudyField\Views\Home\" />
+    <Folder Include="Areas\StudyField\Views\Shared\" />
+    <Folder Include="Areas\TechnicalStaffRole\Views\Home\" />
+    <Folder Include="Areas\TechnicalStaffRole\Views\Shared\" />
+    <Folder Include="Areas\TechnicalStaff\Views\Shared\" />
+    <Folder Include="Areas\TechnicalStaff\Views\UserPanel\" />
+    <Folder Include="Areas\University\Views\Home\" />
+    <Folder Include="Areas\University\Views\Shared\" />
+    <Folder Include="Areas\UserPanel\Models\" />
+    <Folder Include="Areas\User\Views\Home\" />
+    <Folder Include="Areas\User\Views\Shared\" />
+    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IAUNSportsSystem.DataLayer\IAUNSportsSystem.DataLayer.csproj">
+      <Project>{b73a9bca-1841-47f2-b46e-edf6d224b9e4}</Project>
+      <Name>IAUNSportsSystem.DataLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IAUNSportsSystem.DomainClasses\IAUNSportsSystem.DomainClasses.csproj">
+      <Project>{06ef676b-339d-4f6c-ae2f-ae125c0119d5}</Project>
+      <Name>IAUNSportsSystem.DomainClasses</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IAUNSportsSystem.Models\IAUNSportsSystem.Models.csproj">
+      <Project>{1e301fa0-ffb5-48ca-bec4-9d3047321497}</Project>
+      <Name>IAUNSportsSystem.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IAUNSportsSystem.ServiceLayer.EntityFramework\IAUNSportsSystem.ServiceLayer.EntityFramework.csproj">
+      <Project>{b8be885b-2d09-47d1-a849-515b579d70d8}</Project>
+      <Name>IAUNSportsSystem.ServiceLayer.EntityFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IAUNSportsSystem.ServiceLayer\IAUNSportsSystem.ServiceLayer.csproj">
+      <Project>{ddfa9085-24e3-4e6e-a9c1-fd697950c0b8}</Project>
+      <Name>IAUNSportsSystem.ServiceLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IAUNSportsSystem.Utilities\IAUNSportsSystem.Utilities.csproj">
+      <Project>{2ea1d5b4-fd6e-4138-85f2-6a2ca3884c40}</Project>
+      <Name>IAUNSportsSystem.Utilities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Scheduler\Scheduler.csproj">
+      <Project>{bfec9710-6637-459d-879a-891db2f1b353}</Project>
+      <Name>Scheduler</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>1436</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:25149/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

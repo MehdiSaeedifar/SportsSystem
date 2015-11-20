@@ -1,0 +1,101 @@
+﻿<fieldset>
+    <legend>مقاطع تحصیلی</legend>
+    <div class="row">
+        <div class="col-md-5" style="padding-top: 15px; padding-bottom: 20px;">
+            <form name="frmAddUniversity" novalidate ng-submit="addStudyFieldDegree()">
+                <div class="form-group">
+                    <label class="control-label pull-right">مقطع تحصیلی</label>
+                    <div class="col-md-5">
+                        <input type="text" class="form-control" ng-model="studyFieldDegree.name" />
+                    </div>
+                    <button type="submit" class="btn btn-success">
+                        <i class="fa fa-lg fa-plus"></i> افزودن مقطع تحصیلی
+                    </button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    فهرست مقاطع تحصیلی
+                </div>
+                <div class="table-responsive">
+                    <table st-resize st-safe-src="studyFieldDegrees" st-table="displayedStudyFieldDegrees" class="table table-bordered table-hover table-condensed th-center">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th><span st-sort="name" st-sort-default="true">مقطع تحصیلی</span></th>
+                                <th>عملیات</th>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <th>
+                                    <input st-search="name" placeholder="جستجو در نام" class="input-sm form-control" type="search" />
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="row in displayedStudyFieldDegrees" class="fx-fade-down">
+                                <td>{{$index+1}}</td>
+                                <td class="vert-align">{{row.name}}</td>
+                                <td class="vert-align">
+                                    <button class="btn btn-primary btn-sm" ng-click="editStudyFieldDegree(row)">
+                                        <i class="fa fa-edit fa-lg"></i> ویرایش
+                                    </button>
+                                    <button class="btn btn-danger btn-sm" ng-click="deleteStudyFieldDegree($index,row)">
+                                        <i class="fa fa-trash-o fa-lg"></i> حذف
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</fieldset>
+<script type="text/ng-template" id="deleteStudyFieldDegree.html">
+    <div class="modal-header">
+        <h3 class="modal-title"></h3>
+    </div>
+    <div class="modal-body">
+        <div class="alert alert-danger">
+            آیا از حذف مقطع {{studyFieldDegree.name}} مطمئن هستید؟
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="cancel()">انصراف</button>
+        <button class="btn btn-danger" ng-click="ok()">بله</button>
+    </div>
+</script>
+
+<script type="text/ng-template" id="editStudyFieldDegree.html">
+    <div>
+        <form name="frmEditUniversity" novalidate ng-submit="ok()">
+            <div class="modal-header">
+                <h3 class="modal-title"></h3>
+            </div>
+
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="pull-right">
+                        مقطع تحصیلی
+                    </label>
+                    <div class="col-md-5">
+                        <input type="text" class="form-control" ng-model="studyFieldDegree.name" />
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" ng-click="cancel()">انصراف</button>
+                <button type="submit" class="btn btn-danger">بله</button>
+            </div>
+        </form>
+    </div>
+</script>

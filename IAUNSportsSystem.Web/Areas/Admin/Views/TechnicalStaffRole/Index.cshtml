@@ -1,0 +1,116 @@
+﻿<fieldset>
+    <legend>سمت‌های کادر فنی و اجرایی</legend>
+    <div class="row">
+        <div class="col-md-10" style="padding-top: 15px; padding-bottom: 20px;">
+            <form name="frmAddUniversity" class="form-inline" novalidate ng-submit="addTechnicalStaffRole()">
+                <div class="form-group">
+                    <label class="control-label pull-right">نام سمت</label>
+                    <div class="col-md-7">
+                        <input type="text" class="form-control" ng-model="technicalStaffRole.name" />
+                    </div>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" ng-model="technicalStaffRole.isCommon"> سمت کادر اجرایی
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-success">
+                    <i class="fa fa-lg fa-plus"></i> افزودن سمت
+                </button>
+            </form>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    فهرست سمت‌های کادر فنی و اجرایی
+                </div>
+                <div class="table-responsive">
+                    <table st-resize st-safe-src="technicalStaffRoles" st-table="displayedTechnicalStaffRoles" class="table table-bordered table-hover table-condensed th-center">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th><span st-sort="name" st-sort-default="true">نام سمت</span></th>
+                            <th><span st-sort="isCommon">سمت کادر اجرایی</span></th>
+                            <th>عملیات</th>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <th>
+                                <input st-search="name" placeholder="جستجو در سمت" class="input-sm form-control" type="search"/>
+                            </th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="row in displayedTechnicalStaffRoles" class="fx-fade-down">
+                            <td>{{$index+1}}</td>
+                            <td class="vert-align">{{row.name}}</td>
+                            <td class="vert-align">{{row.isCommon}}</td>
+                            <td class="vert-align">
+                                <button class="btn btn-primary btn-sm" ng-click="editTechnicalStaffRole(row)">
+                                    <i class="fa fa-edit fa-lg"></i> ویرایش
+                                </button>
+                                <button class="btn btn-danger btn-sm" ng-click="deleteTechnicalStaffRole($index,row)">
+                                    <i class="fa fa-trash-o fa-lg"></i> حذف
+                                </button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</fieldset>
+<script type="text/ng-template" id="deleteTechnicalStaffRole.html">
+    <div class="modal-header">
+        <h3 class="modal-title"></h3>
+    </div>
+    <div class="modal-body">
+        <div class="alert alert-danger">
+            آیا از حذف سمت {{technicalStaffRole.name}} مطمئن هستید؟
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="cancel()">انصراف</button>
+        <button class="btn btn-danger" ng-click="ok()">بله</button>
+    </div>
+</script>
+
+<script type="text/ng-template" id="editTechnicalStaffRole.html">
+    <div>
+        <form name="frmEditUniversity" novalidate ng-submit="ok()">
+            <div class="modal-header">
+                <h3 class="modal-title"></h3>
+            </div>
+
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="pull-right">
+                        نام سمت
+                    </label>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" ng-model="technicalStaffRole.name" />
+
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" ng-model="technicalStaffRole.isCommon"> سمت کادر اجرایی
+                        </label>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" ng-click="cancel()">انصراف</button>
+                <button type="submit" class="btn btn-danger">بله</button>
+            </div>
+        </form>
+    </div>
+</script>
+

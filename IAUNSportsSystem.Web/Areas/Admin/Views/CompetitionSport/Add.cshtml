@@ -1,0 +1,213 @@
+﻿<fieldset>
+    <legend>انتخاب رشته‌های ورزشی {{::competition.competitionName}}</legend>
+    <span class="btn-back"><a href="#/competition" class="btn btn-primary"><i class="fa fa-reply fa-lg"></i> بازگشت به فهرست مسابقات </a></span>
+    <form name="frmAddCompetitionSport" id="frmAddCompetitionSport" novalidate ng-submit="addCompetitionSport(frmAddCompetitionSport)">
+        <div class="form-horizontal">
+            <div class="form-group">
+                <div class="row-fluid">
+                    <label for="inputPassword3" class="col-lg-1 control-label">رشته</label>
+                    <div class="col-md-3 col-lg-2">
+                        <ui-select required name="sportName" ng-model="viewModel.selectedSport" theme="bootstrap" on-select="onSportSelect($item, $model)" reset-search-input="true">
+                            <ui-select-match placeholder="نام رشته را از فهرست انتخاب کنید">{{$select.selected.name}}</ui-select-match>
+                            <ui-select-choices repeat="item in sportsList | filter: $select.search">
+                                <span ng-bind-html="item.name | highlight: $select.search"></span>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+
+                    <div class="fx-fade-right" ng-show="viewModel.selectedSport.sportCategories.length > 0">
+                        <label for="inputPassword3" class="col-lg-2 control-label">ماده یا سبک رشته</label>
+                        <div class="col-md-3 col-lg-2">
+                            <select ng-required="viewModel.selectedSport.sportCategories.length > 0" class="form-control" ng-model="viewModel.selectedSport.sportCategory" ng-options="item as item.name for item in viewModel.selectedSport.sportCategories"></select>
+                        </div>
+                    </div>
+                    <div class="fx-fade-right" ng-show="viewModel.selectedSport.sportDetails.length > 0">
+                        <label for="inputPassword3" class="col-lg-1 control-label">وزن بندی</label>
+                        <div class="col-md-3 col-lg-2">
+                            <select ng-required="viewModel.selectedSport.sportDetails.length > 0" class="form-control" ng-model="viewModel.selectedSport.sportDetail" ng-options="item as item.name for item in viewModel.selectedSport.sportDetails"></select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row-fluid">
+                    <label for="inputPassword3" class="col-lg-1 control-label">جنسیت</label>
+                    <div class="col-md-3 col-lg-2">
+                        <label class="radio-inline">
+                            <input type="radio" ng-model="competitionSportModel.gender" name="sportGender" value="Male" ng-required="!competitionSportModel.gender"> مرد
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" ng-model="competitionSportModel.gender" name="sportGender" value="Female" ng-required="!competitionSportModel.gender"> زن
+                        </label>
+
+                    </div>
+                    <label for="inputPassword3" class="col-lg-2 control-label">تعداد اعضای کادر فنی</label>
+                    <div class="col-lg-1">
+                        <input ng-required="true" class="form-control ltr text-center" name="maxTechnicalStaff" ng-model="competitionSportModel.maxTechnicalStaffs" type="number" min="1" />
+                    </div>
+                    <div class="pull-right" style="line-height: 30px;">
+                        نفر
+                    </div>
+                    <label for="inputPassword3" class="col-lg-2 control-label">تعداد اعضای تیم</label>
+                    <div class="col-lg-1">
+                        <input ng-required="true" class="form-control ltr text-center" name="maxCompetitors" ng-model="competitionSportModel.maxCompetitors" type="number" min="1" />
+                    </div>
+                    <div class="pull-right" style="line-height: 30px;">
+                        نفر
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputPassword3" class="col-lg-1 control-label">انفرادی یا تیمی</label>
+                <div class="col-md-3 col-lg-2">
+                    <label class="radio-inline">
+                        <input type="radio" ng-model="competitionSportModel.isIndividual" name="sportIsIndividual" value="true" ng-required="!competitionSportModel.isIndividual"> انفرادی
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" ng-model="competitionSportModel.isIndividual" name="sportIsIndividual" value="false" ng-required="!competitionSportModel.isIndividual"> گروهی
+                    </label>
+                </div>
+
+            </div>
+            <div class="form-group">
+                <label class="control-label col-lg-1">قوانین</label>
+                <input type="checkbox" id="inlineCheckbox1" ng-model="competitionSportModel.hasRule">
+            </div>
+            <div class="form-group fx-fade-down" ng-show="competitionSportModel.hasRule">
+                <label class="col-lg-1 control-label"></label>
+                <div class="col-lg-6">
+                    <div ckeditor="editorOptions" ng-model="competitionSportModel.rule" ready=""></div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-4">
+                    <button type="submit" ng-disabled="frmAddCompetitionSport.$invalid" class="btn btn-primary">ثبت رشته</button>
+                    <a href="#/competitionrepresentativeuser/{{::competition.competitionId}}" class="btn btn-warning fx-fade-down">مشاهده فهرست نمایندگان</a>
+                </div>
+            </div>
+        </div>
+
+    </form>
+
+    <div class="col-md-12 fx-fade-up" ng-show="competitionSportsList.length > 0">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                فهرست رشته‌های ورزشی {{::competition.competitionName}}
+            </div>
+            <div class="table-responsive">
+                <table st-safe-src="competitionSportsList" st-table="displayedCollection" class="table table-striped table-bordered table-hover table-condensed">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th st-sort="sportName" st-sort-default="true">رشته</th>
+                        <th st-sort="gender">جنسیت</th>
+                        <th st-sort="maxTechnicalStaff">تعداد اعضای کادر فنی</th>
+                        <th st-sort="maxCompetitors">تعداد اعضای تیم</th>
+                        <th>عملیات</th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <input st-search="sportName" placeholder="جستجو در رشته" class="input-sm form-control" type="search" />
+                        </th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="row in displayedCollection" class="fx-fade-down">
+                        <td>{{$index+1}}</td>
+                        <td> {{row.sportName }}</td>
+                        <td>{{row.gender | gender }}</td>
+                        <td>{{row.maxTechnicalStaffs}}</td>
+                        <td>{{row.maxCompetitors}}</td>
+                        <td>
+                            <button class="btn btn-primary btn-sm" ng-click="editCompetitionSport(row)">
+                                <i class="fa fa-edit fa-lg"></i> ویرایش
+                            </button>
+                            <button class="btn btn-danger btn-sm" ng-click="deleteCompetitionSport($index,row)">
+                                <i class="fa fa-trash-o fa-lg"></i> حذف
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</fieldset>
+<script type="text/ng-template" id="deleteCompetitionSport.html">
+    <div class="modal-header">
+        <h3 class="modal-title"></h3>
+    </div>
+    <div class="modal-body">
+        <div class="alert alert-danger">
+            آیا از حذف رشته {{competitionSport.sport.name }} {{competitionSport.sportCategory.name}} {{competitionSport.sportDetail.name}} {{competitionSport.gender | gender:'plural' }} مطمئن هستید؟
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="cancel()">انصراف</button>
+        <button class="btn btn-danger" ng-click="ok()">بله</button>
+    </div>
+</script>
+
+<script type="text/ng-template" id="editCompetitionSport.html">
+    <div>
+        <form name="frmEditCompetitionSport" class="form-horizontal" novalidate ng-submit="ok()">
+            <div class="modal-header">
+                <h3 class="modal-title"></h3>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-md-4 control-label">تعداد اعضای کادر فنی</label>
+                    <div class="col-md-3">
+                        <input ng-required="true" class="form-control ltr text-center" name="maxTechnicalStaff" ng-model="competitionSportModel.maxTechnicalStaffs" type="number" min="1" />
+                    </div>
+                    <div class="pull-right" style="line-height: 30px;">
+                        نفر
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-md-4 control-label">تعداد اعضای تیم</label>
+                    <div class="col-md-3">
+                        <input ng-required="true" class="form-control ltr text-center" name="maxCompetitors" ng-model="competitionSportModel.maxCompetitors" type="number" min="1" />
+                    </div>
+                    <div class="pull-right" style="line-height: 30px;">
+                        نفر
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-md-4 control-label">انفرادی یا تیمی</label>
+                    <div class="col-md-4">
+                        <div class="btn-group">
+                            <label class="btn btn-primary" ng-model="competitionSportModel.isIndividual" btn-radio="false">تیمی</label>
+                            <label class="btn btn-primary" ng-model="competitionSportModel.isIndividual" btn-radio="true">انفرادی</label>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-4">قوانین</label>
+                    <input type="checkbox" id="inlineCheckbox1" ng-model="competitionSportModel.hasRule">
+                </div>
+                <div class="form-group fx-fade-down" ng-show="competitionSportModel.hasRule">
+                    <label class="control-label"></label>
+                    <div class="col-lg-12">
+                        <div ckeditor="editorOptions" ng-model="competitionSportModel.rule" ready=""></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" ng-click="cancel()">انصراف</button>
+                <button type="submit" class="btn btn-danger">بله</button>
+            </div>
+        </form>
+    </div>
+</script>
+

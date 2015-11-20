@@ -1,0 +1,50 @@
+﻿<div class="well text-danger">
+    <h4>لطفا به موارد زیر توجه فرمایید</h4>
+    <ul class="" style="line-height: 30px;">
+        <li>بازه‌ زمانی تعیین شده برای اعلام آمادگی برای شرکت کردن در مسابقات از تاریخ {{ competition.readyStartDate  | jalaliDate:'jYYYY/jMM/jDD' }} تا {{ competition.readyEndDate  | jalaliDate:'jYYYY/jMM/jDD'}} است.</li>
+        <li>
+            بازه زمانی تعیین شده برای ثبت نام در مسابقات از تاریخ {{ competition.registerStartDate | jalaliDate:'jYYYY/jMM/jDD' }} تا {{ competition.registerEndDate  | jalaliDate:'jYYYY/jMM/jDD' }} است.
+        </li>
+        <li>تا پایان مهلت اعلام شده برای اعلام آمادگی شما قادر خواهید بود تا فهرست زیر را ویرایش کنید.</li>
+    </ul>
+</div>
+
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title"> فهرست رشته‌های ورزشی ارائه شده برای {{competition.name}}</h3>
+    </div>
+    <table st-safe-src="competitionSportsList" st-table="displayedCompetitionSportsList" class="table table-striped table-bordered th-center td-center">
+        <thead>
+        <tr>
+            <th>اعلام آمادگی</th>
+            <th st-sort="name" st-sort-default>رشته</th>
+            <th st-sort="sportCategory">سبک</th>
+            <th st-sort="sportDetail">وزن</th>
+            <th st-sort="gender">جنسیت</th>
+            <th st-sort="maxTechnicalStaff">تعداد اعضای کادر فنی</th>
+            <th st-sort="maxCompetitors">تعداد اعضای تیم</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="row in displayedCompetitionSportsList" ng-class="{success: selectedCompetitionSports.indexOf(row.id) > -1}">
+            <td>
+                <input type="checkbox"
+                       name="selectedCompetitionSports[]"
+                       value="{{row.id}}"
+                       ng-checked="row.isParticipated"
+                       ng-click="toggleSelection(row.id)" />
+            </td>
+            <td>{{row.name }}</td>
+            <td>{{row.sportCategory}}</td>
+            <td>{{row.sportDetail}}</td>
+            <td>{{row.gender | gender}}</td>
+            <td>{{row.maxTechnicalStaff}}</td>
+            <td>{{row.maxCompetitors}}</td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+<button ng-click="sumbitParticipationData()" class="btn btn-primary">ثبت اطلاعات</button>

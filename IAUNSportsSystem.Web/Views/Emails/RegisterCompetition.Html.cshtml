@@ -1,0 +1,71 @@
+﻿Content-Type: text/html; charset=utf-8
+@using PdfRpt.Core.Helper
+@model IAUNSportsSystem.Web.ViewModels.CompetitionNotificationEmail
+<table cellpadding="0" cellspacing="0" width="100%">
+    <tbody>
+        <tr style="padding:0">
+            <td align="center" style="padding:0">
+                <table bgcolor="#5cb85c" cellpadding="0" cellspacing="0" style="color:#787878;margin-top:15px" width="100%">
+                    <tbody>
+                        <tr style="padding:0">
+                            <td height="6" style="padding:0"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table bgcolor="white" style="border:1px solid #5cb85c;width:100%">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <table border="0" width="100%">
+                                    <tbody>
+                                        <tr>
+                                            <td style="border-bottom:0 dashed #d6d6d6;padding-left:8px;padding-bottom:10px;font-size:9pt;font-family:Tahoma">
+                                                <div dir="rtl">
+                                                    <p>موضوع: <strong>فراخوان برای اعلام آمادگی @Model.CompetitionName</strong></p>
+                                                    <p>دریافت کننده:<strong>@Model.FirstName&nbsp;@Model.LastName</strong></p>
+                                                    <p>مسئول: <strong>@Model.University</strong></p>
+                                                    <br />
+                                                    <br />
+                                                    <p>
+                                                        لطفا برای ثبت نام در رشته‌هایی که برای @Model.CompetitionName اعلام آمادگی کرده بودید،  از تاریخ <span dir="ltr">@Model.StartDate.ToPersianDateTime(includeHourMinute: false, dateSeparator: "/")</span> تا <span dir="ltr">@Model.EndDate.ToPersianDateTime(includeHourMinute: false)</span> به سایت @Model.SiteUrl  مراجعه فرمایید.
+                                                    </p>
+                                                    <br />
+                                                    <p>نام کاربری: <span lang="en" dir="ltr"> @Model.To</span></p>
+                                                    <p>کلمه عبور: <span lang="en" dir="ltr"> @Model.Password</span></p>
+                                                    <br />
+                                                    &nbsp;با احترام<span>
+                                                        <font color="#888888">
+                                                            <br>
+                                                            <a href="http://www.iaun.ac.ir" target="_blank">دانشگاه آزاد اسلامی واحد نجف آباد</a>
+                                                            <br>
+                                                            <span lang="fa" dir="ltr">
+                                                                &nbsp;&nbsp;
+                                                                <span dir="ltr">@DateTime.Now.ToPersianDateTime()</span>
+                                                            </span>
+                                                            <br>
+                                                        </font>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <table border="0" cellspacing="0" style="color:#575757">
+                                    <tbody>
+                                        <tr>
+                                            <td height="0"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </tbody>
+</table>

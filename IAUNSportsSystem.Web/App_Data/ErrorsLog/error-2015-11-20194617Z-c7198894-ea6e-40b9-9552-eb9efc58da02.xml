@@ -1,0 +1,168 @@
+﻿<error errorId="c7198894-ea6e-40b9-9552-eb9efc58da02" host="MEHDI-PC" type="System.Data.SqlClient.SqlException" message="The UPDATE statement conflicted with the FOREIGN KEY constraint &quot;FK_dbo.RepresentativeUsers_dbo.Universities_UniversityId&quot;. The conflict occurred in database &quot;sportSystemDb&quot;, table &quot;dbo.Universities&quot;, column 'Id'.&#xD;&#xA;The statement has been terminated." source=".Net SqlClient Data Provider" detail="System.Web.HttpException (0x80004005): Error executing child request for handler 'System.Web.Mvc.HttpHandlerUtil+ServerExecuteHttpHandlerAsyncWrapper'. ---&gt; System.Data.DataException: An exception occurred while initializing the database. See the InnerException for details. ---&gt; System.Data.Entity.Infrastructure.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---&gt; System.Data.Entity.Core.UpdateException: An error occurred while updating the entries. See the inner exception for details. ---&gt; System.Data.SqlClient.SqlException: The UPDATE statement conflicted with the FOREIGN KEY constraint &quot;FK_dbo.RepresentativeUsers_dbo.Universities_UniversityId&quot;. The conflict occurred in database &quot;sportSystemDb&quot;, table &quot;dbo.Universities&quot;, column 'Id'.&#xD;&#xA;The statement has been terminated.&#xD;&#xA;   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)&#xD;&#xA;   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)&#xD;&#xA;   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)&#xD;&#xA;   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean&amp; dataReady)&#xD;&#xA;   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)&#xD;&#xA;   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task&amp; task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)&#xD;&#xA;   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task&amp; task, Boolean asyncWrite)&#xD;&#xA;   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite)&#xD;&#xA;   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()&#xD;&#xA;   at System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.&lt;NonQuery&gt;b__0(DbCommand t, DbCommandInterceptionContext`1 c)&#xD;&#xA;   at System.Data.Entity.Infrastructure.Interception.InternalDispatcher`1.Dispatch[TTarget,TInterceptionContext,TResult](TTarget target, Func`3 operation, TInterceptionContext interceptionContext, Action`3 executing, Action`3 executed)&#xD;&#xA;   at System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.NonQuery(DbCommand command, DbCommandInterceptionContext interceptionContext)&#xD;&#xA;   at System.Data.Entity.Internal.InterceptableDbCommand.ExecuteNonQuery()&#xD;&#xA;   at System.Data.Entity.Core.Mapping.Update.Internal.DynamicUpdateCommand.Execute(Dictionary`2 identifierValues, List`1 generatedValues)&#xD;&#xA;   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.Update()&#xD;&#xA;   --- End of inner exception stack trace ---&#xD;&#xA;   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.Update()&#xD;&#xA;   at System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.&lt;Update&gt;b__2(UpdateTranslator ut)&#xD;&#xA;   at System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.Update[T](T noChangesResult, Func`2 updateFunction)&#xD;&#xA;   at System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.Update()&#xD;&#xA;   at System.Data.Entity.Core.Objects.ObjectContext.&lt;SaveChangesToStore&gt;b__35()&#xD;&#xA;   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ObjectContext.SaveChangesToStore(SaveOptions options, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ObjectContext.&lt;&gt;c__DisplayClass2a.&lt;SaveChangesInternal&gt;b__27()&#xD;&#xA;   at System.Data.Entity.Infrastructure.DbExecutionStrategy.Execute[TResult](Func`1 operation)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ObjectContext.SaveChangesInternal(SaveOptions options, Boolean executeInExistingTransaction)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ObjectContext.SaveChanges(SaveOptions options)&#xD;&#xA;   at System.Data.Entity.Internal.InternalContext.SaveChanges()&#xD;&#xA;   --- End of inner exception stack trace ---&#xD;&#xA;   at System.Data.Entity.Internal.InternalContext.SaveChanges()&#xD;&#xA;   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()&#xD;&#xA;   at System.Data.Entity.DbContext.SaveChanges()&#xD;&#xA;   at IAUNSportsSystem.DataLayer.SportsSystemDbContext.SaveAllChanges(Boolean invalidateCacheDependencies) in D:\Projects\IAUNSportsSystem\IAUNSportsSystem.DataLayer\SportsSystemDbContext.cs:line 49&#xD;&#xA;   at IAUNSportsSystem.DataLayer.SportsSystemDbContext.SaveChanges() in D:\Projects\IAUNSportsSystem\IAUNSportsSystem.DataLayer\SportsSystemDbContext.cs:line 43&#xD;&#xA;   at IAUNSportsSystem.DataLayer.Migrations.Configuration.Seed(SportsSystemDbContext context) in D:\Projects\IAUNSportsSystem\IAUNSportsSystem.DataLayer\Migrations\Configuration.cs:line 150&#xD;&#xA;   at System.Data.Entity.Migrations.DbMigrationsConfiguration`1.OnSeed(DbContext context)&#xD;&#xA;   at System.Data.Entity.Migrations.DbMigrator.SeedDatabase()&#xD;&#xA;   at System.Data.Entity.Migrations.DbMigrator.Upgrade(IEnumerable`1 pendingMigrations, String targetMigrationId, String lastMigrationId)&#xD;&#xA;   at System.Data.Entity.Migrations.DbMigrator.UpdateInternal(String targetMigration)&#xD;&#xA;   at System.Data.Entity.Migrations.DbMigrator.&lt;&gt;c__DisplayClassc.&lt;Update&gt;b__b()&#xD;&#xA;   at System.Data.Entity.Migrations.DbMigrator.EnsureDatabaseExists(Action mustSucceedToKeepDatabase)&#xD;&#xA;   at System.Data.Entity.Migrations.DbMigrator.Update(String targetMigration)&#xD;&#xA;   at System.Data.Entity.MigrateDatabaseToLatestVersion`2.InitializeDatabase(TContext context)&#xD;&#xA;   at System.Data.Entity.Internal.InternalContext.&lt;&gt;c__DisplayClassf`1.&lt;CreateInitializationAction&gt;b__e()&#xD;&#xA;   at System.Data.Entity.Internal.InternalContext.PerformInitializationAction(Action action)&#xD;&#xA;   --- End of inner exception stack trace ---&#xD;&#xA;   at System.Data.Entity.Internal.InternalContext.PerformInitializationAction(Action action)&#xD;&#xA;   at System.Data.Entity.Internal.InternalContext.PerformDatabaseInitialization()&#xD;&#xA;   at System.Data.Entity.Internal.LazyInternalContext.&lt;InitializeDatabase&gt;b__4(InternalContext c)&#xD;&#xA;   at System.Data.Entity.Internal.RetryAction`1.PerformAction(TInput input)&#xD;&#xA;   at System.Data.Entity.Internal.LazyInternalContext.InitializeDatabaseAction(Action`1 action)&#xD;&#xA;   at System.Data.Entity.Internal.LazyInternalContext.InitializeDatabase()&#xD;&#xA;   at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)&#xD;&#xA;   at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()&#xD;&#xA;   at System.Data.Entity.Internal.Linq.InternalSet`1.AsNoTracking()&#xD;&#xA;   at System.Data.Entity.Infrastructure.DbQuery`1.AsNoTracking()&#xD;&#xA;   at System.Data.Entity.QueryableExtensions.AsNoTracking[T](IQueryable`1 source)&#xD;&#xA;   at IAUNSportsSystem.ServiceLayer.EntityFramework.CompetitionService.GetRunningCompetitions() in D:\Projects\IAUNSportsSystem\IAUNSportsSystem.ServiceLayer.EntityFramework\CompetitionService.cs:line 62&#xD;&#xA;   at IAUNSportsSystem.Web.Controllers.HomeController.RunningCompetitionsList() in D:\Projects\IAUNSportsSystem\IAUNSportsSystem.Web\Controllers\HomeController.cs:line 30&#xD;&#xA;   at lambda_method(Closure , ControllerBase , Object[] )&#xD;&#xA;   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)&#xD;&#xA;   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;BeginInvokeSynchronousActionMethod&gt;b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3d()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass33.&lt;BeginInvokeActionMethodWithFilters&gt;b__32(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;&gt;c__DisplayClass2b.&lt;BeginInvokeAction&gt;b__1c()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;BeginInvokeAction&gt;b__1e(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Controller.&lt;BeginExecuteCore&gt;b__1d(IAsyncResult asyncResult, ExecuteCoreState innerState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Controller.&lt;BeginExecute&gt;b__15(IAsyncResult asyncResult, Controller controller)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.&lt;BeginProcessRequest&gt;b__5(IAsyncResult asyncResult, ProcessRequestState innerState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)&#xD;&#xA;   at System.Web.Mvc.HttpHandlerUtil.ServerExecuteHttpHandlerAsyncWrapper.&lt;&gt;c__DisplayClassa.&lt;EndProcessRequest&gt;b__9()&#xD;&#xA;   at System.Web.Mvc.HttpHandlerUtil.ServerExecuteHttpHandlerWrapper.&lt;&gt;c__DisplayClass4.&lt;Wrap&gt;b__3()&#xD;&#xA;   at System.Web.Mvc.HttpHandlerUtil.ServerExecuteHttpHandlerWrapper.Wrap[TResult](Func`1 func)&#xD;&#xA;   at System.Web.Mvc.HttpHandlerUtil.ServerExecuteHttpHandlerWrapper.Wrap(Action action)&#xD;&#xA;   at System.Web.Mvc.HttpHandlerUtil.ServerExecuteHttpHandlerAsyncWrapper.EndProcessRequest(IAsyncResult result)&#xD;&#xA;   at System.Web.HttpServerUtility.ExecuteInternal(IHttpHandler handler, TextWriter writer, Boolean preserveForm, Boolean setPreviousPage, VirtualPath path, VirtualPath filePath, String physPath, Exception error, String queryStringOverride)&#xD;&#xA;   at System.Web.HttpServerUtility.ExecuteInternal(IHttpHandler handler, TextWriter writer, Boolean preserveForm, Boolean setPreviousPage, VirtualPath path, VirtualPath filePath, String physPath, Exception error, String queryStringOverride)&#xD;&#xA;   at System.Web.HttpServerUtility.Execute(IHttpHandler handler, TextWriter writer, Boolean preserveForm, Boolean setPreviousPage)&#xD;&#xA;   at System.Web.HttpServerUtility.Execute(IHttpHandler handler, TextWriter writer, Boolean preserveForm)&#xD;&#xA;   at System.Web.HttpServerUtilityWrapper.Execute(IHttpHandler handler, TextWriter writer, Boolean preserveForm)&#xD;&#xA;   at System.Web.Mvc.Html.ChildActionExtensions.ActionHelper(HtmlHelper htmlHelper, String actionName, String controllerName, RouteValueDictionary routeValues, TextWriter textWriter)&#xD;&#xA;   at System.Web.Mvc.Html.ChildActionExtensions.Action(HtmlHelper htmlHelper, String actionName, String controllerName, RouteValueDictionary routeValues)&#xD;&#xA;   at System.Web.Mvc.Html.ChildActionExtensions.Action(HtmlHelper htmlHelper, String actionName, String controllerName)&#xD;&#xA;   at ASP._Page_Views_Home_Index_cshtml.Execute() in d:\Projects\IAUNSportsSystem\IAUNSportsSystem.Web\Views\Home\Index.cshtml:line 5&#xD;&#xA;   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()&#xD;&#xA;   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()&#xD;&#xA;   at System.Web.WebPages.StartPage.RunPage()&#xD;&#xA;   at System.Web.WebPages.StartPage.ExecutePageHierarchy()&#xD;&#xA;   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)&#xD;&#xA;   at System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)&#xD;&#xA;   at System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)&#xD;&#xA;   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;&gt;c__DisplayClass2b.&lt;BeginInvokeAction&gt;b__1c()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;BeginInvokeAction&gt;b__1e(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Controller.&lt;BeginExecuteCore&gt;b__1d(IAsyncResult asyncResult, ExecuteCoreState innerState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Controller.&lt;BeginExecute&gt;b__15(IAsyncResult asyncResult, Controller controller)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.&lt;BeginProcessRequest&gt;b__5(IAsyncResult asyncResult, ProcessRequestState innerState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)&#xD;&#xA;   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()&#xD;&#xA;   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&amp; completedSynchronously)" user="1" time="2015-11-20T19:46:17.5886784Z" statusCode="500">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CACHE_CONTROL:max-age=0&#xD;&#xA;HTTP_CONNECTION:keep-alive&#xD;&#xA;HTTP_ACCEPT:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate, sdch&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:en-US,en;q=0.8&#xD;&#xA;HTTP_COOKIE:captchastring=43-A7-A5-56-76-FD-4A-F2-35-5A-6C-82-CE-F7-DE-24-C4-2A-F8-F9-28-40-26-85-8B-A6-C3-12-BA-5F-EE-FA-28-30-2C-CD-86-90-AF-77-86-1A-8D-0B-5A-08-12-6B-3F-9E-A4-95-78-23-95-14-AA-F2-15-DF-D6-0A-B6-0C-D9-AD-51-D9-2D-39-C1-AE-6F-4A-81-D6-C1-B6-EA-CC-6F-9D-16-9A-2B-64-2F-21-7A-BF-32-1D-A5-37-42-40-DD-8C-31-40-73-CE-4A-4F-F4-E8-B7-77-4F-81-86-7A-27-BA-FF-1D-A7-FB-8B-D8-00-CE-4A-8E-AC-30-A3-48; 1s2p3o4r5t6I7A9U0N=3D04C570693A9EEA483A76B1D77A8412BBDA4496B58CFF0880CFFE88C401841513BF86402A959C6CD3E7035BE2D3785CD0238953FF9D7F8373119FCB1858A42D24A88726AE1C4EFA03FFD617EFA72659615B7E6E2A9652134FD101E21EE80E559AC0B6F7BAEC95DBBD6C44380BBCB8D2B61AFF56027897C4FA511044E323926FC6608E510525AB326B6335BAB50260B6F575AD6F6C5E859DE309A7905555380575780F0A0A38913ADA76926D1449469D6CE931E8D86ED706B79DDAD1DDB850AE9822CA6B8FBFB6453BE14807F904C32D7902480E4395AFD3A1CA0C255E6CC674D82603FE377FF64F66DA7AEDC7F82D1D63C519C5DD43220F4B6171F7C1B7E465E1C8EF478C0352D2E6F7C3A7E8B6256B&#xD;&#xA;HTTP_HOST:localhost:25149&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.86 Safari/537.36&#xD;&#xA;HTTP_UPGRADE_INSECURE_REQUESTS:1&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Cache-Control: max-age=0&#xD;&#xA;Connection: keep-alive&#xD;&#xA;Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8&#xD;&#xA;Accept-Encoding: gzip, deflate, sdch&#xD;&#xA;Accept-Language: en-US,en;q=0.8&#xD;&#xA;Cookie: captchastring=43-A7-A5-56-76-FD-4A-F2-35-5A-6C-82-CE-F7-DE-24-C4-2A-F8-F9-28-40-26-85-8B-A6-C3-12-BA-5F-EE-FA-28-30-2C-CD-86-90-AF-77-86-1A-8D-0B-5A-08-12-6B-3F-9E-A4-95-78-23-95-14-AA-F2-15-DF-D6-0A-B6-0C-D9-AD-51-D9-2D-39-C1-AE-6F-4A-81-D6-C1-B6-EA-CC-6F-9D-16-9A-2B-64-2F-21-7A-BF-32-1D-A5-37-42-40-DD-8C-31-40-73-CE-4A-4F-F4-E8-B7-77-4F-81-86-7A-27-BA-FF-1D-A7-FB-8B-D8-00-CE-4A-8E-AC-30-A3-48; 1s2p3o4r5t6I7A9U0N=3D04C570693A9EEA483A76B1D77A8412BBDA4496B58CFF0880CFFE88C401841513BF86402A959C6CD3E7035BE2D3785CD0238953FF9D7F8373119FCB1858A42D24A88726AE1C4EFA03FFD617EFA72659615B7E6E2A9652134FD101E21EE80E559AC0B6F7BAEC95DBBD6C44380BBCB8D2B61AFF56027897C4FA511044E323926FC6608E510525AB326B6335BAB50260B6F575AD6F6C5E859DE309A7905555380575780F0A0A38913ADA76926D1449469D6CE931E8D86ED706B79DDAD1DDB850AE9822CA6B8FBFB6453BE14807F904C32D7902480E4395AFD3A1CA0C255E6CC674D82603FE377FF64F66DA7AEDC7F82D1D63C519C5DD43220F4B6171F7C1B7E465E1C8EF478C0352D2E6F7C3A7E8B6256B&#xD;&#xA;Host: localhost:25149&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.86 Safari/537.36&#xD;&#xA;Upgrade-Insecure-Requests: 1&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/2/ROOT" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="D:\Projects\IAUNSportsSystem\IAUNSportsSystem.Web\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="IrisForms" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="1" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="1" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="1" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="0" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="off" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="2" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/2" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="D:\Projects\IAUNSportsSystem\IAUNSportsSystem.Web" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="50271" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="GET" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="localhost" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="25149" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="0" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/10.0" />
+    </item>
+    <item name="URL">
+      <value string="/" />
+    </item>
+    <item name="HTTP_CACHE_CONTROL">
+      <value string="max-age=0" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="keep-alive" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate, sdch" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="en-US,en;q=0.8" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="captchastring=43-A7-A5-56-76-FD-4A-F2-35-5A-6C-82-CE-F7-DE-24-C4-2A-F8-F9-28-40-26-85-8B-A6-C3-12-BA-5F-EE-FA-28-30-2C-CD-86-90-AF-77-86-1A-8D-0B-5A-08-12-6B-3F-9E-A4-95-78-23-95-14-AA-F2-15-DF-D6-0A-B6-0C-D9-AD-51-D9-2D-39-C1-AE-6F-4A-81-D6-C1-B6-EA-CC-6F-9D-16-9A-2B-64-2F-21-7A-BF-32-1D-A5-37-42-40-DD-8C-31-40-73-CE-4A-4F-F4-E8-B7-77-4F-81-86-7A-27-BA-FF-1D-A7-FB-8B-D8-00-CE-4A-8E-AC-30-A3-48; 1s2p3o4r5t6I7A9U0N=3D04C570693A9EEA483A76B1D77A8412BBDA4496B58CFF0880CFFE88C401841513BF86402A959C6CD3E7035BE2D3785CD0238953FF9D7F8373119FCB1858A42D24A88726AE1C4EFA03FFD617EFA72659615B7E6E2A9652134FD101E21EE80E559AC0B6F7BAEC95DBBD6C44380BBCB8D2B61AFF56027897C4FA511044E323926FC6608E510525AB326B6335BAB50260B6F575AD6F6C5E859DE309A7905555380575780F0A0A38913ADA76926D1449469D6CE931E8D86ED706B79DDAD1DDB850AE9822CA6B8FBFB6453BE14807F904C32D7902480E4395AFD3A1CA0C255E6CC674D82603FE377FF64F66DA7AEDC7F82D1D63C519C5DD43220F4B6171F7C1B7E465E1C8EF478C0352D2E6F7C3A7E8B6256B" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="localhost:25149" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.86 Safari/537.36" />
+    </item>
+    <item name="HTTP_UPGRADE_INSECURE_REQUESTS">
+      <value string="1" />
+    </item>
+  </serverVariables>
+  <cookies>
+    <item name="captchastring">
+      <value string="43-A7-A5-56-76-FD-4A-F2-35-5A-6C-82-CE-F7-DE-24-C4-2A-F8-F9-28-40-26-85-8B-A6-C3-12-BA-5F-EE-FA-28-30-2C-CD-86-90-AF-77-86-1A-8D-0B-5A-08-12-6B-3F-9E-A4-95-78-23-95-14-AA-F2-15-DF-D6-0A-B6-0C-D9-AD-51-D9-2D-39-C1-AE-6F-4A-81-D6-C1-B6-EA-CC-6F-9D-16-9A-2B-64-2F-21-7A-BF-32-1D-A5-37-42-40-DD-8C-31-40-73-CE-4A-4F-F4-E8-B7-77-4F-81-86-7A-27-BA-FF-1D-A7-FB-8B-D8-00-CE-4A-8E-AC-30-A3-48" />
+    </item>
+    <item name="1s2p3o4r5t6I7A9U0N">
+      <value string="3D04C570693A9EEA483A76B1D77A8412BBDA4496B58CFF0880CFFE88C401841513BF86402A959C6CD3E7035BE2D3785CD0238953FF9D7F8373119FCB1858A42D24A88726AE1C4EFA03FFD617EFA72659615B7E6E2A9652134FD101E21EE80E559AC0B6F7BAEC95DBBD6C44380BBCB8D2B61AFF56027897C4FA511044E323926FC6608E510525AB326B6335BAB50260B6F575AD6F6C5E859DE309A7905555380575780F0A0A38913ADA76926D1449469D6CE931E8D86ED706B79DDAD1DDB850AE9822CA6B8FBFB6453BE14807F904C32D7902480E4395AFD3A1CA0C255E6CC674D82603FE377FF64F66DA7AEDC7F82D1D63C519C5DD43220F4B6171F7C1B7E465E1C8EF478C0352D2E6F7C3A7E8B6256B" />
+    </item>
+  </cookies>
+</error>
